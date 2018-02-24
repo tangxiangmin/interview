@@ -4,10 +4,6 @@ HTTP
 * [前端必备HTTP技能之HTTP请求头响应头中常用字段详解](http://www.jianshu.com/p/6e86903d74f7)
 
 
-
-## HTTP概览
-![http](./img/http.png)
-
 ## 常见的通用头
 
 * __`Cache-Control`设置请求响应链上所有的缓存机制必须遵守的指令__

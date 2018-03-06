@@ -9,9 +9,27 @@ CSS
 * bfc
 * SCSS、LESS
 * nth-of-type(n)和nth-of-child(n)
+* 样式继承
 
 参考：
 * [使用Flexible实现手淘H5页面的终端适配](https://github.com/amfe/article/issues/17)
+
+## CSS开启硬件加速
+[参考](https://www.cnblogs.com/PeunZhang/p/3510083.html)
+
+**优点**
+现在大多数电脑的显卡都支持硬件加速。鉴于此，我们可以发挥GPU的力量，从而使我们的网站或应用表现的更为流畅
+
+**触发条件**
+* 3D变换会触发, `translate3d`、`rotate3d`和`scale3d`
+* translateZ(0)
+
+当使用CSS transforms 或者 animations时可能会有页面闪烁的效果，可以使用`transform: translate3d(0, 0, 0)`修复
+
+
+**缺点**
+使用GPU可能会导致严重的性能问题，因为它增加了内存的使用，而且它会减少移动端设备的电池寿命。
+
 
 ## 垂直居中
 ```

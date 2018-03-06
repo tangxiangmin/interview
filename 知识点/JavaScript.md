@@ -11,7 +11,7 @@ JavaScript
 * JS单线程，执行上下文、执行栈、异步
 * ES6、7新特性
 * 函数科里化
-* event-loop事件队列，定时器，Promise、nextTick执行顺序
+
 
 ### 闭包的使用
 封装模块

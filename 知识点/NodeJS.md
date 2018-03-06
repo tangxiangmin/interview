@@ -1,6 +1,9 @@
 NodeJS
 ===
 
+## event-loop事件队列
+* 定时器，Promise、nextTick执行顺序
+
 ## 模块
 [JavaScript模块管理机制](http://www.shymean.com/article/JavaScript%E6%A8%A1%E5%9D%97%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6)
 

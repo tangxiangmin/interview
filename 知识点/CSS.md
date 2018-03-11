@@ -50,6 +50,20 @@ element.innerHTML = '<div class="' + styles.className + '">';
 
 需要了解BFC的布局规则、触发条件和应用场景这三个点。
 
+## 包含块
+参考
+* [MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/CSS/All_About_The_Containing_Block)
+
+如果元素某些属性被赋予一个**百分值**的话，它的计算值是由这个元素的包含块计算而来的。这些属性包括盒模型属性和偏移属性：
+* height, top, bottom 这些属性由包含块的 height 属性的值来计算它的百分值。如果包含块的 height 值依赖于它的内容，且包含块的 position 属性的值被赋予 relative 或 static的话，这些值的计算值为0。
+* width, left, right, padding, margin这些属性由包含块的 width 属性的值来计算它的百分值。
+
+确定包含块的过程完全依赖于这个包含块的`position`属性
+* position为relative或者static的元素，它的包含块由最近的块级（display为block,list-item, table）祖先元素的内容框组成
+* 如果元素position为fixed，包含块就是由 viewport 组成的
+* 如果元素position为absolute，它的包含块就是由它的最近的 position 的值不是 static （fixed, absolute, relative, or sticky）的祖先元素的内边距区的边缘组成的
+
+
 ## 栅格系统响应式原理
 这里有一个简单的[实现](https://github.com/tangxiangmin/cssMagic/blob/master/src/scss/layout/_grid.scss)
 
@@ -182,9 +196,33 @@ flex布局
 **nth-of-type**
 参考[MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-of-type)
 > 这个 CSS 伪类 匹配那些在它之前有 an+b-1 个相同类型兄弟节点的元素，其中 n 为正值或零值。
+
 匹配同类型的兄弟元素中对应索引的元素，索引从1开始
 
 **nth-child**
 参考[MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-child)
 > 这个 CSS 伪类匹配文档树中在其之前具有 an+b-1 个兄弟节点的元素，其中 n 为正值或零值。
-简单点说就是，这个选择器匹配那些在同系列兄弟节点中的位置与模式 an+b 匹配的元素，其索引从1开始
+
+简单点说就是，这个选择器匹配那些在同系列兄弟节点中的位置与模式 an+b 匹配的元素，其索引从1开始·
+
+## 精灵图
+> 将多个小图片拼接到一个图片中。通过background-position和元素尺寸调节需要显示的背景图案。
+
+优点：
+* 减少HTTP请求数，极大地提高页面加载速度
+* 增加图片信息重复度，提高压缩比，减少图片大小
+
+缺点：
+* 图片合并麻烦
+* 维护麻烦，修改一个图片可能需要从新布局整个图片，样式
+* 缩放调整图标大小比较麻烦
+
+## FOUC
+Flash Of Unstyled Content：用户定义样式表加载之前浏览器使用默认样式显示文档，用户样式加载渲染之后再从新显示文档，造成页面闪烁。
+
+解决方法：把样式表放到文档的head
+
+## 外边距折叠
+> collapsing-margin，两个或多个毗邻的普通流中的块元素垂直方向上的 margin 会重叠
+
+参考之前的[整理](http://www.shymean.com/article/%E5%A4%96%E8%BE%B9%E8%B7%9D%E9%87%8D%E5%8F%A0)

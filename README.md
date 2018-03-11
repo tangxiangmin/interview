@@ -12,6 +12,7 @@
 ## 其他整理
 * https://github.com/qiu-deqing/FE-interview
 * https://github.com/fouber/blog
+* [Web 前端面试指南与高频考题解析-掘金小册](https://juejin.im/book/5a8f9ddcf265da4e9f6fb959)
 
 ## 刷题
 * [牛客网](https://www.nowcoder.com/)，有的题答案有误，需自己甄别

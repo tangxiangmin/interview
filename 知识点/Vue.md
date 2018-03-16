@@ -15,9 +15,18 @@ Vue
 * https://www.jianshu.com/p/e54a9a34a773
 * https://juejin.im/post/59ffb4b66fb9a04512385402
 
+## Vue源码分析
+之前整理了`V2.5.9`的源码分析，放在[github](https://github.com/tangxiangmin/Vue-source-code-analysis)上面了
+
+### 数据代理
+参考：[数据代理](https://github.com/tangxiangmin/Vue-source-code-analysis/blob/master/Vue%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%E5%92%8C%EF%BC%88%E4%BA%8C%EF%BC%89.md#%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86)
+
+Vue中可以通过`this`访问到和修改`this.$data`的值，这是通过代理实现的，原理是修改对应的`getter`和`setter`
+
+### 响应式数据原理
+
 
 ## Vue生命周期
-
 
 ## vue 父子组件嵌套时，组件内部的各个生命周期钩子触发先后顺序
 从源码分析`patch`函数时可以发现，先创建父组件，遇见子组件就创建子组件，然后将子组件挂载到父组件，最后执行父组件的挂载操作
@@ -46,3 +55,10 @@ Vue
 * parse 过程，将 template 利用正则转化成 AST 抽象语法树。
 * optimize 过程，标记静态节点，后 diff 过程跳过静态节点，提升性能。
 * generate 过程，生成 render 字符串。
+
+
+## 路由懒加载
+参考
+* [官方文档](https://router.vuejs.org/zh-cn/advanced/lazy-loading.html)
+* [Vue代码分割懒加载](https://segmentfault.com/a/1190000012038580)
+* [Vue2组件懒加载浅析](https://www.cnblogs.com/zhanyishu/p/6587571.html)

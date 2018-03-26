@@ -1,6 +1,9 @@
 CSS相关面试题
 ===
 
+## 物理像素和逻辑像素有什么区别
+
+
 ## 圣杯布局
 
 ## 垂直居中
@@ -59,5 +62,14 @@ flex布局
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: $i;
+}
+```
+
+## 修改placeholder文本样式
+参考：[::placeholder](https://developer.mozilla.org/en-US/docs/Web/CSS/::placeholder)
+```css
+input::-webkit-input-placeholder {
+    font-size: 14px;
+    color: red;
 }
 ```

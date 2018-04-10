@@ -73,3 +73,22 @@ input::-webkit-input-placeholder {
     color: red;
 }
 ```
+
+## 如何修改chrome记住密码后自动填充表单的黄色背景 ？
+```
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: #FAFFBD; 
+    background-image: none;
+    color: rgb(0, 0, 0);
+}
+```
+## 制作动画，频率多少合适
+人眼最多看见每秒60帧，因此最小间隔为`1000ms/60`即`16.7ms`
+
+## iOS下滚动容器不顺畅如何解决
+添加`-webkit-overflow-scrolling:touch`解决，不过该属性在safari下会导致下滑时底部栏不收起
+
+## 有没有了解过webp
+WebP具有更优的图像数据压缩算法，能带来更小的图片体积，而且拥有肉眼识别无差异的图像质量；同时具备了无损和有损的压缩模式、Alpha 透明以及动画的特性，在 JPEG 和 PNG 上的转化效果都相当优秀、稳定和统一。
+不过在IE和和safari，以及部分移动端浏览器上不兼容，会导致图片加载失败
+

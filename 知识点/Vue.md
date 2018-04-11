@@ -241,3 +241,7 @@ Watcher**去重**的工作是通过Watcher对象的uid来实现的。然后在Wa
 * [官方文档](https://router.vuejs.org/zh-cn/advanced/lazy-loading.html)
 * [Vue代码分割懒加载](https://segmentfault.com/a/1190000012038580)
 * [Vue2组件懒加载浅析](https://www.cnblogs.com/zhanyishu/p/6587571.html)
+
+## vue-router
+* keep-alive
+* 滚动位置还原

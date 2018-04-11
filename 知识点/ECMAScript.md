@@ -20,6 +20,10 @@ JavaScript
 * typeof，可以得到undefined boolean number string object function、symbol等类型结果
 * instanceof，用于实例和构造函数的对应
 
+## null 和 undefined的区别
+* null 表示一个对象是“没有值”的值，也就是值为“空”；
+* undefined 表示一个变量声明了没有初始化(赋值)；
+
 ## 变量声明提升
 在编译阶段，函数声明和变量声明都会提升到当前作用域的开头。每个作用域都会进行提升操作
 * 函数声明会提升，但函数表达式不会

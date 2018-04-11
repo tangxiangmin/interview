@@ -88,7 +88,25 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 ## iOS下滚动容器不顺畅如何解决
 添加`-webkit-overflow-scrolling:touch`解决，不过该属性在safari下会导致下滑时底部栏不收起
 
-## 有没有了解过webp
-WebP具有更优的图像数据压缩算法，能带来更小的图片体积，而且拥有肉眼识别无差异的图像质量；同时具备了无损和有损的压缩模式、Alpha 透明以及动画的特性，在 JPEG 和 PNG 上的转化效果都相当优秀、稳定和统一。
-不过在IE和和safari，以及部分移动端浏览器上不兼容，会导致图片加载失败
+## 一道关于em的题
+下面s1、s2、s5、s6的font-size和line-height分别是多少px，这里考察line-height的计算值
+```css
+.p1 {font-size: 16px; line-height: 32px;}
+.s1 {font-size: 2em;}
+.s2 {font-size: 2em; line-height: 2em;}
+
+.p2 {font-size: 16px; line-height: 2;}
+.s5 {font-size: 2em;}
+.s6 {font-size: 2em; line-height: 2em;}
+```
+```html
+<div class="p1">
+    <div class="s1">1</div> <!--32px 32px-->
+    <div class="s2">1</div> <!--32px 64px-->
+</div>
+<div class="p2">
+    <div class="s5">1</div> <!--32px 64px-->
+    <div class="s6">1</div> <!--32px 64px-->
+</div>
+```
 

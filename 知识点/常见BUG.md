@@ -12,6 +12,11 @@ $(window).one('touchstart', function(){
 
 ## 1px像素
 [7种方法解决移动端Retina屏幕1px边框问题](https://www.jianshu.com/p/7e63f5a32636)
+* border-image
+* tarnsform
 
 ## iOS fixed定位BUG
 [ios下fixed回复框bug的解决方案](https://www.cnblogs.com/shenyu1995/p/5049629.html)
+
+## canvas保存图片模糊
+在高清屏下存在这个问题，放大canvas画布的尺寸，保持canvas.stytle.width和height的尺寸，按比例绘制图片，最后使用scale进行缩放，保存图片即可。

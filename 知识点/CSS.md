@@ -176,6 +176,13 @@ clear属性指定一个元素是否可以在它之前的浮动元素旁边，或
 * 如果元素position为fixed，包含块就是由 viewport 组成的
 * 如果元素position为absolute，它的包含块就是由它的最近的 position 的值不是 static （fixed, absolute, relative, or sticky）的祖先元素的内边距区的边缘组成的
 
+## 行高
+行高指文本行基线之间的距离。实际上文本行每行的行内元素都会生成一个内容区，而每个内容区又会生成对应的行内框，在默认情况下，行内框的大小即为字体大小，而使用line-height则是显式地重新指定了文本行中各个行内框的大小，只需要将行间距均分成两半且应用到每个内容的顶部和底部，就可以得到对应的重新生成的行内框的大小
+* 如果使用em,ex和百分数指定行高，都是相对于元素的font-size进行计算
+* 如果是从父元素继承行高，则情况会变得复杂：
+    * 如果使用百分数来设置行高，浏览器会首先计算其父元素的字体大小与对应百分数的乘积，得到对应的结果再传递给对应元素（当子元素的字体大小大于该值就会出现文本行重叠的情况）；
+    * 如果使用乘积因子来指定行高，浏览器会计算该元素的字体大小（如果没有则计算该元素从其父元素继承得到的字体大小），然后乘以对应的乘积因子，并将结果应用在行高之上。
+
 ## flex
 参考之前的整理
 * [flex布局](http://www.shymean.com/article/flex%E5%B8%83%E5%B1%80)
@@ -224,6 +231,10 @@ flex现在在移动端的兼容性已经非常好了，目前基本可以应用�
 * [使用Flexible实现手淘H5页面的终端适配](https://github.com/amfe/article/issues/17)
 * 基于calc和vw实现的rem布局
 
+其实rem布局的本质是等比缩放，一般是基于宽度，然后可以完美还原设计图
+
+
+
 ## ViewPort
 ```
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
@@ -251,10 +262,13 @@ flex现在在移动端的兼容性已经非常好了，目前基本可以应用�
 **缺点**
 使用GPU可能会导致严重的性能问题，因为它增加了内存的使用，而且它会减少移动端设备的电池寿命。
 
-## SCSS、LESS
 
-提供更有效的编写CSS样式表的工具
+## CSS预处理器、后处理器
+预处理器提供更有效的编写CSS样式表的工具，如LESS、SCSS
 以SCSS为例，需要理解常用特性如：变量、混合、继承、函数、循环、分支、导入组件等
+
+后处理器主要为进一步处理样式表，使其更符合规范，如PostCSS
+常见的功能有autoprefixer、px2rem等
 
 ## CSS Module
 [github地址](https://github.com/css-modules/css-modules)

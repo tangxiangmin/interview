@@ -199,6 +199,9 @@ function proxy (target: Object, sourceKey: string, key: string) {
 
 Watcher**去重**的工作是通过Watcher对象的uid来实现的。然后在Watcher的update中将其添加进更新队列，然后去重（通过一个哈希表提高效率），最后在下一个事件循环中执行已去重的实际工作。
 
+## Vue-router
+路由指根据不同的 url 地址展示不同的内容或页面。
+在浏览器端可以通过hash或者history API实现
 
 ## Vuex
 有时候需要处理一些组件间共享的数据或状态，或是需要通过 props 深层传递的一些数据

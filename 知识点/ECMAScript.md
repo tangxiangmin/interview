@@ -20,6 +20,10 @@ JavaScript
 * typeof，可以得到undefined boolean number string object function、symbol等类型结果
 * instanceof，用于实例和构造函数的对应
 
+## 数据类型转换 == 和 ===
+主要需要注意的是 == 操作符的比较规则，当两个数据的类型不一致时会发生类型转换，且可能同时发生类型转换，对应规则如下图所示
+![](https://ws3.sinaimg.cn/large/006tNc79gy1fqaabatp6kj310i0aqgn8.jpg)
+
 ## null 和 undefined的区别
 * null 表示一个对象是“没有值”的值，也就是值为“空”；
 * undefined 表示一个变量声明了没有初始化(赋值)；
@@ -129,6 +133,15 @@ ES6
 
 ## 模块系统
 参考之前的整理:[JavaScript模块管理机制](http://www.shymean.com/article/JavaScript%E6%A8%A1%E5%9D%97%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6)
+
+### 一些常用的新特性
+* let、const代替var，使用块级作用域
+* 模板字符串，不需要手动去拼接字符串了
+* 箭头函数，简化代码，自动绑定外部函数this
+* 函数的默认参数，声明和展开剩余参数
+* 解构赋值
+* 对象字面量方法简写，动态属性名
+* class关键字，创建类的语法糖
 
 ### ES6模块机制
 新增`import`和`export`，参考

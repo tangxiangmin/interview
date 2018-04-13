@@ -1,6 +1,17 @@
 NodeJS
 ===
 
+## 开启服务器
+```js
+// 引入内置http模块
+var http = require('http');
+
+http.createServer(function(req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello World\n');
+}).listen(9999, '127.0.0.1');
+```
+
 ## event-loop事件队列
 ### 定时器，Promise、nextTick执行顺序
 
@@ -64,3 +75,12 @@ async function getTimer(){
 
 getTimer();
 ```
+
+## Restful API
+* Restful的意思就是表现层状态转化。
+* "表现层"其实指的是"资源"（Resources）的"表现层"，把"资源"具体呈现出来的形式，叫做它的"表现层"（Representation）。
+* 所谓"资源"，就是网络上的一个实体，或者说是网络上的一个具体信息。它可以是一段文本、一张图片、一首歌曲、一种服务，总之就是一个具体的实在，每一个URI代表一种资源。
+* 果客户端想要操作服务器，必须通过某种手段，让服务器端发生"状态转化"（State Transfer）。而这种转化是建立在表现层之上的，所以就是"表现层状态转化"。
+* Restful就是客户端和服务器之间，传递这种资源的某种表现层
+* 客户端通过四个HTTP动词，对服务器端资源进行操作，实现"表现层状态转化"
+* Restful API就是符合Restful架构的API设计。

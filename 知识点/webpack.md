@@ -29,3 +29,13 @@ webpack
 * 递归完后得到每个文件的最终结果，根据entry配置生成代码块chunk。
 * 输出所有chunk到文件系统。
 * 需要注意的是，在构建生命周期中有一系列插件在合适的时机做了合适的事情，比如UglifyJsPlugin会在loader转换递归完后对结果再使用UglifyJs压缩覆盖之前的结果。
+
+
+## 热更新
+> 热更新就是当你在开发环境修改代码后，不用刷新整个页面即可看到修改后的效果。借助webpack-dev-server插件可以实现项目的热更新
+
+* webpack在watch模式下检测到文件变化，对模块重新打包，编译结果保存在内存中
+* webpack-dev-server 和 webpack 之间的接口交互，开启服务器并获取webpack的编译结果
+* webpack-dev-server 通过sockjs在浏览器和服务器之间开启长连接，方便将webpack编译各阶段的状态告知浏览器，包括传递最主要的信息：新模块的hash值
+* HotModuleReplacement.runtime 在浏览器端接收到上一步传递给他的新模块的 hash 值，然后向服务端发送ajax请求，返回所有要更新模块的hash值，获取更新列表，然后通过JSONP请求获取最新的模块代码
+* 如果热更新失败，则通过刷新浏览器来获得最新的打包代码

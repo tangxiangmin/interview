@@ -248,3 +248,18 @@ Watcher**去重**的工作是通过Watcher对象的uid来实现的。然后在Wa
 ## vue-router
 * keep-alive
 * 滚动位置还原
+
+## React和Vue有什么区别
+这里有尤大的回答
+* https://www.zhihu.com/question/31585377
+
+**项目规模**
+eact 配合严格的 Flux 架构，适合超大规模多人协作的复杂项目。理论上 Vue 配合类似架构也可以胜任这样的用例，但缺少类似 Flux 这样的官方架构。
+
+小快灵的项目上，Vue 和 React 的选择更多是开发风格的偏好。对于需要对 DOM 进行很多自定义操作的项目，Vue 的灵活性优于 React。
+
+**开发风格的偏好**
+
+React 推荐的做法是 JSX + inline style，也就是把 HTML 和 CSS 全都整进 JavaScript 了。Vue 的默认 API 是以简单易上手为目标，但是进阶之后推荐的是使用 webpack + vue-loader 的单文件组件格式：
+
+JSX 在逻辑表达能力上虽然完爆模板，但是很容易写出凌乱的 render 函数，不如模板看起来一目了然。当然这里也有个人偏好的问题

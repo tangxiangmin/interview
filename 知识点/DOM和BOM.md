@@ -200,8 +200,14 @@ HTML5新增了sessionStorage和localStorage用于本地存储，专门为了浏�
 
 相关接口`setItem`、`getItem`、`removeItem`
 
-### 注意事项
 针对localStorage.setItem，使用时尽量加入到try-catch中，某些浏览器是禁用这个 API 的，要注意。
 
-## 跨域
-这里单独整理，请移步[浏览器跨域](./跨域.md)
+## requestAnimationFrame
+参考：
+* [MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame)
+
+```
+window.requestAnimationFrame(callback);
+```
+* 在大多数浏览器里，当运行在后台标签页或者隐藏的<iframe> 里时，requestAnimationFrame() 会暂停调用以提升性能和电池寿命。
+* callback会被传入一个参数，DOMHighResTimeStamp，指示当前被 requestAnimationFrame() 排序的回调函数被触发的时间。即使每个回调函数的工作量的计算都花了时间，单个帧中的多个回调也都将被传入相同的时间戳

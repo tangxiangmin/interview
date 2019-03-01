@@ -1,0 +1,23 @@
+{
+  "name": "interview",
+  "version": "1.0.0",
+  "description": "日常收集的前端知识点与前端面试题",
+  "main": "index.js",
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tangxiangmin/interview.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tangxiangmin/interview/issues"
+  },
+  "homepage": "https://github.com/tangxiangmin/interview#readme",
+  "dependencies": {
+    "fs-extra": "^7.0.1"
+  }
+}

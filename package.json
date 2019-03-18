@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node scripts/build.js",
-    "start": "gitbook serve"
+    "start": "npm run build && gitbook serve"
   },
   "repository": {
     "type": "git",

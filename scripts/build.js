@@ -85,4 +85,5 @@ function build(){
     writeSummary(floders)
 }
 
+console.log("===准备生成SUMMARY.md===");
 build();

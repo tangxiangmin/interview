@@ -4,7 +4,7 @@
     
 ## 知识点
 * CSS
-  * [CSS.md](./知识点/CSS/CSS.md) 
+  * [基础知识.md](./知识点/CSS/基础知识.md) 
 * HTML
   * [HTML.md](./知识点/HTML/HTML.md) 
   * [SEO优化.md](./知识点/HTML/SEO优化.md) 
@@ -12,18 +12,18 @@
   * [Canvas.md](./知识点/JavaScript/Canvas.md) 
   * [DOM和BOM.md](./知识点/JavaScript/DOM和BOM.md) 
   * [ECMAScript.md](./知识点/JavaScript/ECMAScript.md) 
+  * [NodeJS.md](./知识点/JavaScript/NodeJS.md) 
+  * [event loop.md](./知识点/JavaScript/event loop.md) 
+  * [npm.md](./知识点/JavaScript/npm.md) 
   * [正则.md](./知识点/JavaScript/正则.md) 
-* NodeJS
-  * [NodeJS.md](./知识点/NodeJS/NodeJS.md) 
-  * [npm.md](./知识点/NodeJS/npm.md) 
-  * [webpack.md](./知识点/NodeJS/webpack.md) 
-  * [开发环境.md](./知识点/NodeJS/开发环境.md) 
 * 业务相关
   * [React.md](./知识点/业务相关/React.md) 
   * [Vue.md](./知识点/业务相关/Vue.md) 
+  * [webpack.md](./知识点/业务相关/webpack.md) 
   * [webview.md](./知识点/业务相关/webview.md) 
   * [web安全.md](./知识点/业务相关/web安全.md) 
   * [常见BUG.md](./知识点/业务相关/常见BUG.md) 
+  * [开发环境.md](./知识点/业务相关/开发环境.md) 
   * [性能优化.md](./知识点/业务相关/性能优化.md) 
   * [技术前沿.md](./知识点/业务相关/技术前沿.md) 
   * [调试.md](./知识点/业务相关/调试.md) 
@@ -34,6 +34,7 @@
 * 网络
   * [WebSocket.md](./知识点/网络/WebSocket.md) 
   * [fetch.md](./知识点/网络/fetch.md) 
+  * [http.md](./知识点/网络/http.md) 
   * [xhr.md](./知识点/网络/xhr.md) 
   * [缓存.md](./知识点/网络/缓存.md) 
   * [计算机网络.md](./知识点/网络/计算机网络.md) 

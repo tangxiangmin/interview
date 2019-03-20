@@ -148,60 +148,6 @@ ES6
 * 使用extends即可实现继承，更加符合经典面向对象语言的写法，如 Java
 * 子类的constructor一定要执行super()，以调用父类的constructor
 
-## 模块系统
-参考之前的整理:[JavaScript模块管理机制](http://www.shymean.com/article/JavaScript%E6%A8%A1%E5%9D%97%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6)
-
-### ES6模块机制
-新增`import`和`export`，参考
-* [import文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import)
-* [export文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export)
-
-export包括
-* 命名导出，命名导出对导出多个值很有用。在导入期间，必须使用相应对象的相同名称。
-* 默认导出，可以使用任何名称导入默认导出
-
-注意不能使用var，let或const作为默认导出。
-
-
-### CommonJS模块规范
-使用`module.exports`、`exports`导出模块，使用`require`引入模块。
-
-
-CommonJS是同步加载的，也就是说加载模块时会阻塞后续代码的执行，这对于服务器端来讲问题不大，但是对于浏览器而言网络传输的效率是不容忽视的，所以才有了AMD规范
-
-这里的一个问题是理解module.exports和exports的区别
-* 整个文件导出的模块（也就是require() 的返回）是 module.exports
-* module.exports和exports在初始时指向同一个对象，因此可以使用exports向模块对象上增加属性和方法
-* module.exports如果指向了另外一个对象，则exports的修改全部无效了（因为最后导出的是module.exports）
-
-另外一个问题是`require`加载包的顺序规则，在NodeJS内部有个很复杂实现，这里就不展开了，感兴趣可以移步这里：[require() 源码解读](http://www.ruanyifeng.com/blog/2015/05/require.html)
-
-### AMD模块规范
-通过`define`定义模块，通过`require`引入模块
-
-由于浏览器在解析文档时，遇见脚本会加载解析和执行，为了提高页面性能，一般的处理办法是异步延迟加载，这正是AMD全称中Asynchronous的含义。
-
-异步带来的问题是：在浏览器中，必须等待依赖的模块加载成功，对应的声明模块才能够执行。换句话说，AMD中的模块是依赖前置的。
-
-## ES6模块和CommonJS模块的区别
-参考
-* https://juejin.im/entry/5a879e28f265da4e82635152
-
-主要有下面两个区别
-* ES6 模块输出的是值的引用，输出接口动态绑定，而 CommonJS 输出的是值的拷贝
-* ES6 模块编译时执行，而 CommonJS 模块总是在运行时加载
-
-**关于第一点**
-在 CommonJS 模块中，如果你 require 了一个模块，那就相当于你执行了该文件的代码并最终获取到模块输出的 module.exports 对象的一份拷贝，如果在模块文件中存在异步的数据，则需要使用函数延时执行，再次require对应模块，从而获得更新数据的拷贝
-* CommonJS 模块中 require 引入模块的位置不同会对输出结果产生影响，并且会生成值的拷贝
-* CommonJS 模块重复引入的模块并不会重复执行，再次获取模块只会获得之前获取到的模块的拷贝
-
-在 ES6 模块中就不再是生成输出对象的拷贝，而是动态关联模块中的值。当模块中的值改变，会影响当前文件中的值
-
-**关于第二点**
-ES6 模块编译时执行会导致有以下两个特点：
-* import 命令会被 JavaScript 引擎静态分析，优先于模块内的其他内容执行，即在文件中的任何位置引入 import 模块都会被提前到文件顶部
-* export 命令会有变量声明提前的效果，通过模块循环引用可以看出其效果
 
 
 ## Promise

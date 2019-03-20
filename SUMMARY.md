@@ -4,6 +4,7 @@
     
 ## 知识点
 * CSS
+  * [CSS3.md](./知识点/CSS/CSS3.md) 
   * [基础知识.md](./知识点/CSS/基础知识.md) 
 * HTML
   * [HTML.md](./知识点/HTML/HTML.md) 
@@ -36,7 +37,6 @@
   * [fetch.md](./知识点/网络/fetch.md) 
   * [http.md](./知识点/网络/http.md) 
   * [xhr.md](./知识点/网络/xhr.md) 
-  * [缓存.md](./知识点/网络/缓存.md) 
   * [计算机网络.md](./知识点/网络/计算机网络.md) 
   * [跨域.md](./知识点/网络/跨域.md) 
 * 计算机基础

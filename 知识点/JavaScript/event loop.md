@@ -1,5 +1,12 @@
 
-## Event loop
+Event loop
+===
+<!-- TOC -->
+
+- [浏览器中的Event loop](#浏览器中的event-loop)
+- [Node 中的 Event Loop](#node-中的-event-loop)
+
+<!-- /TOC -->
 参考
 * [一次弄懂Event Loop](https://mp.weixin.qq.com/s/KEl_IxMrJzI8wxbkKti5vg)
 
@@ -8,7 +15,7 @@
 * 一种宏任务（MacroTask）也叫Task，包括：script全部代码、setTimeout、setInterval、setImmediate（浏览器暂不支持）、I/O、UI Rendering。
 * 一种叫微任务（MicroTask），包括：Process.nextTick（Node独有）、Promise、Object.observe(废弃)、MutationObserver。await也是由promise实现的，因此也理解为是MicroTask
 
-### 浏览器中的Event loop
+## 浏览器中的Event loop
 浏览器中，事件循环模型为
 * 执行栈在执行完同步任务后，查看执行栈是否为空，
 * 如果执行栈为空，就会去检查微任务(microTask)队列是否为空，如果为空的话，就执行Task（宏任务），否则就一次性执行完所有微任务。
@@ -97,7 +104,7 @@ function f() {
 ```
 这样就比较容易理解了
 
-### Node 中的 Event Loop
+## Node 中的 Event Loop
 node中的任务也分为宏任务和微任务等
 * 宏任务包括：setTimeout、setInterval、 setImmediate、script（整体代码）、 I/O 操作等。
 * 微任务包括：process.nextTick、new Promise().then(回调)等

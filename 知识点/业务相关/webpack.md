@@ -8,6 +8,7 @@ webpack
 参考：
 * http://imweb.io/topic/59324940b9b65af940bf58ae
 * [深入浅出webpack-电子书](http://webpack.wuhaolin.cn/)
+* [细说 webpack 之流程篇](http://taobaofed.org/blog/2016/09/09/webpack-flow/)
 
 ## 核心概念
 > webpack是一个打包模块化js的工具，可以通过loader转换文件，通过plugin扩展功能。

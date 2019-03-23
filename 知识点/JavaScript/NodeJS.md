@@ -12,18 +12,6 @@ http.createServer(function(req, res) {
 }).listen(9999, '127.0.0.1');
 ```
 
-## event-loop事件队列
-### 定时器，Promise、nextTick执行顺序
-
-理解几个概念
-* macro-task: script (整体代码)，setTimeout, setInterval, setImmediate, I/O, UI rendering. 
-* micro-task: process.nextTick, Promise(原生)，Object.observe，MutationObserver
-* micro-task 的 优先级高于macro-task
-
-注意下面的顺序
-* 同步代码执行顺序优先级高于异步代码执行顺序优先级；
-* new Promise(fn)中的fn是同步执行；
-* process.nextTick()>Promise.then()>setTimeout>setImmediate。
 
 ## 模块
 [JavaScript模块管理机制](http://www.shymean.com/article/JavaScript%E6%A8%A1%E5%9D%97%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6)

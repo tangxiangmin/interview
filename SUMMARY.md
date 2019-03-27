@@ -16,6 +16,7 @@
   * [NodeJS.md](./知识点/JavaScript/NodeJS.md) 
   * [event loop.md](./知识点/JavaScript/event loop.md) 
   * [npm.md](./知识点/JavaScript/npm.md) 
+  * [函数式编程.md](./知识点/JavaScript/函数式编程.md) 
   * [模块化.md](./知识点/JavaScript/模块化.md) 
   * [正则.md](./知识点/JavaScript/正则.md) 
 * 业务相关

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+echo "====start build===="
+npm run build
+git add SUMMARY.md
+echo "====start deploy===="
+npm run deploy
+echo "====end task===="

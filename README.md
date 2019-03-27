@@ -7,8 +7,12 @@
 ## 项目使用
 本项目提供了gitbook预览模式
 ```
+
 git clone git@github.com:tangxiangmin/interview.git
-ce interview
+cd interview
+
+# run once, auto compile SUMMARY.md,
+npm run setup
 
 npm run build
 

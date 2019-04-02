@@ -4,8 +4,8 @@
 
 面试的信心来自于自身扎实的基础，切勿急功近利，好逸恶劳~自勉之。
 
-## 项目使用
-本项目提供了gitbook预览模式
+## gitbook
+项目提供了[gitbook预览模式](https://tangxiangmin.github.io/interview/index.html)
 ```
 
 git clone git@github.com:tangxiangmin/interview.git

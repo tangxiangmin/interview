@@ -1,12 +1,7 @@
 
 Event loop
 ===
-<!-- TOC -->
 
-- [浏览器中的Event loop](#浏览器中的event-loop)
-- [Node 中的 Event Loop](#node-中的-event-loop)
-
-<!-- /TOC -->
 参考
 * [一次弄懂Event Loop](https://mp.weixin.qq.com/s/KEl_IxMrJzI8wxbkKti5vg)
 

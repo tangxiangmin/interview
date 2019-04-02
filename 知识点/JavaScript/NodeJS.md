@@ -1,6 +1,8 @@
 NodeJS
 ===
 
+> NodeJS中的event loop和浏览器有什么区别？NodeJS作为服务有哪些优势？nginx反向代理？Koa的原理和中间件的实现？
+
 ## 开启服务器
 ```js
 // 引入内置http模块
@@ -12,11 +14,10 @@ http.createServer(function(req, res) {
 }).listen(9999, '127.0.0.1');
 ```
 
+## CommonJS模块规范
 
-## 模块
-[JavaScript模块管理机制](http://www.shymean.com/article/JavaScript%E6%A8%A1%E5%9D%97%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6)
+CommonJS 中的 require/exports 和 ES6 中的 import/export 区别？
 
-### CommonJS 中的 require/exports 和 ES6 中的 import/export 区别？
 * ES6中的模块规范还没有被很好的支持，babel等的实现也是通过将其打包为CommonJ规范等实现的
 * CommonJS允许动态require导入模块，
 * import是在编译的时候去做解析请求包，只能出现在代码顶层，模块名只能是字符串字面量
@@ -29,40 +30,8 @@ http.createServer(function(req, res) {
 其原理就是维护一个中间件队列，每个中间件接收下一个中间件`next`作为参数，并手动调用
 
 ## Koa
-### async和await
-
-async函数本身返回一个promise
-```
-async function testAsync(){
-	return "hello";
-}
-
-const result = testAsync();
-
-// console.log(result); // Promise { hello }
-result.then(res=>{
-	console.log(res)
-})
-```
-
-[await](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/await)后跟一个表达式。await可以阻塞当前async函数中的代码，并等待其后面的表达式执行完成。然后取消阻塞并继续执行后续代码。
-
-```
-function timer(){
-	return new Promise((res, rej)=>{
-		setTimeout(()=>{
-			res("hello");
-		}, 500)
-	})
-}
-
-async function getTimer(){
-	let data = await timer(); // 阻塞 500ms
-	console.log(data);
-}
-
-getTimer();
-```
+* [理解Generator函数与async函数](https://www.shymean.com/article/%E7%90%86%E8%A7%A3Generator%E5%87%BD%E6%95%B0%E4%B8%8Easync%E5%87%BD%E6%95%B0)
+* [Koa中间件的原理](https://www.shymean.com/article/koa%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%AF%BC%E8%87%B4%E6%8E%A5%E5%8F%A3404%E7%9A%84%E9%97%AE%E9%A2%98)
 
 ## Restful API
 * Restful的意思就是表现层状态转化。

@@ -1,4 +1,5 @@
-## CSS3
+CSS3
+===
 
 ### CSS3动画
 
@@ -32,8 +33,6 @@ transform:属性值（具体数值量）
 变形：skew（x,y）
 * 两个参数值，分别表示相对于X轴和Y轴的倾斜度， X值为正表示将元素左上角原点向左拉扯，Y值为正表示将元素左上角原点向上拉扯，若为负值则相反。
 
-
-
 ### 渐变动画
 `transiton`
 
@@ -45,8 +44,6 @@ transform:属性值（具体数值量）
 * animation-delay	规定在动画开始之前的延迟。
 * animation-iteration-count	规定动画应该播放的次数。
 * animation-direction	规定是否应该轮流反向播放动画。
-
-
 
 ## CSS中的事件属性
 **user-select**

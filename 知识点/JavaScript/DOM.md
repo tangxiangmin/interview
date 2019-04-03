@@ -1,16 +1,6 @@
-
-BOM
-===
-
-BOM（浏览器对象模型）是浏览器本身的一些信息的设置和获取，一般常用的是
-* navigator，用于获取浏览器特征，比如判断平台等
-* screen，获取屏幕宽高
-* location，获取网址、协议、path、参数、hash 
-* history，访问浏览器的历史记录栈
-
-------
 DOM
 ===
+
 * DOM操作、节点常用属性
 * 事件的执行阶段，事件委托
 * 节流函数
@@ -210,5 +200,5 @@ HTML5新增了sessionStorage和localStorage用于本地存储，专门为了浏�
 ```
 window.requestAnimationFrame(callback);
 ```
-* 在大多数浏览器里，当运行在后台标签页或者隐藏的<iframe> 里时，requestAnimationFrame() 会暂停调用以提升性能和电池寿命。
+* 在大多数浏览器里，当运行在后台标签页或者隐藏的`iframe` 里时，requestAnimationFrame() 会暂停调用以提升性能和电池寿命。
 * callback会被传入一个参数，DOMHighResTimeStamp，指示当前被 requestAnimationFrame() 排序的回调函数被触发的时间。即使每个回调函数的工作量的计算都花了时间，单个帧中的多个回调也都将被传入相同的时间戳

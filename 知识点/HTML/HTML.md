@@ -1,75 +1,30 @@
 HTML
 ===
-整理HTML文档中一些常见的问题。
 
-## 语义化
+## 标签
+### 语义化
 所谓“语义”就是为了更易读懂，用正确的标签做正确的事情，这要分两部分：
 * 让人（写程序、读程序）更易读懂， 即使在没有样式CSS情况下也以一种文档格式显示，使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。
-* 让机器（浏览器、搜索引擎）更易读懂，让页面的内容结构化，结构更清晰，爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO
+* 让机器（浏览器、搜索引擎，盲人阅读器等）更易读懂，让页面的内容结构化，结构更清晰，爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO
 
-## 浏览器加载HTML文档
-此处需要对网络有个大概的认识
-* DNS服务器解析域名
-* HTTP报文
-* TCP连接三次握手、四次挥手
-* IP地址
-* 广播MAC寻址
-* 服务器CGI程序
-
-## 浏览器解析流程
-* [浏览器解析HTML的流程](http://www.shymean.com/article/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A7%A3%E6%9E%90HTML%E7%9A%84%E6%B5%81%E7%A8%8B)
-
-* CSS文档的加载和解析，阻塞的是脚本的执行而不是脚本的加载。
-* 而同步JS脚本的加载解析和执行，是会影响HTML解析器的工作，导致后面的所有资源都无法被加载。
-
-## 浏览器渲染流程
-参考：
-* [浏览器的渲染原理简介](https://coolshell.cn/articles/9666.html)
-* [浏览器渲染流程](http://www.shymean.com/article/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B)
-
-下面展示了大概的渲染过程
-* 浏览器会解析三个东西：
-    * 一个是HTML/SVG/XHTML，事实上，Webkit有三个C++的类对应这三类文档。解析这三种文件会产生一个DOM Tree。
-    * CSS，解析CSS会产生CSS规则树。
-    * Javascript，脚本，主要是通过DOM API和CSSOM API来操作DOM Tree和CSS Rule Tree.
-* 解析完成后，浏览器引擎会通过DOM Tree 和 CSS Rule Tree 来构造 Rendering Tree。注意：
-    * Rendering Tree 渲染树并不等同于DOM树，因为一些像Header或display:none的东西就没必要放在渲染树中了。
-    * CSS 的 Rule Tree主要是为了完成匹配并把CSS Rule附加上Rendering Tree上的每个Element。也就是DOM结点。也就是所谓的Frame。
-    * 然后，计算每个Frame（也就是每个Element）的位置，这又叫layout和reflow过程。
-* 最后通过调用操作系统Native GUI的API绘制。
+此外HTML 5 提供了一些新的语义化元素标签和属性，如`article`、`nav`、`header`等，参考：[Html5新标签解释及用法](http://www.daqianduan.com/2857.html)。
 
 
-### 浏览器内核
-* Trident内核：IE,MaxThon,TT,The World,360,搜狗浏览器等。[又称MSHTML]
-* Gecko内核：Netscape6及以上版本，firefox, MozillaSuite/SeaMonkey等
-* Presto内核：Opera7及以上。      [Opera内核原为：Presto，现为：Blink;]
-* Webkit内核：Safari,Chrome等。   [ Chrome的：Blink（WebKit的分支）]
+### script标签
+参考
+* [Script - MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script)
 
-### HTML5新增功能
-* 绘画 canvas;
-* 用于媒介回放的 video 和 audio 元素;
-* 本地离线存储localStorage和sessionStorage
-* 语义化标签
-* webworker、websocket、Geolocation
 
-### cookies，sessionStorage 和 localStorage
-相同：都是保存在浏览器，且同源的。
-区别：
-* cookies 和 ＊Storage 的区别：
-    * cookies会在服务器端和客户端间传递的；
-    * sessionStorage 和 localStorage存放在客户端的，不会发送至服务器端，仅在本地保存。
-    * cookies的兼容主流浏览器,包括IE6+;IE6，IE7不支持sessionStorage 和 localStorage
-    * sessionStorage 和 localStorage中能存的数据比cookie大（cookie不能超过4k）
-* sessionStorage 和 localStorage的区别：
-    * sessionStorage存的数据在每次关闭浏览器后被删除，localStorage不会。
-    * 作用域不同，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面（刷新页面可以继续存在）；
-    * localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的
+script标签上的`async`和`defer`属性，决定了脚本加载时采用同步方式还是异步方式。
 
-### script标签的加载，async和defer
-决定了脚本加载时采用同步方式还是异步方式。
 * 如果不加上这两个属性，默认为同步加载脚本，加载和执行时会阻塞页面的渲染，即浏览器按顺序解析DOM树及脚本，遇见脚本会阻塞DOM树生成并执行脚本。
-* async 和 defer 方式是用异步的方式加载脚本，不会阻塞页面渲染，它们之间的不同在于何时执，async 方式是加载后马上执行，defer 方式是加载后等所有 DOM 都渲染好触发 DOMContentLoaded 事件之前执行，所以 async 方式里面的脚本都是乱序执行，defer 方式加载的代码都是按序执行的，按序执行对有依赖的代码非常重要。
-* 若两个属性同在，会忽略defer而遵从async
+* async 和 defer 方式是用异步的方式加载脚本，不会阻塞页面渲染，它们之间的不同在于何时执，
+    * async 方式是加载后马上执行，
+    * defer 方式是加载后等所有 DOM 都渲染好触发 DOMContentLoaded 事件之前执行，
+    * 所以 async 方式里面的脚本都是乱序执行，defer 方式加载的代码都是按序执行的，按序执行对有依赖的代码非常重要。
+    * 若两个属性同在，会忽略defer而遵从async
+
+通过动态生成script的方法，可以实现`JSONP`等功能
 
 ### 移动开发中meta知识点
 * 页面窗口自动调整到设备宽度，并禁止用户及缩放页面。
@@ -77,9 +32,93 @@ HTML
 * 忽略Android平台中对邮箱地址的识别
 * 当网站添加到主屏幕快速启动方式，可隐藏地址栏，仅针对iOS的safari
 * 将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式
-* 需要在网站的根目录下存放favicon图标，防止404请求(使用fiddler可以监听到)
 
-
-## webp
+### webp
 WebP具有更优的图像数据压缩算法，能带来更小的图片体积，而且拥有肉眼识别无差异的图像质量；同时具备了无损和有损的压缩模式、Alpha 透明以及动画的特性，在 JPEG 和 PNG 上的转化效果都相当优秀、稳定和统一。
 不过在IE和和safari，以及部分移动端浏览器上不兼容，会导致图片加载失败
+
+## 浏览器
+
+### 浏览器内核
+* Trident内核：IE,MaxThon,TT,The World,360,搜狗浏览器等。[又称MSHTML]
+* Gecko内核：Netscape6及以上版本，firefox, MozillaSuite/SeaMonkey等
+* Presto内核：Opera7及以上。[Opera内核原为：Presto，现为：Blink;]
+* Webkit内核：Safari,Chrome等。   [ Chrome的：Blink（WebKit的分支）]
+
+### 浏览器解析流程
+参考
+* [浏览器解析HTML的流程](http://www.shymean.com/article/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A7%A3%E6%9E%90HTML%E7%9A%84%E6%B5%81%E7%A8%8B)
+
+当浏览器**从上到下**解析整个HTML文档时，
+
+如果遇见外部URL资源，就会发送请求加载对应文件（现代浏览器可能会同时发送多个请求加载文件）。
+
+如果遇见内联的样式表，就会立即解析（但不一定会立即渲染出样式）；如果遇见内联的脚本，就会立即解析和执行；
+
+**样式表阻塞**
+
+当HTML解析器遇见一个style标签时，会按顺序解析里面的样式；当HTML解析器遇见一个link标签，会发送一个外部样式表的请求。这样的后果是到导致后面的后面的JS代码
+* 如果是内联脚本，则必须等待前面的样式表加载和解析完成才会执行
+* 如果是外部脚本，浏览器会发送下载外部脚本文件的请求（CSS文件和JS文件可能同步下载），即使文件已经返回，也必须等待前面的样式表加载和解析完成
+
+这是因为JS执行依赖最新的CSS渲染（或者说最精确的样式信息）。
+
+**脚本阻塞**
+
+如果遇见普通的script（无async或defer）时，不论他是内联脚本还是外部脚本，都会阻塞浏览器进一步解析HTML文档（即暂时无法处理这个脚本后面其他需要加载的URL），而必须等待该标签代表的脚本文件执行完毕（如果是外联的脚本，甚至需要等到这个js文件加载成功并执行完毕。
+
+这是因为：JS可能影响后续的文档，可能向文档流中插入信息，也可能改变后续script脚本的全局变量，因此浏览器干脆在解析和执行script标签的时候，阻塞后续文档的解析
+
+整理上面可以得到下面结论
+* CSS文档的加载和解析，阻塞的是脚本的执行而不是脚本的加载。
+* 同步JS脚本的加载解析和执行，是会影响HTML解析器的工作，导致后面的所有资源都无法被加载。
+
+### 浏览器渲染流程
+参考：
+* [浏览器的渲染原理简介](https://coolshell.cn/articles/9666.html)
+* [浏览器渲染流程](http://www.shymean.com/article/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B)
+
+下面展示了大概的渲染过程
+
+![](https://coolshell.cn/wp-content/uploads/2013/05/Render-Process.jpg)
+
+* 浏览器首先解析三个东西：
+    * HTML/SVG/XHTML，产生一个DOM Tree。
+    * CSS，产生CSS Rule Tree。
+    * Javascript，主要是通过DOM API和CSSOM API来操作DOM Tree和CSS Rule Tree.
+* 解析完成后，浏览器引擎会通过DOM Tree 和 CSS Rule Tree 来构造 Rendering Tree。注意：
+    * Rendering Tree 渲染树并不等同于DOM树，因为一些像Head或display:none的东西就没必要放在渲染树中了。
+    * CSS 的 Rule Tree主要是为了完成匹配并把CSS Rule附加上Rendering Tree上的每个DOM结点。
+    * 然后计算DOM结点的位置，这又叫layout和reflow过程。
+* 最后通过调用操作系统Native GUI的API绘制。
+
+**Repaint重绘**
+
+Repaint表示页面上某个元素的的非定位样式需要重新绘制（比如利用JS改变了元素节点的背景颜色，此时不需要重新布局）
+
+**Reflow回流**
+
+Reflow表示元素节点的几何尺寸发生了变化，此时需要重新计算并构建渲染树（即此时需要重新布局），成本比Repaint的成本高得多的多
+
+下面是几条减少Repaint和Reflow的原则
+* 不要一条一条地修改DOM的样式，如果修改的样式过多可以将样式统一在某个类中，然后直接更改元素节点的className；
+* 使用临时变量保存DOM节点，而不是每次都直接对DOM节点进行操作（减少元素节点的读写），在JS性能与浏览器性能方面都能得到一些优化；
+* 尽可能修改层级比较低的DOM，缩小操作的影响范围；
+* 放弃使用table进行布局，因为一个很小的改动都会造成整个table的重新布局
+
+### HTML5
+新增功能
+* 绘画 canvas;
+* 用于媒介回放的 video 和 audio 元素;
+* 本地离线存储localStorage和sessionStorage
+* 语义化标签
+* webworker、websocket、Geolocation
+
+## 无头浏览器
+参考
+* [初识puppeteer](https://www.shymean.com/article/%E5%88%9D%E8%AF%86puppeteer)
+
+## 常见问题
+
+> 如何隐藏和显示一个dom节点? node.style.display 和 visibility有什么性能上的区别?，
+

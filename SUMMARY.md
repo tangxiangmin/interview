@@ -10,12 +10,14 @@
 * HTML
   * [HTML.md](./知识点/HTML/HTML.md) 
   * [SEO优化.md](./知识点/HTML/SEO优化.md) 
+  * [Web Components.md](./知识点/HTML/Web Components.md) 
 * JavaScript
+  * [BOM和HTML5.md](./知识点/JavaScript/BOM和HTML5.md) 
   * [Canvas.md](./知识点/JavaScript/Canvas.md) 
-  * [DOM和BOM.md](./知识点/JavaScript/DOM和BOM.md) 
+  * [DOM.md](./知识点/JavaScript/DOM.md) 
   * [ECMAScript.md](./知识点/JavaScript/ECMAScript.md) 
   * [NodeJS.md](./知识点/JavaScript/NodeJS.md) 
-  * [event loop.md](./知识点/JavaScript/event loop.md) 
+  * [eventLoop.md](./知识点/JavaScript/eventLoop.md) 
   * [npm.md](./知识点/JavaScript/npm.md) 
   * [函数式编程.md](./知识点/JavaScript/函数式编程.md) 
   * [模块化.md](./知识点/JavaScript/模块化.md) 

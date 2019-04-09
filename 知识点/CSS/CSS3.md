@@ -1,5 +1,6 @@
 CSS3
 ===
+> css 动画和 js 动画有什么区别?
 
 ### CSS3动画
 
@@ -135,3 +136,11 @@ a {
 
 ## 扩展阅读
 * [CSS3 transform对普通元素的N多渲染影响](https://www.zhangxinxu.com/wordpress/2015/05/css3-transform-affect/)
+
+## 常见问题
+Q:css 动画和 js 动画的差异
+
+1. 代码复杂度，js 动画代码相对复杂一些
+2. 动画运行时，对动画的控制程度上，js 能够让动画，暂停，取消，终止，css动画不能添加事件
+3. 动画性能看，js 动画多了一个js 解析的过程，性能不如 css 动画好
+

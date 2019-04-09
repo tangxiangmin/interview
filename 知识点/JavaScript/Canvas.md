@@ -42,6 +42,7 @@ scaleImg.crossOrigin = 'Anonymous' // 后台配置CORS，前端声明图片为CO
 scaleImg.src = __uri('../img/xx.png')
 ```
 * 对于不可控的第三方图片，如微信头像等，一般需要先让服务端将图片下载到自己的服务器上，然后再进行处理
+
 ```php
 // php下载远程图片  
 $pic = 'http://avatar.csdn.net/7/5/0/1_molaifeng.jpg';
@@ -49,7 +50,7 @@ $arr = getimagesize($pic);
 $pic = "data:{$arr['mime']};base64," . base64_encode(file_get_contents($pic));
 ?>
 
-<img src="<?php echo $pic ?>" />
+var src = "<?php echo $pic ?>"
 ```
 
 ### 100 * 100 的 Canvas 占内存多大？

@@ -4,7 +4,6 @@
         "donate",
         "tbfed-pagefooter",
         "anchor-navigation-ex",
-        "sitemap-general",
         "github-buttons",
         "catalogue-title"
     ],
@@ -58,9 +57,6 @@
         "simple-page-toc": {
             "maxDepth": 3,
             "skipFirstH1": true
-        },
-        "sitemap-general": {
-            "prefix": "https://shymean.com"
         }
     }
 }

@@ -17,9 +17,11 @@
   * [DOM.md](./知识点/JavaScript/DOM.md) 
   * [ECMAScript.md](./知识点/JavaScript/ECMAScript.md) 
   * [NodeJS.md](./知识点/JavaScript/NodeJS.md) 
+  * [TypeScript.md](./知识点/JavaScript/TypeScript.md) 
   * [eventLoop.md](./知识点/JavaScript/eventLoop.md) 
   * [npm.md](./知识点/JavaScript/npm.md) 
   * [函数式编程.md](./知识点/JavaScript/函数式编程.md) 
+  * [异步编程.md](./知识点/JavaScript/异步编程.md) 
   * [模块化.md](./知识点/JavaScript/模块化.md) 
   * [正则.md](./知识点/JavaScript/正则.md) 
 * 业务相关
@@ -36,6 +38,7 @@
 * 其他
   * [其他问题.md](./知识点/其他/其他问题.md) 
 * 算法
+  * [基本数据结构.md](./知识点/算法/基本数据结构.md) 
   * [基本算法.md](./知识点/算法/基本算法.md) 
   * [布隆过滤器.md](./知识点/算法/布隆过滤器.md) 
 * 网络
@@ -44,6 +47,7 @@
   * [axios.md](./知识点/网络/axios.md) 
   * [fetch.md](./知识点/网络/fetch.md) 
   * [http.md](./知识点/网络/http.md) 
+  * [nginx.md](./知识点/网络/nginx.md) 
   * [xhr.md](./知识点/网络/xhr.md) 
   * [抓包.md](./知识点/网络/抓包.md) 
   * [计算机网络.md](./知识点/网络/计算机网络.md) 
@@ -55,9 +59,8 @@
 * [CSS.md](./面试题/CSS.md) 
 * [ECMAScript.md](./面试题/ECMAScript.md) 
 * [代码实现.md](./面试题/代码实现.md) 
+* [代码实现2.md](./面试题/代码实现2.md) 
 * [代码实现3.md](./面试题/代码实现3.md) 
-* [代码实现（2）.md](./面试题/代码实现（2）.md) 
-* [实现一个Promise.md](./面试题/实现一个Promise.md) 
 * [常见考题.md](./面试题/常见考题.md) 
 * [常见需求.md](./面试题/常见需求.md) 
 * [自己出的面试题.md](./面试题/自己出的面试题.md) 

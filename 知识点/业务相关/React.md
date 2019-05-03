@@ -5,9 +5,6 @@ React
 * React-Router
 * Redux 和 react-redux
 
-
-
-
 ## 组件
 * [《React设计模式与最佳实践》读书笔记](https://www.shymean.com/article/%E3%80%8AReact%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0)
 
@@ -27,6 +24,10 @@ React的生命周期主要包含下面几个
 * componentDidCatch(errorString, errorInfo)，处理子元素抛出的错误
 * componentDidMount，组件挂载后触发，表示组件及其所有子组件被正确渲染
 * componentWillUnmount，组件卸载时触发
+
+> React 在哪个阶段发起 XhrHttpRequest 比较合适？
+
+React 下一代调和算法 Fiber 会通过开始或停止渲染的方式优化应用性能，其会影响到 componentWillMount 的触发次数。对于 componentWillMount 这个生命周期函数的调用次数会变得不确定，React 可能会多次频繁调用 componentWillMount。如果我们将 AJAX 请求放到 componentWillMount 函数中，那么显而易见其会被触发多次，自然也就不是好的选择。
 
 ## 状态管理
 * [理解数据状态管理](https://www.shymean.com/article/%E7%90%86%E8%A7%A3%E6%95%B0%E6%8D%AE%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86)

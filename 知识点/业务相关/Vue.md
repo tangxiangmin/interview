@@ -14,12 +14,10 @@ Vue
 参考
 * https://www.jianshu.com/p/e54a9a34a773
 * https://juejin.im/post/59ffb4b66fb9a04512385402
-* 之前整理了`V2.5.9`的源码分析，放在[github](https://github.com/tangxiangmin/Vue-source-code-analysis)上面了
+* 之前整理了`V2.5.9`的[源码分析](https://www.shymean.com/article/Vue%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E5%92%8CVue%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%80%EF%BC%89)
 
-网上有很多的关于Vue的源码分析，这里只是简单梳理一下，面试应该也不会有太多时间去深入每个细节，但是基本的原理肯定是需要掌握的。
 
 ## Vue源码分析
-
 
 ## 实例化过程中发生了什么
 **初始化**

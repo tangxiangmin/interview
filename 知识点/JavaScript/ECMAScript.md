@@ -7,7 +7,8 @@ JavaScript
 * 六种原始类型，包括Boolean、String、Number、Null、Undefined、Symbol
 * 引用类型，Object对象
 
-类型判断用到哪些方法
+> 类型判断用到哪些方法?
+
 * typeof，可以得到undefined boolean number string object function、symbol等类型结果
 * instanceof，用于实例和构造函数的对应
 
@@ -315,3 +316,6 @@ ES6新增了一些常用的新特性
 ### Set 和 Map 数据结构
 * ES6 提供了新的数据结构 Set 它类似于数组，但是成员的值都是唯一的，没有重复的值。
 * ES6 提供了 Map 数据结构。它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。也就是说，Object 结构提供了“字符串—值”的对应，Map 结构提供了“值—值”的对应，是一种更完善的 Hash 结构实现。
+
+### 箭头函数
+* [普通函数与箭头函数的区别与注意事项](https://mp.weixin.qq.com/s/N0ahVkwVhDpnzGdZyC8jQg)

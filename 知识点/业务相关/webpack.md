@@ -43,6 +43,9 @@ webpack
 * HotModuleReplacement.runtime 在浏览器端接收到上一步传递给他的新模块的 hash 值，然后向服务端发送ajax请求，返回所有要更新模块的hash值，获取更新列表，然后通过JSONP请求获取最新的模块代码
 * 如果热更新失败，则通过刷新浏览器来获得最新的打包代码
 
+
+参考: 
+* [Webpack热刷新与热加载的原理分析](https://mp.weixin.qq.com/s?__biz=MzIyMTg0OTExOQ==&mid=2247484504&idx=2&sn=958ac64a0fd7b8dac97e3a61e4e3e741&chksm=e8373728df40be3efca40714045ab313821c319ad18da0e29dd15ca9f86c62b8fecb92f773a7&scene=21#wechat_redirect)
 ### 上下文
 参考
 * [require.context](https://webpack.docschina.org/guides/dependency-management/)

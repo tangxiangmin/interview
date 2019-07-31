@@ -13,3 +13,9 @@ npm
 
 ## 一些常用的工具
 在某些常见下可能需要早官方镜像、taobao镜像、公司私有仓库等源进行切换，可以使用[nrm](https://www.npmjs.com/package/nrm)快速切换npm源。
+
+
+
+## 介绍下 npm 模块安装机制，为什么输入 npm install 就可以自动安装对应的模块？
+
+参考 https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2FAdvanced-Frontend%2FDaily-Interview-Question%2Fissues%2F22

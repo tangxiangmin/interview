@@ -4,8 +4,7 @@
         "donate",
         "tbfed-pagefooter",
         "anchor-navigation-ex",
-        "github-buttons",
-        "catalogue-title"
+        "github-buttons"
     ],
     "pluginsConfig": {
         "donate": {

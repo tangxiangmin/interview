@@ -1,9 +1,10 @@
 React
 ===
-* JSX, React.createElement
-* 组件生命周期
+* Virtual DOM，JSX, React.createElement
+* 组件组件生命周期
+* Fiber、diff算法
 * React-Router
-* Redux 和 react-redux
+* 状态管理，Flux、Redux和react-redux
 
 ## 组件
 * [《React设计模式与最佳实践》读书笔记](https://www.shymean.com/article/%E3%80%8AReact%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0)
@@ -43,3 +44,7 @@ redux的使用流程：
 
 [redux-thunk](https://github.com/reduxjs/redux-thunk/blob/master/src/index.js)的原理是：在中间件中判断action的类型，如果是函数，则将dispatch和getState传入，并在该action中由用户手动dispatch事件枚举值；否则直接调用next
 
+
+## 服务端渲染SSR
+参考
+* https://juejin.im/post/5d1fe6be51882579db031a6d

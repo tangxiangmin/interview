@@ -200,3 +200,28 @@ obj3.fn(); // obj1 ，同上
     var a = 300;
     console.log(a); // 300
 ```
+
+## 连续赋值
+参考：[写了10年Javascript未必全了解的连续赋值运算](https://yanhaijing.com/javascript/2012/04/05/javascript-continuous-assignment-operator/)
+```js
+var a = {n:1}
+var b = a 
+a.x = a = { n: 2 };
+console.log(a.x) // undefined
+console.log(b.x) // {n:2}
+```
+主要考点在于连续赋值时变量的引用
+
+```
+a.x = a = { n: 2 };
+
+// 第一步
+a.x = (a={n:2}) // 此时右边括号内还未执行，a.x === b.x 且 均为 undefined
+// 第二步
+a={n:2} // 此时执行括号内的代码，将a重新指向{n:2}，b仍旧指向{n:1,x:undefined}，改代码执行完毕后返回{n:2}
+// 第三步
+将上一步返回的{n:2}赋值给b.x，所以最终结果为
+        a.x  =  a  = {n:2}
+        │      │
+{n:1}<──┘      └─>{n:2}
+```

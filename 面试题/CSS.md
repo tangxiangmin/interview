@@ -111,3 +111,23 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 </div>
 ```
 
+
+## border:none以及border:0的区别
+1.效果
+border-style:none;//无边框         
+border-width:0;//边框宽度为0px  
+2.区别
+（1）性能差异
+border:0;浏览器对border-width、border-color进行渲染，占用内存。
+border:none;浏览器不进行渲染，不占用内存。
+Chrome：
+border:none;>> border:initial none initial;
+border:0;>> border:0 initial  initial ;
+Firefox、360：
+border:none; >>border:medium none;
+border:0;>> border:0 none;
+计算出的样式：
+border:0px none 元素color属性值;
+（2）浏览器兼容
+IE7-不支持border:none;
+W3C提示：请始终把border-style属性声明到border-color属性之前，元素必须在改变颜色之前获得边框。

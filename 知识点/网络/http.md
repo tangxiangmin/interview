@@ -1,6 +1,9 @@
 HTTP
 ===
-> GET 和 POST 有什么区别？
+
+* GET 和 POST 有什么区别？
+* HTTP中间人攻击？
+* HTTPS的原理？证书是如何校验的
 
 
 ## 头部

@@ -140,7 +140,7 @@ console.log('end')
 
 浏览器环境下，microtask的任务队列是每个macrotask执行完之后执行。而在Node.js中，microtask会在事件循环的各个阶段之间执行，也就是一个阶段执行完毕，就会去执行microtask队列的任务。
 
-但是在node v11版本之后，上面node环境输出与浏览器保持一致，参考https://juejin.im/post/5c3e8d90f265da614274218a，这是因为在timer中增加了执行完一个定时器宏任务之后，就调用`process._tickCallback()`清空微任务队列导致的，其目的大概是为了与浏览器保持一致。
+但是在node v11版本之后，上面node环境输出与浏览器保持一致，参考[https://juejin.im/post/5c3e8d90f265da614274218a](https://juejin.im/post/5c3e8d90f265da614274218a)，这是因为在timer中增加了执行完一个定时器宏任务之后，就调用`process._tickCallback()`清空微任务队列导致的，其目的大概是为了与浏览器保持一致。
 
 **注意setTimeout 和 setImmediate**
 

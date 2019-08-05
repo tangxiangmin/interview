@@ -15,6 +15,7 @@ Vue
 * https://www.jianshu.com/p/e54a9a34a773
 * https://juejin.im/post/59ffb4b66fb9a04512385402
 * 之前整理了`V2.5.9`的[源码分析](https://www.shymean.com/article/Vue%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E5%92%8CVue%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%B8%80%EF%BC%89)
+* [面试必备的13道可以举一反三的Vue面试题](https://juejin.im/post/5d41eec26fb9a06ae439d29f)
 
 
 ## Vue源码分析

@@ -110,6 +110,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     <div class="s6">1</div> <!--32px 64px-->
 </div>
 ```
+知识点[传送门](/知识点/CSS/基础知识.html#行高)
 
 
 ## border:none以及border:0的区别

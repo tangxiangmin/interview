@@ -27,6 +27,26 @@ document.getElementsByName("tel");
 document.querySelector(selector);
 document.querySelectorAll(selector);
 ```
+需要注意的是
+* `HTMLCollection`返回的是动态的节点引用，这意味着如果节点发生了改变，不需要通过`getElementsByTagName`等方式从新获取
+* `querySelectorAll`返回的是静态的节点列表，返回的只是调用该方法时页面节点的一个静态副本，不会随着页面节点的改变而变化
+
+```html
+ <ul id="myUl">
+    <li>3</li>
+</ul>
+<script>
+    var t1 = document.getElementsByTagName("li")
+    var t2 = document.querySelectorAll("li")
+    console.log(t1)
+    console.log(t2)
+
+    myUl.innerHTML = `<li>1</li><li>2</li>`
+
+    console.log(t1)
+    console.log(t2)
+</script>
+```
 
 ### 操作节点
 **属性节点**

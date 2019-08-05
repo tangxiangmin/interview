@@ -3,22 +3,118 @@ NodeJS
 
 > NodeJS中的event loop和浏览器有什么区别？NodeJS作为服务有哪些优势？nginx反向代理？Koa的原理和中间件的实现？
 
-## 常用的模块
-* [fs]
-* [path]
-* [http]
+参考：
+* [NodeJS面试题](https://github.com/jimuyouyou/node-interview-questions)
 
-## CommonJS模块规范
+## node核心内置类库
+主要需要了解事件，流，文件，网络等模块的使用
+
+### EventEmitter
+参考：[Class: EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter)
+
+`EventEmitter`提供了`on`、`once`、`emit`、`off`等方法，用于实现观察者模式，其主要功能是监听和发射消息，方便多个模块之间的通信
+
+```js
+const EventEmitter = require("events");
+const myEmitter = new EventEmitter();
+
+// newListener是一个内部保留事件，当调用on方法添加事件处理函数时将触发该事件
+// 可以用来做事件机制的反射，特殊应用，事件管理
+myEmitter.once('newListener', (event, listener) => {
+  if (event === 'event') {
+    // Insert a new listener in front
+    myEmitter.on('event', () => {
+      console.log('B');
+    });
+  }
+});
+myEmitter.on('event', () => {
+  console.log('A');
+});
+myEmitter.emit('event');
+// Prints:
+//   B
+//   A
+```
+
+此外需要注意的是：NodeJS监听事件时的错误处理风格一般是将err放事件处理函数的第一个参数，如
+```js
+fs.stat('/tmp/world', (err, stats) => {
+    // 如果有错误则抛出异常
+    if (err) throw err;
+    // 没有错误则执行正常逻辑
+    console.log(`文件属性: ${JSON.stringify(stats)}`);
+  });
+```
+
+### Stream
+参考: [Stream API](http://nodejs.cn/api/stream.html)
+
+Node.js 提供了多种流对象，流可以是可读的、可写的、或者可读可写的，`Stream`是 Node.js 中处理流式数据的抽象接口。
+
+流的开发者可以声明一个新的 JavaScript 类并继承四个基本流类中之一（stream.Writeable、 stream.Readable、 stream.Duplex 或 stream.Transform），且确保调用了对应的父类构造器。
+
+不同类型的流需要实现不同的方法，具体可以参考：[用于实现流的 API](http://nodejs.cn/api/stream.html#stream_api_for_stream_implementers)
+```js
+const { Writable } = require('stream');
+
+class MyWritable extends Writable {
+  constructor(options) {
+    super(options);
+    // ...
+  }
+  _write(){}
+  _writev(){} 
+  _final(){}
+
+}
+```
+
+### 文件系统
+参考:[fs API](http://nodejs.cn/api/fs.html)
+
+`fs`模块提供了一个 API，用于以模仿标准 [POSIX](https://zh.wikipedia.org/wiki/%E5%8F%AF%E7%A7%BB%E6%A4%8D%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3) 函数的方式与文件系统进行交互。
+
+操作文件一般有下面几种方式
+* [fs.open](http://nodejs.cn/api/fs.html#fs_file_descriptors) 方法，分配新的文件描述符。 一旦被分配，则文件描述符可用于从文件读取数据、向文件写入数据、或请求关于文件的信息。
+* 通过流来操作文件，如[fs.createReadStream](http://nodejs.cn/api/fs.html#fs_fs_createreadstream_path_options)用于从文件从文件中读取一定范围的字节而不是读取整个文件;[fs.createWriteStream](http://nodejs.cn/api/fs.html#fs_fs_createwritestream_path_options)用于在文件开头之后的某个位置写入数据
+* 通过fs模块提供的同步或异步方法操作文件，如`fs.readFile`和`fs.readFileSync`，其中带`Sync`后缀的接口表示同步操作
+
+### 网络
 参考
-* [JavaScript模块化](./模块化.md)
+* [Node.js之网络通讯模块浅析](https://segmentfault.com/a/1190000008908077)
+* [一次 HTTP 传输解析](https://nodejs.org/zh-cn/docs/guides/anatomy-of-an-http-transaction/)
 
-> CommonJS 中的 require/exports 和 ES6 中的 import/export 区别？
-* ES6中的模块规范还没有被很好的支持，babel等的实现也是通过将其打包为CommonJ规范等实现的
-* CommonJS允许动态require导入模块，
-* import是在编译的时候去做解析请求包，只能出现在代码顶层，模块名只能是字符串字面量
-* import可以按需引入模块的一部分，对`tree shaking`更有利~
+在Node.js的模块里面，与网络相关的模块有Net、DNS、HTTP、TLS/SSL、HTTPS、UDP/Datagram等，我们常用的应该是`http`模块。
 
-## 网络框架
+```js
+const http = require('http');
+http.createServer(function(req, res) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write('hello world');
+    res.end();
+}).listen(3000); //绑定当前服务到3000端口
+```
+
+### child-process
+参考：
+* [child_process API](http://nodejs.cn/api/child_process.html)
+* [Nodejs进阶：如何玩转子进程（child_process）](https://www.cnblogs.com/chyingp/p/node-learning-guide-child_process.html)
+
+`child_process` 模块提供了衍生子进程的能力，子进程的运行结果储存在系统缓存之中（最大200KB），等到子进程运行结束以后，主进程再用回调函数读取子进程的运行结果。
+
+## NodeJS事件循环机制
+参考：
+* [event-loop-timers-and-nexttick](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+* [eventloop](./eventLoop.md)
+
+
+在NodeJS中，事件循环可以分为几个阶段`timer`、`pending callbacks`、`poll`等阶段，在每个阶段完成之后，才会清空微任务队列，然后执行下一个阶段的任务。
+
+在`v11`以后的版本中，为了与浏览器的事件循环保持一致，调整为每完成一个宏任务之后，就调用`process._tickCallback()`清空微任务队列。
+
+
+## Web开发
 > 什么是Restful API ? koa和express有什么区别？中间件的作用是什么，能大概实现一下吗？你用过哪些模板引擎，他们有什么优劣？
 
 ### Restful API
@@ -36,6 +132,8 @@ NodeJS
 
 ### express
 // todo
+
+
 ### Koa
 * [Koa中间件的原理](https://www.shymean.com/article/koa%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%AF%BC%E8%87%B4%E6%8E%A5%E5%8F%A3404%E7%9A%84%E9%97%AE%E9%A2%98)
 
@@ -47,12 +145,9 @@ NodeJS
 参考
 * [Vue SSR指南](https://ssr.vuejs.org/zh/#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E6%B8%B2%E6%9F%93-ssr-%EF%BC%9F)
 
-### nuxt.js
-客户端请求服务器，服务器根据请求地址获得匹配的组件，在调用匹配到的组件返回 Promise (官方是preFetch方法)来将需要的数据拿到。最后再通过
+以[nuxt.js](https://zh.nuxtjs.org/)为例，客户端请求服务器，服务器根据请求地址获得匹配的组件，在调用匹配到的组件返回 Promise (官方是preFetch方法)来将需要的数据拿到。最后再通过
 
 <script>window.__initial_state=data</script>
 将其写入网页，最后将服务端渲染好的网页返回回去。
 
 接下来客户端会将vuex将写入的 initial_state 替换为当前的全局状态树，再用这个状态树去检查服务端渲染好的数据有没有问题。遇到没被服务端渲染的组件，再去发异步请求拿数据。
-
-### SSR的优缺点

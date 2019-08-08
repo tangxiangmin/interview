@@ -1,227 +1,46 @@
-JS基础面试题目
-===
 
 
-### 下面代码输出
-```js
-var foo = {n: 1}
-var bar = foo;
-foo.x = foo = {n:2};
-
-foo.x; // undefined
-```
-主要是由于虽然赋值运算符具有右结合性，然而它首先做的是得到表达式foo.x的值，因此后执行foo = {n:2}导致foo被重写，打印bar.x可以得到预期结果
-
-### 下面代码输出
-```js
-window.a = 1;
-var json = {
-  a: 10,
-  db: function(){
-    this.a *= 2;
-  }
-}
-
-json.db();
-var db = json.db;
-db();
-json.db.call(window);
-
-alert(window.a + json.a); // 24
-```
-简单考察了一下this的指向
-
-### 下面代码输出
-```js
-function func1(){
-	var n = 99;
-
-    nAdd = function(){
-        this.n += 1;
-        console.log(this.n);
-    }
-
-    function func2(){
-        console.log(n);
-    }
-
-    return func2;
-}
-
-var res = func1();
-
-res(); // 99
-nAdd(); // NAN
-res(); // 99
-```
-
-### 下面代码输出
-```
-var obj = {
-    name: "obj",
-    dose: function(){
-        this.name = "dose";
-        return function(){
-        	return this.name;
-        }
-    }
-}
-
-	console.log(obj.dose().call(this));  // 注意是""而不是undefined，这是因为window对象本身就有一个name属性...
-```
-
-### 代码输出
-```
-var k = c = 5;
-function a(n){
-    return n ? (n-1)*a(n-1): n;
-    k++;
-    c++;
-    if(c > 10) return c;
-}
-
-var res = a(5);
-console.log(k, c, res); // 5, 5, 0 这个题简直太渣了
-```
-
-## 综合题
-考察了变量作用域，声明提前，运算符优先级等问题。
-```
-function Foo() {
-    getName = function() {
-        alert(1);
-    };
-
-    return this;
-}
-Foo.getName = function() {
-    alert(2);
-};
-Foo.prototype.getName = function() {
-    alert(3);
-};
-var getName = function() {
-    alert(4);
-};
-
-function getName() {
-    alert(5);
-}
-
-//请写出以下输出结果：
-Foo.getName(); // 2
-getName(); // 4
-Foo().getName(); // 1
-getName(); // 1
-new (Foo.getName)(); // 2
-new Foo().getName(); // 3
-new ((new Foo()).getName)(); // 3
-```
-
-## 变量提升
-```
-console.log(a); // function
-
-a(); // 10
-
-var a=3;
-
-function a(){
-
-    console.log(10)
-}   
-
-console.log(a); // 3
-
-a=6;
-
-a(); // error
-```
-
-## event-loop执行顺序
-```
-setImmediate(function(){
-    console.log(1);
-},0);
-setTimeout(function(){
-    console.log(2);
-},0);
-new Promise(function(resolve){
-    console.log(3);
-    resolve();
-    console.log(4);
-}).then(function(){
-    console.log(5);
-});
-console.log(6);
-process.nextTick(function(){
-    console.log(7);
-});
-console.log(8);
-```
-
-## 代码输出
-```js
-var obj1 = {
-    name: "obj1",
-    fn(){
-        console.log(this.name);
-    }
-};
-var obj2 = { name: "obj2" };
-var obj3 = { name: "obj3" };
-obj1.fn(); // obj1
-var newFn = obj1.fn;
-newFn(); // "" 注意这里不是undefined
-newFn.call(obj2); // obj2
-obj3.fn = newFn;
-obj3.fn(); // obj3
-
-var newFn = obj1.fn.bind(obj1);
-newFn(); // obj1
-newFn.call(obj2); // obj1，注意这个地方是强绑定，所以一直为obj1
-obj3.fn = newFn;
-obj3.fn(); // obj1 ，同上
-```
+## 作用域的规则
+JS的函数作用域的含义是指，属于这个函数的全部变量都可以在整个函数的范围内使用
+包含变量和函数在内的所有声明都会在任何代码执行前首先被处理。
+* 函数声明会提升，但函数表达式不会
+* 函数声明提升优先级大于变量声明提升    
 
 
-## 代码输出
-```javascript
-	var a = 100;
-    var fn = () => {
-        console.log(a);
-        var a = 200;
-        console.log(a);
-    }
-    fn(); // undefined, 200
-    console.log(a); // 100
-    var a;
-    console.log(a); // 100
-    var a = 300;
-    console.log(a); // 300
-```
+## 描述一下作用域链
+JS里面的函数作用域和块级作用域都可以进行嵌套，当对变量进行**右查询**时，如果在当前作用域中无法找到某个变量时，引擎就会在外层嵌套的作用域继续查找，直到找到该变量或者抵达全局作用域为止，否则会抛出**ReferenceError错误**。这种一层一层查找变量的方式就是作用域链
+扩展：
+* 左查询与右查询
 
-## 连续赋值
-参考：[写了10年Javascript未必全了解的连续赋值运算](https://yanhaijing.com/javascript/2012/04/05/javascript-continuous-assignment-operator/)
-```js
-var a = {n:1}
-var b = a 
-a.x = a = { n: 2 };
-console.log(a.x) // undefined
-console.log(b.x) // {n:2}
-```
-主要考点在于连续赋值时变量的引用
+## 谈谈你对于闭包的理解
+JS里面的作用域是**词法作用域**，因此无论函数在哪里被调用，也无论它何时被调用，它的词法作用域都只由函数被声明时所处的位置决定。
+对于不在函数内部声明却在函数内部使用的**自由变量**，同样遵循词法作用域的限制。当函数在其声明的词法作用域之外执行，仍旧可以访问函数声明时的词法作用域，此时就产生了闭包。
 
-```
-a.x = a = { n: 2 };
+扩展：
+* 常见的闭包陷阱，如循环中的闭包
+* 闭包的使用，如封装模块
 
-// 第一步
-a.x = (a={n:2}) // 此时右边括号内还未执行，a.x === b.x 且 均为 undefined
-// 第二步
-a={n:2} // 此时执行括号内的代码，将a重新指向{n:2}，b仍旧指向{n:1,x:undefined}，改代码执行完毕后返回{n:2}
-// 第三步
-将上一步返回的{n:2}赋值给b.x，所以最终结果为
-        a.x  =  a  = {n:2}
-        │      │
-{n:1}<──┘      └─>{n:2}
-```
+## this的指向
+虽然JS采用的是词法作用域，但this并不是在编写时绑定的，而是是在函数运行时自动绑定到函数作用域的，它的上下文取决于函数调用时的各种条件。
+* 函数是否在 new 中调用？如果是的话 this 绑定的是新创建的对象。 
+* 函数是否通过 call、apply（显式绑定）或者 bind 硬绑定调用？如果是的话，this 绑定的是 指定的对象。
+* 函数是否在某个上下文对象中调用（隐式绑定）？如果是的话，this 绑定的是那个上下文对象。
+* 如果都不是的话，使用默认绑定。如果在严格模式下，就绑定到 undefined，否则绑定到 全局对象。
+
+扩展：
+* 箭头函数
+
+
+
+## call和apply的相似和区别
+* 都是改变函数内部的this指向
+* call后面的参数均表示函数的单个参数，apply的第二个参数用数组包含函数的多个参数
+
+## 使用箭头函数有哪些注意事项
+当回调函数需要动态this的时候，就不能使用箭头函数，比如jQuery中的事件绑定函数等，在其实现内部会手动进行this绑定。
+
+## 构造函数调用时发生了什么
+* 创建了一个新对象
+* 将新创建的空对象的隐式原型指向其构造函数的显示原型。
+* 将this指向这个新对象
+* 如果无返回值或者返回一个非对象值，则将新对象返回；如果返回值是一个新对象的话那么直接直接返回该对象。

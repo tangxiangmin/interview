@@ -1,6 +1,8 @@
 webpack
 ===
 
+webpack是一个打包模块化javascript的工具，在webpack里一切文件皆模块，通过loader转换文件，通过plugin注入钩子，最后输出由多个模块组合成的文件，webpack专注构建模块化项目。
+
 * 基本需求，比如样式表分离，脚本压缩，内联文件，HTML模板，热更新等
 * 常用loader和插件，打包策略
 * 优化，打包效率，输出包体积等
@@ -10,7 +12,11 @@ webpack
 * [深入浅出webpack-电子书](http://webpack.wuhaolin.cn/)
 * [细说 webpack 之流程篇](http://taobaofed.org/blog/2016/09/09/webpack-flow/)
 
-## 原理
+## webpack基本使用
+
+
+## webpack原理
+
 ### 核心概念
 > webpack是一个打包模块化js的工具，可以通过loader转换文件，通过plugin扩展功能。
 
@@ -33,8 +39,10 @@ webpack
 * 需要注意的是，在构建生命周期中有一系列插件在合适的时机做了合适的事情，比如UglifyJsPlugin会在loader转换递归完后对结果再使用UglifyJs压缩覆盖之前的结果。
 
 
-## 功能
-### 热更新
+### 热更新原理
+参考: 
+* [Webpack热刷新与热加载的原理分析](https://mp.weixin.qq.com/s?__biz=MzIyMTg0OTExOQ==&mid=2247484504&idx=2&sn=958ac64a0fd7b8dac97e3a61e4e3e741&chksm=e8373728df40be3efca40714045ab313821c319ad18da0e29dd15ca9f86c62b8fecb92f773a7&scene=21#wechat_redirect)
+
 > 热更新就是当你在开发环境修改代码后，不用刷新整个页面即可看到修改后的效果。借助webpack-dev-server插件可以实现项目的热更新
 
 * webpack在watch模式下检测到文件变化，对模块重新打包，编译结果保存在内存中
@@ -43,9 +51,22 @@ webpack
 * HotModuleReplacement.runtime 在浏览器端接收到上一步传递给他的新模块的 hash 值，然后向服务端发送ajax请求，返回所有要更新模块的hash值，获取更新列表，然后通过JSONP请求获取最新的模块代码
 * 如果热更新失败，则通过刷新浏览器来获得最新的打包代码
 
+### 实现一个简易的webpack
+参考：[mano-webpack](https://github.com/azl397985856/mono-webpack)
 
-参考: 
-* [Webpack热刷新与热加载的原理分析](https://mp.weixin.qq.com/s?__biz=MzIyMTg0OTExOQ==&mid=2247484504&idx=2&sn=958ac64a0fd7b8dac97e3a61e4e3e741&chksm=e8373728df40be3efca40714045ab313821c319ad18da0e29dd15ca9f86c62b8fecb92f773a7&scene=21#wechat_redirect)
+大致思路
+* 将一个模块抽象为一个普通的JS对象
+```js
+{
+    dependencies: ['./a.js'],
+    id: 12,
+    filename: '/Users/Txm/test/b.js',
+    code: 'console.log(123)'
+}
+```
+
+webpack本身不做转换处理
+
 ### 上下文
 参考
 * [require.context](https://webpack.docschina.org/guides/dependency-management/)
@@ -91,3 +112,22 @@ requireComponent.keys().forEach(filePath => {
 ## 编写组件和loader
 参考
 * [编写gulp、webpack与fis3插件](https://www.shymean.com/article/%E7%BC%96%E5%86%99gulp%E3%80%81webpack%E4%B8%8Efis3%E6%8F%92%E4%BB%B6)
+
+## 性能分析
+> 如何了解webpack打包性能瓶颈？如何优化webpack打包效率？
+
+参考：[使用webpack4提升180%编译速度](http://louiszhai.github.io/2019/01/04/webpack4/)
+
+使用`webpack-bundle-analyzer `
+
+
+为何升级webpack4后编译速度会增加的很明显？
+
+升级至 webpack4 后，通过搭载 ParallelUglifyPlugin 、happyPack 和 dll 插件，编译速度可以提升181%，整体编译时间减少了将近 2/3，为开发节省了大量编译时间！而且随着项目发展，这种编译提升越来越可观。
+
+## 常见问题
+
+参考：
+* https://zhuanlan.zhihu.com/p/44438844
+* https://www.jianshu.com/p/bb1e76edc71e
+* https://juejin.im/post/5c6cffde6fb9a049d975c8c1

@@ -76,6 +76,8 @@ console.log(obj) // // {x:100}
 * 按共享传递的类型，是复制其引用，而不是整个复制其值（C 语言中的指针），保证过大的对象等不会因为不停复制内容而造成内存的浪费。
 
 ## 作用域
+参考：[作用域和闭包](https://www.shymean.com/article/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript%EF%BC%88%E4%B8%8A%E5%8D%B7%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0#2.%20%E9%97%AD%E5%8C%85)
+
 JavaScript采用的作用域规则是**词法作用域**。词法作用域就是定义在词法阶段的作用域。换句话说，词法作用域是由你在写 代码时将变量和块作用域写在哪里来决定的，因此当词法分析器处理代码时会保持作用域不变（大部分情况下是这样的）。
 
 无论函数在哪里被调用，也无论它何时被调用，它的词法作用域都只由函数被声明时所处的位置决定。这对于理解闭包有很大的帮助。
@@ -240,75 +242,7 @@ let add = (a, b)=>{
 需要注意的是箭头箭头函数可能会影响某些框架中对于配置项函数的this绑定，如Vue中的生命周期函数、methods方法等，其内部实现会把这些函数的this绑定到vm实例上，因此在这些场景下不能使用箭头函数。
 
 ## 原型与原型链
-
-### 原型
-所有的对象都是由其构造函数创建，基础对象最基本的构造函数是Obecjt()。
-* 每个对象都有一个" proto "的属性，指向该对象构造函数的原型，该属性也被称为隐式原型。
-* 每个函数都有一个"prototype"的属性，表示这个构造函数的原型，函数的原型实际上是一个对象，并且该对象有一个construct的属性，指向构造函数本身。
-
-当试图得到一个对象的某个属性时，如果这个对象本身没有这个属性，那么会**委托**它的__proto__（即它的构造函数的prototype）中寻找，如果一直找到最上层都没有找到，那么就宣告失败，返回undefined。最上层是 `Object.prototype.__proto__ === null`
-
-```js
-function A() {}
-function B(a) {
-    this.a = a;
-}
-function C(a) {
-    if (a) {
-        this.a = a;
-    }
-}
-
-A.prototype.a = 1;
-B.prototype.a = 1;
-C.prototype.a = 1;
-
-console.log(new A().a); // 1
-console.log(new B().a); // undefined 只有当对象没有从它自己身上找到对应的属性才会委托原型查找
-console.log(new C(2).a); // 2
-```
-```js
-var F = function () {}
-Object.prototype.a = function () {}
-Function.prototype.b = function () {}
-
-var f = new F()
-console.log(f.a) // function f的构造函数是F，其原型链只有有Object.prototype，没有Function.prototype
-console.log(f.b) // undefined
-
-console.log(F.a) // function, F的构造函数是Function，其原型链上有Function.prototype和Object.prototype
-console.log(F.b) // function
-```
-
-### ES6中的class
-ES6中新增了`class`关键字，用于取代之前构造函数初始化对象的形式，从语法上更加符合面向对象的写法。需要注意的是
-* 使用extends即可实现继承，更加符合经典面向对象语言的写法，如 Java
-* 子类的constructor一定要执行super()，以调用父类的constructor
-
-```js
-class A {
-    say(){
-        console.log("foo");
-    }
-}
-let a = new A();
-// ES6中的class是语法糖，构造函数class的prototype是无法修改其他指向的，因此下面赋值会默认失败
-A.prototype = {
-    say(){
-        console.log("bar");
-    }
-}
-
-a.say(); // "foo"
-let b = new A();
-b.say(); // "foo"
-
-// 但还是可以向原型上添加其他方法
- A.prototype.say2 = function(){
-    console.log("say2");
-}
-b.say2() // say2
-```
+参考：[原型继承](./原型继承.md)
 
 ## ES6
 ES6新增了一些常用的新特性

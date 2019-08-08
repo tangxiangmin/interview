@@ -28,7 +28,6 @@ fetch(url, {
 * cors，该模式支持跨域请求，顾名思义它是以CORS的形式跨域；当然该模式也支持同域请求
 * no-cors，该模式用于跨域请求但是服务器不带CORS响应头，其作用是运行浏览器发送此次请求，但无法访问响应的内容，与img标签类似
 
-
 ### 使用fetch常见的一些问题
 参考: [fetch使用的常见问题及解决办法](http://www.cnblogs.com/wonyun/p/fetch_polyfill_timeout_jsonp_cookie_progress.html)
 

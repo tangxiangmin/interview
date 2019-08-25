@@ -4,7 +4,7 @@
   "description": "日常收集的前端知识点与前端面试题",
   "main": "index.js",
   "scripts": {
-    "setup": "ln ./scripts/prepare-commit-msg ./.git/hooks/",
+    "setup": "ln ./scripts/prepare-commit-msg ./.git/hooks/ && gitbook install ./",
     "build": "node scripts/build.js",
     "deploy": "./scripts/deploy.sh",
     "start": "npm run build && gitbook serve"

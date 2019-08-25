@@ -19,5 +19,5 @@ BOM（浏览器对象模型）是浏览器本身的一些信息的设置和获�
     * sessionStorage 和 localStorage中能存的数据比cookie大（cookie不能超过4k）
 * sessionStorage 和 localStorage的区别：
     * sessionStorage存的数据在每次关闭浏览器后被删除，localStorage不会。
-    * 作用域不同，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面（刷新页面可以继续存在）；
+    * 作用域不同，sessionStorage不能在浏览器的不同标签页中共享，即使是同一个页面（刷新页面可以继续存在）；
     * localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的

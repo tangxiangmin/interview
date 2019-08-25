@@ -3,6 +3,7 @@
 参考之前的整理：
 * [BFC及其应用](http://www.shymean.com/article/BFC%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8)
 
+
 盒子模型，是CSS布局的对象和基本单位，元素的类型与display的属性，决定了这个盒子的类型。不同的盒子，其渲染方式（`Formatting Context`）是不一样的。
 
 除了BFC，还有其他类型的格式上下文

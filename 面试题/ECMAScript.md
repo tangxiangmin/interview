@@ -44,3 +44,22 @@ JS里面的作用域是**词法作用域**，因此无论函数在哪里被调�
 * 将新创建的空对象的隐式原型指向其构造函数的显示原型。
 * 将this指向这个新对象
 * 如果无返回值或者返回一个非对象值，则将新对象返回；如果返回值是一个新对象的话那么直接直接返回该对象。
+
+
+
+### 函数中的arguments是数组吗？如何使用数组的方法
+
+是一个类数组对象，
+* 可以通过`Array.prototype.slice.call()`等方法使用数组方法
+* 也可以将其转换成数组：`Array.from`、`[...arguments]`，然后再使用数组方法
+
+### 如何编写代码实现构造函数不用new关键字会报错
+使用`this instanceof XXX`判断
+```js
+function Vue (options) {
+  if (!(this instanceof Vue)) {
+    warn('Vue is a constructor and should be called with the `new` keyword')
+  }
+}
+
+```

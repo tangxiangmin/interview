@@ -196,6 +196,38 @@ import type from "./type.css";
 
 ## 代码实现
 
+> 实现高度与宽度成比例的效果
+
+主要原理是：一个元素的 `padding`  ，如果值是一个百分比，那这个百分比时相对于其父元素的宽度而言的
+```html
+ <div class="box">
+    <div class="box_inner">content in here</div>
+</div>
+```
+```css
+.box {
+    background-color: red;
+    position: relative;
+    width: 100px;
+}
+/* 由after撑开父元素 */
+.box::after {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 50%;
+}
+/* 具体的内容在box_inner编写 */
+.box_inner {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+```
+
 > 实现圣杯布局
 
 ```html

@@ -7,14 +7,41 @@ JavaScript
 * 六种原始类型，包括Boolean、String、Number、Null、Undefined、Symbol
 * 引用类型，Object对象
 
-> 类型判断用到哪些方法?
-
+类型判断用到哪些方法?
 * typeof，可以得到undefined boolean number string object function、symbol等类型结果
 * instanceof，用于实例和构造函数的对应
+* `Object.prototype.toString.call()`将会得到一个包含变量类型的字符串
 
 ### 数据类型转换 == 和 ===
 主要需要注意的是 == 操作符的比较规则，当两个数据的类型不一致时会发生类型转换，且可能同时发生类型转换，对应规则如下图所示
 ![](https://ws3.sinaimg.cn/large/006tNc79gy1fqaabatp6kj310i0aqgn8.jpg)
+
+总结一下`==`比较的规则
+* `null == undefined`，反之亦然
+* 字符串与数字比较，会将字符串转换成数字然后进行比较
+* 布尔值与任何类型比较，都先将布尔值转换成数字，然后再进行比较
+* 字符串与对象比较，现将对象传入toPrimitive，然后与字符串进行对比；数字同理
+
+关于对象转原始类型`ToPrimitive(input, PreferredType?)`，可以参考:[JavaScript 对象转换到基本类型值算法](https://juejin.im/post/5a695ec16fb9a01ca10b195b)，具体流程如下：
+
+* input为原始值，直接返回；
+* 不是原始值，调用该对象的valueOf()方法，如果结果是原始值，返回原始值；
+* 调用valueOf()不是原始值，调用此对象的toString()方法，如果结果为原始值，返回原始值；
+* 如果返回的不是原始值，抛出异常TypeError。
+
+```js
+let user = {
+    name: "John",
+    money: 1000,
+
+    [Symbol.toPrimitive](hint) {
+        // 手动修改toPrimitive的值
+        return false
+    }
+};
+console.log(user == false) // true
+```
+
 
 ### null 和 undefined的区别
 * null 表示一个对象是“没有值”的值，也就是值为“空”；
@@ -242,7 +269,7 @@ let add = (a, b)=>{
 需要注意的是箭头箭头函数可能会影响某些框架中对于配置项函数的this绑定，如Vue中的生命周期函数、methods方法等，其内部实现会把这些函数的this绑定到vm实例上，因此在这些场景下不能使用箭头函数。
 
 ## 原型与原型链
-参考：[原型继承](./原型继承.md)
+参考：[原型继承](./原型.md)
 
 ## ES6
 ES6新增了一些常用的新特性
@@ -266,8 +293,6 @@ ES6新增了一些常用的新特性
 再看看`WeakSet`和`WeakMap`，他们的一个用途是，是储存 DOM 节点，而不用担心这些节点从文档移除时，会引发内存泄漏。
 * WeakSet结构与Set类似，也是不重复的值的集合，但是，它与Set有两个区别。首先，WeakSet的成员只能是对象，而不能是其他类型的值，其次，WeakSet中的对象都是弱引用，即垃圾回收机制不考虑 WeakSet 对该对象的引用
 * WeakMap结构与Map结构类似，但是WeakMap只接受对象作为键名（null除外），不接受其他类型的值作为键名，同样地，WeakMap的键名所指向的对象，不计入垃圾回收机制
-
-
 
 ### 箭头函数
 参考
@@ -298,3 +323,20 @@ ES6新增了一些常用的新特性
 ## 异步编程
 * [Event loop]('./eventLoop.md')
 * [理解Generator函数与async函数](https://www.shymean.com/article/%E7%90%86%E8%A7%A3Generator%E5%87%BD%E6%95%B0%E4%B8%8Easync%E5%87%BD%E6%95%B0)
+
+
+## Proxy
+参考
+* [proxy - MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+
+```js
+let handler = {
+    // 监听get
+    get: function(target, name){},
+    // 监听set
+    set: function(obj, prop, value) {}
+};
+
+let target = {}
+let p = new Proxy(target, handler);
+```

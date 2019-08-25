@@ -139,7 +139,7 @@ http.createServer(function(req, res) {
 
 ### 模板引擎
 参考
-* [JS模板引擎（初级篇）](https://www.shymean.com/article/JS%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%EF%BC%88%E5%88%9D%E7%BA%A7%E7%AF%87%EF%BC%89)
+* [实现一个简易的JS模板引擎](https://www.shymean.com/article/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84JS%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E)
 
 ## 单页面应用SSR原理
 参考

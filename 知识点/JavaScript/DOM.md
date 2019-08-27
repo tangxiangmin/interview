@@ -174,35 +174,7 @@ parentUl.removeChild(siblingLi)
 事件委托是建立在冒泡模型之上的。
 
 ## 网络请求
-### Ajax
-之前遇见的一个面试题目是手写代码，封装ajax~
-
-```js
-var xhr = new XMLHttpRequest()
-var url = '/api'
-xhr.open("GET", url, false)
-xhr.onreadystatechange = function () {
-    // 这里的函数异步执行，可参考之前 JS 基础中的异步模块
-    if (xhr.readyState == 4) {
-        if (xhr.status == 200) {
-            alert(xhr.responseText)
-        }
-    }
-}
-xhr.send(null)...
-```
-需要掌握`readyState`和`status`状态码的含义
-
-### Fetch
-现在有一个更简单的发起HTTP请求的接口：`Fetch`
-参考[文档传送门](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)
-
-```js
-fetch('url', {
-    method:'POST', //请求类型 GET、POST
-    headers:{}, // 请求的头信息，形式为 Headers 对象或 ByteString
-}).then(function(response) { ... });
-```
+[传送门]('../网络/前端网络请求.md')，需要掌握AJAX和fetch的使用，需要了解跨域的
 
 ## Web Storage API
 HTML5新增了sessionStorage和localStorage用于本地存储，专门为了浏览器端缓存而设计的，优点有：

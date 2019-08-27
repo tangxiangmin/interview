@@ -30,8 +30,15 @@ React的生命周期主要包含下面几个
 
 React 下一代调和算法 Fiber 会通过开始或停止渲染的方式优化应用性能，其会影响到 componentWillMount 的触发次数。对于 componentWillMount 这个生命周期函数的调用次数会变得不确定，React 可能会多次频繁调用 componentWillMount。如果我们将 AJAX 请求放到 componentWillMount 函数中，那么显而易见其会被触发多次，自然也就不是好的选择。
 
+### React Hooks
+`hooks` 让函数式组件拥有 `state` 和类生命周期这两个功能
+
+参考
+* [一篇文章理解React Hooks](https://zhuanlan.zhihu.com/p/50597236)
+
 ## 状态管理
 * [理解数据状态管理](https://www.shymean.com/article/%E7%90%86%E8%A7%A3%E6%95%B0%E6%8D%AE%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86)
+
 
 ### redux
 redux的使用流程：

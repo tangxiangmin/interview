@@ -100,37 +100,8 @@ Vue通过` callHook (vm: Component, hook: string)`方法，在程序运行的某
 
 从实现上来说，当渲染页面时调用`patch`函数，是从旧的根节点与新的根节点进行对比的，如果有多个节点，显然是不正确的。React中实现了Fragment的技术，Vue中并没有类似的实现
 
-
-
-### v-model的实现原理
-
-`v-model`是一个内置指令实现，其本质是语法糖，封装了父子组件的事件通信，父组件传入特定的props字段`value`，子组件触发事件`input`通知父组件修改`value`。
-
-`input`事件处理函数内部调用`vm.$set`完成数据的更新。该事件处理函数在编译`render`函数时，通过生成`el.model`表达式然后由Vue自动注册。
-
-因此组件只需要处理何时触发`input`执行`$set`逻辑即可
-* 对于原生表单元素如`input`（`textarea`标签实现相同，`select`略有不同），在directive触发`inserted`时，监听变化事件如`change`事件，并在事件回调中触发`input`事件
-* 对于组件而言，需要组件内部自己处理触发`input`事件的逻辑
-
-
 ### 为什么Vue中可以通过`this`访问到和修改`this.$data`的值
-这是通过数据代理实现的，原理是修改对应的`getter`和`setter`
-
-在初始化时的`initData`方法中，可以看见遍历了`options.data`的key值，然后依次调用了` proxy`
-
-```js
-function proxy (target: Object, sourceKey: string, key: string) {
-  sharedPropertyDefinition.get = function proxyGetter () {
-    return this[sourceKey][key]
-  }
-  sharedPropertyDefinition.set = function proxySetter (val) {
-    this[sourceKey][key] = val
-  }
-  Object.defineProperty(target, key, sharedPropertyDefinition)
-}
-```
-
-通过这种方式，就可以实现通过`this.xxx`可以访问到`this._data.xxx`的方式了。
+这是通过数据代理实现的，原理是修改data对应的`getter`和`setter`并代理到this上
 
 ### 在使用计算属性的时，函数名和data数据源中的数据可以同名吗
 Vue初始化属性`initState`中的顺序是：`props`、`methods`、`data`、`computed`、`watch`。
@@ -167,10 +138,6 @@ Vue在比较两个a、b节点时，会优先判断`a.key === b.key`，只有当�
 
 在首首、尾尾、首尾、尾首四种比较均布满足的情况下，Vue会尝试尽量在旧节点找到一个可以复用的DOM实例，使用key可以构建一个映射，快速找到目标节点，否则需要每次循环查找旧节点中tag相同的节点进行对比进行对比。
 
-### css scoped是如何在Vue中实现的
-
-在patch节点的`createElm`方法中，如果vnode.tag存在，则会调用`setScope(vnode) `方法，该方法会根据`vnode.fnScopeId`为DOM实例设置一个`@styleScope`属性为`scopeId`，该属性可以用来实现`css scoped`
-
 ### Vue中的错误处理机制
 
 可以使用`errorCaptured`生命钩子函数，该方法会在子组件发生错误时调用，并通过`while(cur = cur.$parent)`依次向父节点冒泡，可以通过返回false阻止错误继续向上传播
@@ -178,7 +145,6 @@ Vue在比较两个a、b节点时，会优先判断`a.key === b.key`，只有当�
 ### vue变量名如果以_、$开头的属性会发生什么问题？怎么访问到它们的值？
 
 在`initData`中，会通过`isReserved`判断key是否由`_`或`$`开头，如果是，则不会执行`proxy`进行数据代理，因此无法通过`this._xx`访问，只能通过`this.$data.xx`访问。
-
 
 ### 说下$attrs和$listeners的使用场景
 
@@ -200,6 +166,77 @@ Vue在比较两个a、b节点时，会优先判断`a.key === b.key`，只有当�
 
 
 
+## 源码细节
+
+### 生命周期钩子函数
+
+[官网上的这张图片介绍的十分清楚](https://cn.vuejs.org/v2/guide/instance.html#生命周期图示)
+
+> vue 父子组件嵌套时，组件内部的各个生命周期钩子触发先后顺序?
+
+从源码分析`patch`函数时可以发现，先创建父组件，遇见子组件就创建子组件，然后将子组件挂载到父组件，最后执行父组件的挂载操作
+
+在初始化和更新时会触发对应的生命周期钩子函数
+
+
+### 数据代理
+Vue中可以通过`this`访问到和修改`this.$data`的值，这是通过代理实现的，原理是修改对应的`getter`和`setter`
+
+在初始化时的`initData`方法中，可以看见遍历了`options.data`的key值，然后依次调用了` proxy`
+
+```js
+function proxy (target: Object, sourceKey: string, key: string) {
+  sharedPropertyDefinition.get = function proxyGetter () {
+    return this[sourceKey][key]
+  }
+  sharedPropertyDefinition.set = function proxySetter (val) {
+    this[sourceKey][key] = val
+  }
+  Object.defineProperty(target, key, sharedPropertyDefinition)
+}
+```
+
+通过这种方式，就可以实现通过`this.xxx`可以访问到`this._data.xxx`的方式了。
+
+### computed 实现
+
+理解computed的两个需求
+* 建立与其他属性（如：data、 Store）的联系；
+* 属性改变后，通知计算属性重新计算。
+
+实现方式
+* 初始化 data， 使用 Object.defineProperty 把这些属性全部转为 getter/setter。
+* 初始化 computed, 遍历 computed 里的每个属性，每个 computed 属性都是一个 watch 实例。每个属性提供的函数作为属性* 的 getter，使用 Object.defineProperty 转化。
+* Object.defineProperty getter 依赖收集。用于依赖发生变化时，触发属性重新计算。
+* 若出现当前 computed 计算属性嵌套其他 computed 计算属性时，先进行其他的依赖收集，这是在更新队列中通过`watcher.id`排序实现的。
+
+### complier 实现
+理解主要过程
+* parse 过程，将 template 利用正则转化成 AST 抽象语法树。
+* optimize 过程，标记静态节点，后 diff 过程跳过静态节点，提升性能。
+* generate 过程，生成 render 字符串。
+
+### SSR
+
+通过虚拟DOM技术，可以实现服务端渲染。
+
+参考：
+* https://juejin.im/post/5a9ca40b6fb9a028b77a4aac
+
+### v-model的实现原理
+
+`v-model`是一个内置指令实现，其本质是语法糖，封装了父子组件的事件通信，父组件传入特定的props字段`value`，子组件触发事件`input`通知父组件修改`value`。
+
+`input`事件处理函数内部调用`vm.$set`完成数据的更新。该事件处理函数在编译`render`函数时，通过生成`el.model`表达式然后由Vue自动注册。
+
+因此组件只需要处理何时触发`input`执行`$set`逻辑即可
+* 对于原生表单元素如`input`（`textarea`标签实现相同，`select`略有不同），在directive触发`inserted`时，监听变化事件如`change`事件，并在事件回调中触发`input`事件
+* 对于组件而言，需要组件内部自己处理触发`input`事件的逻辑
+
+### css scoped是如何在Vue中实现的
+
+在patch节点的`createElm`方法中，如果vnode.tag存在，则会调用`setScope(vnode) `方法，该方法会根据`vnode.fnScopeId`为DOM实例设置一个`@styleScope`属性为`scopeId`，该属性可以用来实现`css scoped`
+
 ### Vue项目性能优化
 
 参考：[Vue 项目性能优化](https://juejin.im/post/5d548b83f265da03ab42471d)
@@ -213,3 +250,6 @@ Vue在比较两个a、b节点时，会优先判断`a.key === b.key`，只有当�
 * 第三方库按需引入，避免打包整个库文件
 * 模板预编译，在打包时就将其转换为render函数
 * 可以使用**窗口化**来进行优化，只需要渲染少部分区域的内容，减少重新渲染组件和创建 dom 节点的时间，参考:[vue-virtual-scroll-list](https://github.com/tangbc/vue-virtual-scroll-list)
+
+
+### Vue functional组件

@@ -44,3 +44,12 @@ XSS的问题是找到目标网站可插入执行脚本的漏洞，比如某段�
 ### JS原型污染
 
 参考 https://juejin.im/post/5d271332f265da1b934e2d48
+
+## 如何防止代码被调试
+页面不断debugger，当调试模式打开时，就会阻塞代码执行，当时间超过阈值，就发送到服务端并拉黑该ip
+
+![](https://tva1.sinaimg.cn/large/006y8mN6gy1g91zxj25pmj30ms08v74o.jpg)
+
+对应的破解方案
+
+* [突破前端反调试--阻止页面不断debugger](https://segmentfault.com/a/1190000012359015)

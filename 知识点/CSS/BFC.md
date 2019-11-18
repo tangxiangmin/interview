@@ -1,16 +1,16 @@
+BFC
+===
 
-## BFC
-参考之前的整理：
+参考：
+* [BFC MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)
 * [BFC及其应用](http://www.shymean.com/article/BFC%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8)
 
-
-盒子模型，是CSS布局的对象和基本单位，元素的类型与display的属性，决定了这个盒子的类型。不同的盒子，其渲染方式（`Formatting Context`）是不一样的。
-
-除了BFC，还有其他类型的格式上下文
+## 格式上下文
+盒子模型，是CSS布局的对象和基本单位，元素的类型与display的属性，决定了这个盒子的类型。不同的盒子，其渲染方式（`Formatting Context`）是不一样的。常见的格式上下文有
 * BFC(Block Formatting Contexts)直译为"块级格式化上下文"。Block Formatting Contexts就是页面上的一个隔离的渲染区域，容器里面的子元素不会在布局上影响到外面的元素，反之也是如此。
 * IFC(Inline Formatting Contexts)直译为"内联格式化上下文"，IFC的line box（线框）高度由其包含行内元素中最高的实际高度计算而来（不受到竖直方向的padding/margin影响)
-* GFC(GridLayout Formatting Contexts)直译为"网格布局格式化上下文"，当为一个元素设置display值为grid的时候，此元素将会获得一个独立的渲染区域
 * FFC(Flex Formatting Contexts)直译为"自适应格式化上下文"，display值为flex或者inline-flex的元素将会生成自适应容器（flex container）
+* GFC(GridLayout Formatting Contexts)直译为"网格布局格式化上下文"，当为一个元素设置display值为grid的时候，此元素将会获得一个独立的渲染区域
 
 对于开发者而言，BFC是最常接触的一种渲染方式，常见的外边距折叠、清浮动等问题都可以归根到BFC处理。
 
@@ -40,7 +40,6 @@
 * 只有处于普通流中，且相邻的块才会发生重叠。注意，这里的相邻：如果是兄弟元素，指的是他们之间没有被非空内容，或者带有padding,border和clear等在文档流中占有面积的块分隔开来；如果是父子元素，指的是子块带有margin，父块没有padding和border的情况，此时如果父块没有触发BFC，则父块与子块的也会发生外边距折叠。（最常见的情形就是并没有为父块设置外边距时，整个父块却活生生地向下偏移了N个像素，而此时子块紧贴着父块的顶部，其本来具有的外边距却不见了的诡异事件，就像是外边距“渗透“了一样）
 * 这句话并没有表现出来，这是由BFC规定的。只有属于同一个BFC的两个块元素才会发生外边距重叠。
 
-
 当两个元素发生外边距重叠时，这两个元素之间的距离按照下面标准取舍：
 * 全部都为正值，取最大者；
 * 不全是正值，则都取绝对值，然后用正值减去最大绝对值；
@@ -51,7 +50,6 @@
 
 参考
 * [MDN文档](https://developer.mozilla.org/zh-CN/docs/CSS/float)
-
 
 ### 浮动
 学习浮动，首先需要明白文档流的概念：文档流是默认的网页布局模式，是文档中的对象在排列时所占用的位置。在文档流中，块状元素从上到下排列；内联元素（及内联-块状元素）从左到右排列。
@@ -103,8 +101,7 @@ clear属性指定一个元素是否可以在它之前的浮动元素旁边，或
 **BFC**
 
 让父元素触发BFC有多种方式，如果不是特定的布局，`overflow:hidden`就够用了。
+```css
+.parent { overflow: hidden}
 ```
-.parent {
-    overflow: hidden
-}
-```
+新增加的属性`display:flow-root`可以创建一个无副作用的BFC，可以更方便地进行BFC清浮动处理。

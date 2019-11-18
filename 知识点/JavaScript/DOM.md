@@ -7,6 +7,20 @@ DOM
 * [前端HTML5几种存储方式的总结](https://mp.weixin.qq.com/s?__biz=MzIzNTU2ODM4Mw==&mid=2247485935&idx=1&sn=b3faae7b8e21c4ff296d64b4dfaaeb58&chksm=e8e4647fdf93ed696db04e9b0dbd4fe1a06df6221ea1c2ede19ce1baf91d911be14110516d3b&mpshare=1&scene=1&srcid=02242xNs4l2IA16v4qOcJPA6#rd)
 * requestAnimFrame ，传入的函数在重绘之前调用
 
+
+## DOMContentLoaded与load的区别
+
+
+
+当文档中没有脚本时，浏览器解析完文档便能触发 DOMContentLoaded 事件；如果文档中包含脚本，则脚本会阻塞文档的解析，而脚本需要等位于脚本前面的css加载完才能执行。在任何情况下，DOMContentLoaded 的触发不需要等待图片等其他资源加载完成。
+
+页面上所有的资源（图片，音频，视频等）被加载以后才会触发load事件，简单来说，页面的load事件会在DOMContentLoaded被触发之后才触发。
+
+参考
+* [DOMContentLoaded](https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded)
+* [DOMContentLoaded与load的区别](https://www.cnblogs.com/caizhenbo/p/6679478.html)
+
+
 ## DOM操作
 参考之前的整理:[DOM编程之节点（一）](http://www.shymean.com/article/DOM%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%8A%82%E7%82%B9%EF%BC%88%E4%B8%80%EF%BC%89)
 
@@ -172,6 +186,10 @@ parentUl.removeChild(siblingLi)
 事件委托就是事件目标不直接处理事件，而是委托其父元素或者祖先元素甚至根元素（document）的事件处理函数进行处理。可以通过事件对象的target属性获得真正触发事件的引用。
 
 事件委托是建立在冒泡模型之上的。
+
+### 事件执行顺序
+* 某些操作会同时出发多个事件，如点击事件执行顺序:touchstart -> touchend -> click
+* 事件执行顺序先捕获后冒泡。`addEventListener`第三个参数设置为ture时是在捕获阶段执行，而默认是false在冒泡阶段执行。
 
 ## 网络请求
 [传送门]('../网络/前端网络请求.md')，需要掌握AJAX和fetch的使用，需要了解跨域的

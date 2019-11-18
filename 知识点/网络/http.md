@@ -40,6 +40,8 @@ GET和POST的区别，就日常使用经验来看
 * 4表示客户端错误，指浏览器发送了服务器无法处理的内容
 * 5表示服务端错误
 
+[HTTP常见状态码](https://www.cnblogs.com/starof/p/5035119.html)
+
 ## HTTP缓存
 
 缓存的好处:

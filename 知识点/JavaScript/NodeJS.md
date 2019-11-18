@@ -5,6 +5,7 @@ NodeJS
 
 参考：
 * [NodeJS面试题](https://github.com/jimuyouyou/node-interview-questions)
+* [如何通过饿了么 Node.js 面试](https://elemefe.github.io/node-interview/#/sections/zh-cn/)，[部分解答](https://www.jianshu.com/p/5fe87b14340e?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
 
 ## node核心内置类库
 主要需要了解事件，流，文件，网络等模块的使用

@@ -2,7 +2,7 @@
 
 
 
-### 前端基础
+## 前端基础
 
 > JavaScript基础知识一把梭：作用域、闭包、原型、this、eventLoop
 
@@ -27,7 +27,7 @@
 > 前端性能优化？前端安全XSS、CSRF
 
 
-### 项目框架
+## 项目框架
 
 > 有哪些React项目经验？React源码实现？NeZha这个库你是怎么设计的？
 > React-router的是如何实现的？React你还了解哪些组件设计方式？
@@ -46,14 +46,50 @@
 
 > 大促模板前端开发环境为什么要使用fis3?静态资源服务器有什么作用？整个系统你们是如何实现的？为了加载更多商品，做了哪些性能优化？
 
+
+
+
+由于iOS客户端之前使用的仍旧是UIWebview，内存占用比较大，在初始化页面的时候，由于过多的innerHTML，导致CPU暴涨，可能导致整个页面卡死或者是APP 崩溃的问题，在反复前进后退的时候更容易复现这个问题。
+
+解决办法是通过节流的方式去控制模块的渲染，靠在前面的模块以及部分图片模块将优先渲染，在离开页面前将终止所有的请求和渲染任务。
+
 > 迁移管理后台，为什么要迁移到React上面?你如何看待Dva这个框架?
 
 > 平常工作中的开发流程是什么样的？开发、提测、团队协作、部署流程？
 
-### 后端
+## 后端
 
 > Node你掌握多少？Koa的源码你看过吗？中间件是如何实现的？
 
 > 你是如何在项目中使用thrift的？你觉得他有什么好处？
 
 
+## 算法
+
+
+
+## 其他面试合集
+下面是收集的一些前端面试题集合
+* https://github.com/qiu-deqing/FE-interview
+* https://github.com/fouber/blog
+* [Web 前端面试指南与高频考题解析-掘金小册](https://juejin.im/book/5a8f9ddcf265da4e9f6fb959)
+* [一名【合格】前端工程师的自检清单](https://juejin.im/post/5cc1da82f265da036023b628)
+* [2019 CSS经典面试题（史上最全）](https://juejin.im/post/5cc59e41e51d456e62545b66)
+* [这儿有20道大厂面试题等你查收](https://juejin.im/post/5d124a12f265da1b9163a28d)
+* https://mp.weixin.qq.com/s/J9uQmFLOGE6A4JpgDSXdJg
+* [前面面试100问解答](https://github.com/Advanced-Frontend/Daily-Interview-Question)项目的所有问题。[问题汇总](https://mp.weixin.qq.com/s/J9uQmFLOGE6A4JpgDSXdJg)
+
+一些汇总整理
+* https://juejin.im/post/5dd1d90d6fb9a01ff4495ce0
+* https://juejin.im/post/5d834e62e51d453b8b5fa69e
+
+
+一些刷题网站
+* [牛客网](https://www.nowcoder.com/)，有的题答案有误，需自己甄别
+* [赛码网](http://www.acmcoder.com/index)，这个貌似是针对校招的
+* [letcode](https://leetcode.com/problemset/algorithms/)，刷起来吧
+
+几个互联网招聘网站，如果有条件，找朋友内推是更好的选择
+* [拉钩](https://www.lagou.com/)
+* [BOSS直聘](https://www.zhipin.com/)
+* [内推网](http://www.neitui.me/)

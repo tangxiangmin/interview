@@ -1,5 +1,13 @@
 
 
+## 文档乱码如何处理
+
+一般是文档编辑保存时编码格式没有选择`utf-8`导致的
+
+```html
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+```
+
 ## 描述浏览器解析HTML文档的过程
 这里主要是理解CSS 与 JS 是如何阻塞 DOM 解析和渲染的。
 当浏览器从上到下解析整个HTML文档时，
@@ -15,21 +23,3 @@
 这里需要注意Reflow和Repaint的区别。
 
 
-
-## 在项目中是如何性能优化的
-主要从下面三个方面回答
-* 减少HTTP请求
-    * 精灵图，合并多个CSS、JS文件，减少文件的数量和体积
-    * 图片压缩（从PSD切的图一般体积比较大）、base64转换
-    * 图片懒加载，按需加载
-    * 使用缓存
-* 页面渲染速度
-    * 使用CDN加载资源
-    * 将CSS放在页面头部，防止页面闪烁
-    * 将JavaScript异步或延迟加载，防止script标签阻塞页面加载
-    * 延迟请求首屏外的文件，优先加载首屏内容。
-* 代码执行效率
-    * reflow和repaint可能会严重影响性能，需要尽可能的减少reflow和repaint操作
-    * JavaScript中减少作用域链的查找，避免使用`eval`和`Function`等性能缓慢的接口
-    * DOM操作的代价是十分昂贵的，可以使用`DocumentFragment`暂时存放那些一次插入文档的节点
-    * 事件节流、除抖

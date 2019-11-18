@@ -113,7 +113,15 @@ requireComponent.keys().forEach(filePath => {
 参考
 * [编写gulp、webpack与fis3插件](https://www.shymean.com/article/%E7%BC%96%E5%86%99gulp%E3%80%81webpack%E4%B8%8Efis3%E6%8F%92%E4%BB%B6)
 
-## 性能分析
+
+## 性能优化
+
+### 处理不经常更新的库文件
+
+* CommonsChunkPlugin，实际上每次打包时还需要去处理这些第三方库，打包完成后，能把第三方库和自己的业务代码分开
+* DLLPlugin，预编译，把第三方代码完全分离开，即每次只打包项目自身的代码。
+
+### 性能分析
 > 如何了解webpack打包性能瓶颈？如何优化webpack打包效率？
 
 参考：[使用webpack4提升180%编译速度](http://louiszhai.github.io/2019/01/04/webpack4/)
@@ -123,7 +131,26 @@ requireComponent.keys().forEach(filePath => {
 
 为何升级webpack4后编译速度会增加的很明显？
 
-升级至 webpack4 后，通过搭载 ParallelUglifyPlugin 、happyPack 和 dll 插件，编译速度可以提升181%，整体编译时间减少了将近 2/3，为开发节省了大量编译时间！而且随着项目发展，这种编译提升越来越可观。
+升级至 webpack4 后，通过搭载 ParallelUglifyPlugin 、happyPack 和 dll 插件，编译速度可以提升181%，整体编译时间减少了将近 2/3，为开发节省了大量编译时间！而且随着项目发展，这种编译提升越来越可观
+
+* happyPack，运用多核并行处理webpack任务
+* ParallelUglifyPlugin并行通过 UglifyJS 去压缩代码
+* dll预编译不经常改动的库文件
+
+### 打包优化
+参考
+* https://mp.weixin.qq.com/s/WmTWXoYn_CvD60nd0_biuQ
+
+首先通过一些工具如[speed-measure-webpack-plugin](https://www.npmjs.com/package/speed-measure-webpack-plugin)分析打包性能瓶颈，一般来说耗时操作都位于`loader`和`babel`等文件内容解析等操作上
+
+
+然后选择优化策略，一般分为缓存、多核、抽离以及拆分
+* 使用`cache-loader`缓存loader编译文件的结果到磁盘上，如果源文件未发生改变，则不会重新编译
+* 使用`happypack`进行多核编译
+* 避免在库文件的时间消耗，可以通过
+    * `webpack-dll-plugin`，将所有库文件打包到一个vendor.js中，加载速度会比较缓慢
+    * `Externals`将库文件通过CDN直接引入，结合HTTP2的多路复用特性，可以快速的加载依赖
+
 
 ## 常见问题
 

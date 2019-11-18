@@ -18,11 +18,16 @@ function parseFloder(floder, baseRoot) {
     let root = `${baseRoot}/${floder}`;
     let res = fs.readdirSync(root);
 
-    let files = res.map(file => {
+    let files = []
+    res.forEach(file => {
         if (isFloder(file)) {
-            return parseFloder(file, root);
-        } else {
-            return file;
+            files.push(parseFloder(file, root))
+        } else if(file.indexOf(`README`) === 0){
+            // readme.md作为目录放在最前面
+            files.unshift(file)
+        }else {
+            files.push(file)
+
         }
     });
 

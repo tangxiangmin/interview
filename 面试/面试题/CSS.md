@@ -154,6 +154,11 @@ rem 布局的本质是等比缩放，一般是基于宽度，因此其
 * 需要在网站的根目录下存放favicon图标，防止404请求(使用fiddler可以监听到)
 
 
+> 列举一些不可被继承的样式？
+
+如：display，margin，border，padding，background，height，width，position等
+
+
 ## 代码编写
 
 > SCSS除了变量定义、选择器嵌套之外有哪些功能？
@@ -395,7 +400,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     <div class="s6">1</div> <!--32px 64px-->
 </div>
 ```
-知识点[传送门](/知识点/CSS/基础知识.html#行高)
+知识点[传送门](../../知识点/CSS/基础知识.md#行高)
 * 如果使用 em,ex 和百分数指定行高，都是相对于元素的 font-size 进行计算
 * 如果使用百分数来设置行高，浏览器会首先计算其父元素的字体大小与对应百分数的乘积，得到对应的结果再传递给对应元素
 * 如果使用乘积因子来指定行高，浏览器会计算该元素的字体大小，然后乘以对应的乘积因子，并将结果应用在行高之上
@@ -411,3 +416,34 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 此外还存在浏览器兼容问题
 * IE7-不支持border:none;
 * W3C提示：请始终把border-style属性声明到border-color属性之前，元素必须在改变颜色之前获得边框。
+
+> flex-shrink计算规则
+
+```html
+ <style>
+    div {
+        height: 200px
+    }
+    .f {
+        display: flex;
+        width: 600px
+    }
+    .c1 {
+        width: 500px;
+        flex-shrink: 1;
+        background-color: red
+    }
+    .c2 {
+        width: 400px;
+        flex-shrink: 2;
+        background-color: blue
+    }
+</style>
+
+<div class="f">
+    <!--500 -  300 * 1 * 500 / (1*500+2*400) = 384.61 -->
+    <div class="c1"></div>  
+    <!--400 -  300 * 2 * 400 / (1*500+2*400) = 215.39 -->
+    <div class="c2"></div>
+</div>
+```

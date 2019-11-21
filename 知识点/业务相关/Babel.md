@@ -10,6 +10,7 @@ Babel
 * [初学 Babel 工作原理](https://segmentfault.com/a/1190000019578478)
 * [Babel 插件原理的理解与深入](https://segmentfault.com/a/1190000016359110)
 * [Babel是如何读懂JS代码的](https://zhuanlan.zhihu.com/p/27289600)
+* [一口（很长的）气了解 babel](https://zhuanlan.zhihu.com/p/43249121)
 
 与编译器类似，babel转译过程也分为下面三个阶段
 * 解析 Parse，通过 [`babylon`](https://babeljs.io/docs/en/7.0.0/babylon) 将代码解析生成抽象语法树( 即AST )
@@ -44,7 +45,7 @@ Babel
 }
 ```
 
-就其`polyfill相比`与手动引入`babel-polyfill`相比
+就其`polyfill`与手动引入`babel-polyfill`相比
 * `transform-runtime`是按需引入，需要用到哪些polyfill，runtime就自动帮你引入哪些，多个模块使用相同的polyfill，可能会造成重复引入
 * `babel-polyfill`的引入是全局的，基本能满足所有新接口的polyfill。在小项目中可能会造成体积过大等问题
 * 一般地使用原则是：开发框架和库时为了避免污染全局polyfill，建议使用`transform-runtime`；开发大型web应用时，建议使用`babel-polyfill`

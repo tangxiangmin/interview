@@ -1,6 +1,18 @@
 HTML
 ===
 
+## W3C标准
+万维网联盟（外语缩写：W3C）标准不是某一个标准，而是一系列标准的集合。网页主要由三部分组成：结构（Structure）、表现（Presentation）和行为（Behavior）
+* 结构标准语言
+    * 可扩展标记语言XML
+    * 可扩展超文本标记语言XHTML
+* 表现标准语言
+    * 层叠样式表CSS
+* 行为标准语言
+    * 文档对象模型DOM
+    * ECMAScript
+
+
 ## doctype有什么作用？怎么写
 DOCTYPE是document type的简写，它是一种标记语言的文档类型声明，即告诉浏览器当前 HTML 是用什么版本编写的，决定了浏览器最终如何显示你的 Web文档。在遵循标准的任何Web文档中，它都是一项必需的元素。
 
@@ -20,22 +32,6 @@ DOCTYPE是document type的简写，它是一种标记语言的文档类型声明
 此外HTML 5 提供了一些新的语义化元素标签和属性，如`article`、`nav`、`header`等，参考：[Html5新标签解释及用法](http://www.daqianduan.com/2857.html)。
 
 
-### script标签
-参考
-* [Script - MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script)
-
-
-script标签上的`async`和`defer`属性，决定了脚本加载时采用同步方式还是异步方式。
-
-* 如果不加上这两个属性，默认为同步加载脚本，加载和执行时会阻塞页面的渲染，即浏览器按顺序解析DOM树及脚本，遇见脚本会阻塞DOM树生成并执行脚本。
-* async 和 defer 方式是用异步的方式加载脚本，不会阻塞页面渲染，它们之间的不同在于何时执，
-    * async 方式是加载后马上执行，
-    * defer 方式是加载后等所有 DOM 都渲染好触发 DOMContentLoaded 事件之前执行，
-    * 所以 async 方式里面的脚本都是乱序执行，defer 方式加载的代码都是按序执行的，按序执行对有依赖的代码非常重要。
-    * 若两个属性同在，会忽略defer而遵从async
-
-通过动态生成script的方法，可以实现`JSONP`等功能
-
 ### 移动开发中meta知识点
 * 页面窗口自动调整到设备宽度，并禁止用户及缩放页面。
 * 忽略将页面中的数字识别为电话号码
@@ -54,6 +50,29 @@ WebP具有更优的图像数据压缩算法，能带来更小的图片体积，�
 * Gecko内核：Netscape6及以上版本，firefox, MozillaSuite/SeaMonkey等
 * Presto内核：Opera7及以上。[Opera内核原为：Presto，现为：Blink;]
 * Webkit内核：Safari,Chrome等。   [ Chrome的：Blink（WebKit的分支）]
+
+## DOMContentLoaded与load的区别
+
+当文档中没有脚本时，浏览器解析完文档便能触发 DOMContentLoaded 事件；如果文档中包含脚本，则脚本会阻塞文档的解析，而脚本需要等位于脚本前面的css加载完才能执行。在任何情况下，DOMContentLoaded 的触发不需要等待图片等其他资源加载完成。
+
+页面上所有的资源（图片，音频，视频等）被加载以后才会触发load事件，简单来说，页面的load事件会在DOMContentLoaded被触发之后才触发。
+
+参考
+* [DOMContentLoaded](https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded)
+* [DOMContentLoaded与load的区别](https://www.cnblogs.com/caizhenbo/p/6679478.html)
+
+`script`标签上的`async`和`defer`的区别，参考[Script - MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script)
+
+script标签上的`async`和`defer`属性，决定了脚本加载时采用同步方式还是异步方式。
+
+* 如果不加上这两个属性，默认为同步加载脚本，加载和执行时会阻塞页面的渲染，即浏览器按顺序解析DOM树及脚本，遇见脚本会阻塞DOM树生成并执行脚本。
+* async 和 defer 方式是用异步的方式加载脚本，不会阻塞页面渲染，它们之间的不同在于何时执，
+    * async 方式是加载后马上执行，
+    * defer 方式是加载后等所有 DOM 都渲染好触发 DOMContentLoaded 事件之前执行，
+    * 所以 async 方式里面的脚本都是乱序执行，defer 方式加载的代码都是按序执行的，按序执行对有依赖的代码非常重要。
+    * 若两个属性同在，会忽略defer而遵从async
+
+通过动态生成script的方法，可以实现`JSONP`等功能
 
 ### 浏览器解析流程
 参考

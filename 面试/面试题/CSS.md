@@ -329,6 +329,25 @@ flex布局
     vertical-align: middle; 
 }
 ```
+
+vertical-align实现
+```css
+.wrap {
+    text-align: center;
+}
+
+.wrap:after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+}
+
+.box {
+    display: inline-block;
+    vertical-align: middle;
+}
+```
+
 还有比如line-height等hack方法就不提了
 
 
@@ -446,4 +465,29 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     <!--400 -  300 * 2 * 400 / (1*500+2*400) = 215.39 -->
     <div class="c2"></div>
 </div>
+```
+
+> 图片保持宽高比展示？不使用background-size
+
+```css
+.image {
+    background: #34495e;
+    border: 1px solid #34495e;
+    width: 200px;
+    height: 200px;
+}
+
+.image-contain {
+    object-fit: contain;
+    object-position: center;
+}
+
+.image-cover {
+    object-fit: cover;
+    object-position: right top;
+}
+```
+```html
+<img class="image image-contain" src="https://picsum.photos/600/200" />
+<img class="image image-cover" src="https://picsum.photos/600/200" />
 ```

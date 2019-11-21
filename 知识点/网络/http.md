@@ -24,7 +24,7 @@ GET和POST的区别，就日常使用经验来看
 
 但是需要认识到，HTTP最初设定了八种请求方法。这些方法方法本质上没有任何区别。只是让请求更加有语义而已，只是由于浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。因此关于GET和POST的区别
 * 主要在于语义化含义，以及服务器的一些限制而已
-* 貌似部分浏览器和框架对于GET会发送一个TCP包，POST会发送两个包，具体可以参考[这里](https://blog.csdn.net/zerooffdate/article/details/78962818)
+* 貌似部分浏览器和框架对于GET会发送一个TCP包，POST会发送两个包，但并不全是这样，具体可以参考[这里](https://blog.csdn.net/zerooffdate/article/details/78962818)
 
 ### 首部行字段
 参考：[前端必备HTTP技能之HTTP请求头响应头中常用字段详解](http://www.jianshu.com/p/6e86903d74f7)

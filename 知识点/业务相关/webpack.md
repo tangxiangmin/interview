@@ -151,6 +151,13 @@ requireComponent.keys().forEach(filePath => {
     * `webpack-dll-plugin`，将所有库文件打包到一个vendor.js中，加载速度会比较缓慢
     * `Externals`将库文件通过CDN直接引入，结合HTTP2的多路复用特性，可以快速的加载依赖
 
+### 减少代码体积
+
+* 按需加载组件`babel-plugin-component`
+* 减少 ES6 转为 ES5 的冗余代码` babel-plugin-transform-runtime`，合理设置`preset`
+* 按需使用`babel-polyfill`
+* 正确使用`tree shaking`
+* 结合extenals将库文件通过CDN引入
 
 ## 常见问题
 

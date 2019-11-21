@@ -7,22 +7,9 @@ DOM
 * [前端HTML5几种存储方式的总结](https://mp.weixin.qq.com/s?__biz=MzIzNTU2ODM4Mw==&mid=2247485935&idx=1&sn=b3faae7b8e21c4ff296d64b4dfaaeb58&chksm=e8e4647fdf93ed696db04e9b0dbd4fe1a06df6221ea1c2ede19ce1baf91d911be14110516d3b&mpshare=1&scene=1&srcid=02242xNs4l2IA16v4qOcJPA6#rd)
 * requestAnimFrame ，传入的函数在重绘之前调用
 
-
-## DOMContentLoaded与load的区别
-
-
-
-当文档中没有脚本时，浏览器解析完文档便能触发 DOMContentLoaded 事件；如果文档中包含脚本，则脚本会阻塞文档的解析，而脚本需要等位于脚本前面的css加载完才能执行。在任何情况下，DOMContentLoaded 的触发不需要等待图片等其他资源加载完成。
-
-页面上所有的资源（图片，音频，视频等）被加载以后才会触发load事件，简单来说，页面的load事件会在DOMContentLoaded被触发之后才触发。
-
-参考
-* [DOMContentLoaded](https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded)
-* [DOMContentLoaded与load的区别](https://www.cnblogs.com/caizhenbo/p/6679478.html)
-
-
 ## DOM操作
-参考之前的整理:[DOM编程之节点（一）](http://www.shymean.com/article/DOM%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%8A%82%E7%82%B9%EF%BC%88%E4%B8%80%EF%BC%89)
+参考
+* [DOM编程之节点（一）](http://www.shymean.com/article/DOM%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%8A%82%E7%82%B9%EF%BC%88%E4%B8%80%EF%BC%89)
 
 ### 获取DOM节点
 ```js
@@ -168,17 +155,8 @@ parentUl.removeChild(siblingLi)
 此外还可以通过`innerHTML`进行覆盖，移除相关的节点。
 
 ## 事件
-参考之前的整理:[DOM编程之事件（二）](http://www.shymean.com/article/DOM%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BA%8B%E4%BB%B6%EF%BC%88%E4%BA%8C%EF%BC%89)
+参考：[DOM编程之事件（二）](http://www.shymean.com/article/DOM%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BA%8B%E4%BB%B6%EF%BC%88%E4%BA%8C%EF%BC%89)
 
-当文档、浏览器、元素或与之相关的对象发生某些有趣的事情时，浏览器就会产生事件（也可以说成是浏览器通知应用程序发生了什么事情）
-
-关于事件，需要理解的包括
-* 事件类型
-* 事件对象
-* 事件目标
-* 事件处理函数
-* 事件传播
-* 默认事件取消等
 
 ### 事件委托
 事件冒泡模型在为大量单独元素上注册处理程序提供了解决方案（在其公有祖先元素上注册事件,即**事件委托**）。
@@ -187,21 +165,12 @@ parentUl.removeChild(siblingLi)
 
 事件委托是建立在冒泡模型之上的。
 
-### 事件执行顺序
+### 多个事件执行顺序
 * 某些操作会同时出发多个事件，如点击事件执行顺序:touchstart -> touchend -> click
 * 事件执行顺序先捕获后冒泡。`addEventListener`第三个参数设置为ture时是在捕获阶段执行，而默认是false在冒泡阶段执行。
 
 ## 网络请求
 [传送门]('../网络/前端网络请求.md')，需要掌握AJAX和fetch的使用，需要了解跨域的
-
-## Web Storage API
-HTML5新增了sessionStorage和localStorage用于本地存储，专门为了浏览器端缓存而设计的，优点有：
-* 存储量增大到 5MB
-* 不会带到 HTTP 请求中
-
-相关接口`setItem`、`getItem`、`removeItem`
-
-针对localStorage.setItem，使用时尽量加入到try-catch中，某些浏览器是禁用这个 API 的，要注意。
 
 ## requestAnimationFrame
 参考：
@@ -212,3 +181,41 @@ window.requestAnimationFrame(callback);
 ```
 * 在大多数浏览器里，当运行在后台标签页或者隐藏的`iframe` 里时，requestAnimationFrame() 会暂停调用以提升性能和电池寿命。
 * callback会被传入一个参数，DOMHighResTimeStamp，指示当前被 requestAnimationFrame() 排序的回调函数被触发的时间。即使每个回调函数的工作量的计算都花了时间，单个帧中的多个回调也都将被传入相同的时间戳
+
+BOM
+===
+
+BOM（浏览器对象模型）是浏览器本身的一些信息的设置和获取，一般常用的是
+* navigator，用于获取浏览器特征，比如判断平台等
+* screen，获取屏幕宽高
+* location，获取网址、协议、path、参数、hash 
+* history，访问浏览器的历史记录栈
+
+## Web Storage API
+HTML5新增了sessionStorage和localStorage用于本地存储，专门为了浏览器端缓存而设计的，优点有：
+* 存储量增大到 5MB
+* 不会带到 HTTP 请求中
+
+注意
+* 与之前cookie保存数据的区别
+* `localStorage`和`sessionStorage`的区别
+* 在使用`localStorage`和`sessionStorage`时尽量加入到try-catch中，某些浏览器是禁用这个 API 的（如在无痕模式下访问）。
+
+> 常见问题 cookies，sessionStorage 和 localStorage的区别？
+
+相同：都是保存在浏览器，且同源的。
+区别：
+* cookies 和 ＊Storage 的区别：
+    * cookies会在服务器端和客户端间传递的；
+    * sessionStorage 和 localStorage存放在客户端的，不会发送至服务器端，仅在本地保存。
+    * cookies的兼容主流浏览器,包括IE6+;IE6，IE7不支持sessionStorage 和 localStorage
+    * sessionStorage 和 localStorage中能存的数据比cookie大（cookie不能超过4k）
+* sessionStorage 和 localStorage的区别：
+    * sessionStorage存的数据在每次关闭浏览器后被删除，localStorage不会。
+    * 作用域不同，sessionStorage不能在浏览器的不同标签页中共享，即使是同一个页面（刷新页面可以继续存在）；
+    * localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的
+
+
+## history API
+
+前端单页应用路由基础

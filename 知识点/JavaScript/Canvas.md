@@ -75,6 +75,41 @@ Canvas和SVG是html5支持的两种可视化技术，都允许您在浏览器中
 * Canvas 是基于像素的即时模式图形系统，最适合较小的表面或较大数量的对象，Canvas不支持鼠标键盘等事件。
 * SVG 是基于形状的保留模式图形系统，更加适合较大的表面或较小数量的对象。
 
+## canvas引入自定义字体
+
+通过css定义字体名
+```css
+@font-face {
+  font-family: "_________";  //下划线填字体名称
+  src: url("_________");  //下划线填字体文件
+}
+```
+然后在canvas中使用对应的字体名即可，需注意
+* 必须再等到字体下载完成之后再去渲染canvas,字体才能有作用
+* canvas中所引用的字体必须在文档流中有标签(span,p等)引用改字体!!!这就是最大的坑了!!!
+
+上面问题待验证，参考
+* [利用font-face定义的字体怎么在canvas里应用](https://segmentfault.com/q/1010000008146516)
+
+## canvas图像处理
+* [利用canvas实现一个抠图小工具](http://imweb.io/topic/59f5c4c0b72024f03c7f49bd)
+* [試試看Canvas (2)，調整Canvas圖片色調](https://wcc723.github.io/canvas/2014/12/08/html5-canvas-02/)，可以将图片替换成其他颜色
+
+
+
+## 性能优化
+需要遵循的「最佳实践」。
+
+* 将渲染阶段的开销转嫁到计算阶段之上。
+* 使用多个分层的 Canvas 绘制复杂场景。
+* 不要频繁设置绘图上下文的 font 属性。
+* 不在动画中使用 putImageData 方法。
+* 通过计算和判断，避免无谓的绘制操作。
+* 将固定的内容预先绘制在离屏 Canvas 上以提高性能。
+* 使用 Worker 和拆分任务的方法避免复杂算法阻塞动画运行。
+
+http://taobaofed.org/blog/2016/02/22/canvas-performance/
+
 ## 扩展阅读
 
 ### PNG压缩原理

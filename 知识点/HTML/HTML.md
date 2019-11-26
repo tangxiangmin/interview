@@ -1,5 +1,3 @@
-HTML
-===
 
 ## W3C标准
 万维网联盟（外语缩写：W3C）标准不是某一个标准，而是一系列标准的集合。网页主要由三部分组成：结构（Structure）、表现（Presentation）和行为（Behavior）
@@ -13,7 +11,7 @@ HTML
     * ECMAScript
 
 
-## doctype有什么作用？怎么写
+### doctype有什么作用？怎么写
 DOCTYPE是document type的简写，它是一种标记语言的文档类型声明，即告诉浏览器当前 HTML 是用什么版本编写的，决定了浏览器最终如何显示你的 Web文档。在遵循标准的任何Web文档中，它都是一项必需的元素。
 
 标准模式和怪异模式
@@ -23,8 +21,7 @@ DOCTYPE是document type的简写，它是一种标记语言的文档类型声明
 
 
 
-## 标签
-### 语义化
+### 标签语义化
 所谓“语义”就是为了更易读懂，用正确的标签做正确的事情，这要分两部分：
 * 让人（写程序、读程序）更易读懂， 即使在没有样式CSS情况下也以一种文档格式显示，使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。
 * 让机器（浏览器、搜索引擎，盲人阅读器等）更易读懂，让页面的内容结构化，结构更清晰，爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO
@@ -32,16 +29,6 @@ DOCTYPE是document type的简写，它是一种标记语言的文档类型声明
 此外HTML 5 提供了一些新的语义化元素标签和属性，如`article`、`nav`、`header`等，参考：[Html5新标签解释及用法](http://www.daqianduan.com/2857.html)。
 
 
-### 移动开发中meta知识点
-* 页面窗口自动调整到设备宽度，并禁止用户及缩放页面。
-* 忽略将页面中的数字识别为电话号码
-* 忽略Android平台中对邮箱地址的识别
-* 当网站添加到主屏幕快速启动方式，可隐藏地址栏，仅针对iOS的safari
-* 将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式
-
-### webp
-WebP具有更优的图像数据压缩算法，能带来更小的图片体积，而且拥有肉眼识别无差异的图像质量；同时具备了无损和有损的压缩模式、Alpha 透明以及动画的特性，在 JPEG 和 PNG 上的转化效果都相当优秀、稳定和统一。
-不过在IE和和safari，以及部分移动端浏览器上不兼容，会导致图片加载失败
 
 ## 浏览器
 
@@ -50,29 +37,6 @@ WebP具有更优的图像数据压缩算法，能带来更小的图片体积，�
 * Gecko内核：Netscape6及以上版本，firefox, MozillaSuite/SeaMonkey等
 * Presto内核：Opera7及以上。[Opera内核原为：Presto，现为：Blink;]
 * Webkit内核：Safari,Chrome等。   [ Chrome的：Blink（WebKit的分支）]
-
-## DOMContentLoaded与load的区别
-
-当文档中没有脚本时，浏览器解析完文档便能触发 DOMContentLoaded 事件；如果文档中包含脚本，则脚本会阻塞文档的解析，而脚本需要等位于脚本前面的css加载完才能执行。在任何情况下，DOMContentLoaded 的触发不需要等待图片等其他资源加载完成。
-
-页面上所有的资源（图片，音频，视频等）被加载以后才会触发load事件，简单来说，页面的load事件会在DOMContentLoaded被触发之后才触发。
-
-参考
-* [DOMContentLoaded](https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded)
-* [DOMContentLoaded与load的区别](https://www.cnblogs.com/caizhenbo/p/6679478.html)
-
-`script`标签上的`async`和`defer`的区别，参考[Script - MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script)
-
-script标签上的`async`和`defer`属性，决定了脚本加载时采用同步方式还是异步方式。
-
-* 如果不加上这两个属性，默认为同步加载脚本，加载和执行时会阻塞页面的渲染，即浏览器按顺序解析DOM树及脚本，遇见脚本会阻塞DOM树生成并执行脚本。
-* async 和 defer 方式是用异步的方式加载脚本，不会阻塞页面渲染，它们之间的不同在于何时执，
-    * async 方式是加载后马上执行，
-    * defer 方式是加载后等所有 DOM 都渲染好触发 DOMContentLoaded 事件之前执行，
-    * 所以 async 方式里面的脚本都是乱序执行，defer 方式加载的代码都是按序执行的，按序执行对有依赖的代码非常重要。
-    * 若两个属性同在，会忽略defer而遵从async
-
-通过动态生成script的方法，可以实现`JSONP`等功能
 
 ### 浏览器解析流程
 参考
@@ -101,6 +65,31 @@ script标签上的`async`和`defer`属性，决定了脚本加载时采用同步
 整理上面可以得到下面结论
 * CSS文档的加载和解析，阻塞的是脚本的执行而不是脚本的加载。
 * 同步JS脚本的加载解析和执行，是会影响HTML解析器的工作，导致后面的所有资源都无法被加载。
+
+
+
+### DOMContentLoaded与load
+
+当文档中没有脚本时，浏览器解析完文档便能触发 DOMContentLoaded 事件；如果文档中包含脚本，则脚本会阻塞文档的解析，而脚本需要等位于脚本前面的css加载完才能执行。在任何情况下，DOMContentLoaded 的触发不需要等待图片等其他资源加载完成。
+
+页面上所有的资源（图片，音频，视频等）被加载以后才会触发load事件，简单来说，页面的load事件会在DOMContentLoaded被触发之后才触发。
+
+参考
+* [DOMContentLoaded](https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded)
+* [DOMContentLoaded与load的区别](https://www.cnblogs.com/caizhenbo/p/6679478.html)
+
+`script`标签上的`async`和`defer`的区别，参考[Script - MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script)
+
+script标签上的`async`和`defer`属性，决定了脚本加载时采用同步方式还是异步方式。
+
+* 如果不加上这两个属性，默认为同步加载脚本，加载和执行时会阻塞页面的渲染，即浏览器按顺序解析DOM树及脚本，遇见脚本会阻塞DOM树生成并执行脚本。
+* async 和 defer 方式是用异步的方式加载脚本，不会阻塞页面渲染，它们之间的不同在于何时执，
+    * async 方式是加载后马上执行，
+    * defer 方式是加载后等所有 DOM 都渲染好触发 DOMContentLoaded 事件之前执行，
+    * 所以 async 方式里面的脚本都是乱序执行，defer 方式加载的代码都是按序执行的，按序执行对有依赖的代码非常重要。
+    * 若两个属性同在，会忽略defer而遵从async
+
+通过动态生成script的方法，可以实现`JSONP`等功能
 
 ### 浏览器渲染流程
 参考：
@@ -135,7 +124,8 @@ Reflow表示元素节点的几何尺寸发生了变化，此时需要重新计�
 * 尽可能修改层级比较低的DOM，缩小操作的影响范围；
 * 放弃使用table进行布局，因为一个很小的改动都会造成整个table的重新布局
 
-### HTML5
+
+## HTML5
 新增功能
 * 绘画 canvas;
 * 用于媒介回放的 video 和 audio 元素;
@@ -143,10 +133,22 @@ Reflow表示元素节点的几何尺寸发生了变化，此时需要重新计�
 * 语义化标签
 * webworker、websocket、Geolocation
 
-## 无头浏览器
-参考
-* [初识puppeteer](https://www.shymean.com/article/%E5%88%9D%E8%AF%86puppeteer)
+## 移动开发
+参考：
+* [你还会再爱一次的H5移动端开发技巧](https://mp.weixin.qq.com/s/CfEHh4DLDDk4hOv075q3Lg)
 
+通过HTML可以实现移动开发的一些功能，如移动端开发如通过input pattern控制键盘类型，schema跳转APP等技巧
+
+### 移动开发中meta知识点
+* 页面窗口自动调整到设备宽度，并禁止用户及缩放页面。
+* 忽略将页面中的数字识别为电话号码
+* 忽略Android平台中对邮箱地址的识别
+* 当网站添加到主屏幕快速启动方式，可隐藏地址栏，仅针对iOS的safari
+* 将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式
+
+### webp
+WebP具有更优的图像数据压缩算法，能带来更小的图片体积，而且拥有肉眼识别无差异的图像质量；同时具备了无损和有损的压缩模式、Alpha 透明以及动画的特性，在 JPEG 和 PNG 上的转化效果都相当优秀、稳定和统一。
+不过在IE和和safari，以及部分移动端浏览器上不兼容，会导致图片加载失败
 
 ## 图片
 
@@ -165,6 +167,9 @@ JPG是我们最常见的采用有损压缩对图像信息进行处理的图片�
 * JPG更适合用来存储摄影或写实图像，但不适用于所含颜色很少、具有大块颜色相近的区域或亮度差异十分明显的较简单的图片
 * PNG能在保证最不失真的情况下尽可能压缩图像文件的大小，但是体积可能会比较大
 
+## 无头浏览器
+参考
+* [初识puppeteer](https://www.shymean.com/article/%E5%88%9D%E8%AF%86puppeteer)
 
 ## 常见问题
 

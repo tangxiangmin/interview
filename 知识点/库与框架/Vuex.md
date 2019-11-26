@@ -19,7 +19,6 @@ Vuex
 * action：包含任意异步操作，通过提交 mutation 间接更变状态。
 * module：将 store 分割成模块，每个模块都具有state、mutation、action、getter、甚至是嵌套子模块。
 
-
 数据传递流程，可以参考官网的这张图片
 
 ![](http://ww2.sinaimg.cn/large/006tNc79gy1g5r9hyf12wj30jh0fb0sz.jpg)

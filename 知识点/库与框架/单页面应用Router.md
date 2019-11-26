@@ -1,13 +1,19 @@
 
+## 基本原理
+参考：
+* [详解vue 单页应用（spa）前端路由实现原理](https://blog.csdn.net/qq_34629352/article/details/79837815#123)
+
+hash Router 和 history Router
+
 ## Vue-router
 路由指根据不同的 url 地址展示不同的内容或页面。
 在浏览器端可以通过hash或者history API实现
-
 
 * keep-alive
 * 滚动位置还原
 
 ### 路由懒加载
+
 参考
 * [官方文档](https://router.vuejs.org/zh-cn/advanced/lazy-loading.html)
 * [Vue代码分割懒加载](https://segmentfault.com/a/1190000012038580)

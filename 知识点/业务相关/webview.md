@@ -4,6 +4,8 @@ webview
 参考
 * [移动端开发之JSBridge](https://juejin.im/post/5cc5adde6fb9a031f4160969)
 * [Hybrid APP开发：JSSDK](http://ju.outofmemory.cn/entry/360590)
+* [iOS基础之webview](https://www.shymean.com/article/iOS%E5%9F%BA%E7%A1%80%E4%B9%8Bwebview)
+* [安卓入门之WebView](https://www.shymean.com/article/%E5%AE%89%E5%8D%93%E5%85%A5%E9%97%A8%E4%B9%8BWebView)
 
 WebView作为承载H5页面的容器，有一个特性是非常重要，即 它可以捕捉到所有在容器中发起的网络请求。其实想要 JS唤起Native 的方法，只要建立起 JS与Native通信 的桥梁即可，而这一点正好被WebView的这一特性所实现。
 

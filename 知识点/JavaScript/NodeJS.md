@@ -7,6 +7,15 @@ NodeJS
 * [NodeJS面试题](https://github.com/jimuyouyou/node-interview-questions)
 * [如何通过饿了么 Node.js 面试](https://elemefe.github.io/node-interview/#/sections/zh-cn/)，[部分解答](https://www.jianshu.com/p/5fe87b14340e?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
 
+## NodeJS优缺点及应用场景
+优点
+* 基于事件模型，节省了为每一个请求建立连接的服务端资源，可以支持高并发
+* 通过异步和回调实现非阻塞IO，在IO密集应用下很有用
+
+缺点
+* 不适合CPU密集型应用，长时间的计算会阻塞JavaScript执行异步任务
+* 默认只支持单核
+
 ## node核心内置类库
 主要需要了解事件，流，文件，网络等模块的使用
 

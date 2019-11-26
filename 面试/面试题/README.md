@@ -77,3 +77,4 @@
 * [拉钩](https://www.lagou.com/)
 * [BOSS直聘](https://www.zhipin.com/)
 * [内推网](http://www.neitui.me/)
+* [成都IT内推圈](https://www.itneituiquan.com/)

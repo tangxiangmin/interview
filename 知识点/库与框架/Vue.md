@@ -3,6 +3,24 @@ Vue
 
 * [重新阅读Vue源码](https://www.shymean.com/article/%E9%87%8D%E6%96%B0%E9%98%85%E8%AF%BBVue%E6%BA%90%E7%A0%81)
 
+## MVC、MVP、MVVM
+
+MVC，以传统web应用为例
+* HTML文件代表View，专门处理数据展示
+* 后台接口相当于Model，专门处理数据逻辑
+* JavaScript代表Controller，监听View的交互（如事件注册）,从Model获取数据(如Ajax请求)，然后操作DOM将数据更新到View上
+    * View→Controller事件触发
+    * Controller→Model网络请求
+    * Model→View 操作DOM，相当于我们直接在网络请求回调中直接更新DOM
+
+这种模式下，各个模块互相耦合，尤其是更新View的地方，分散在各个网络回调中，因此出现了MVP，MVP将View和Model分隔开，
+* Presenter中接收View的事件，然后请求Model获取数据
+* Presenter将获取的数据更新到View上，（不是在网络回调函数中直接操作DOM，而是在JavaScript中封装操作DOM节点的相关方法）
+
+在Presenter中需要封装大量手动操作DOM的方法，对于开发者而言是十分苦恼的，于是出现了MVVM，其中的`VM`表示ViewModel
+* ViewModel可以和View绑定，可以将数据的变化自动更新到View上
+* ViewModel不仅仅是一个概念，还需要有对应的代码实现，常见的如`Object.defineProperty`
+
 ## 虚拟DOM
 与React基本一致
 
@@ -42,8 +60,48 @@ Vue中提供了大量的语法糖，
 * 使用`Object.freeze`对不需要响应式的数据避免劫持。
 * 在beforeDestory之前销毁事件订阅、定时器等，避免内存泄漏
 
-## Vue-loader
+## 开发环境
+### vue-cli3
+
+### Vue-loader
 参考
 * [从vue-loader源码分析CSS-Scoped的实现](https://www.shymean.com/article/%E4%BB%8Evue-loader%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90CSS-Scoped%E7%9A%84%E5%AE%9E%E7%8E%B0)
 
 需要理解在loader中是如何处理SFC单文件组件的。
+
+### 手动配置vue开发环境
+需要注意
+* 安装`vue-loader`和`vue-template-compiler`同版本
+* 引入`VueLoaderPlugin`
+```js
+let HtmlWebpackPlugin = require("html-webpack-plugin");
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const path = require("path");
+
+module.exports = {
+    mode: "development",
+    entry: "./src/index.js",
+    devtool: "inline-source-map",
+    output: {
+        filename: "bundle.js",
+        path: path.resolve(__dirname, "dist")
+    },
+    module: {
+        rules: [
+            {
+                test: /\.vue?$/,
+                use: "vue-loader",
+                exclude: /node_modules/
+            }
+        ]
+    },
+    
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, "./src/index.html")
+        }),
+        new VueLoaderPlugin()
+    ]
+};
+
+```

@@ -73,6 +73,32 @@ interface SquareConfig {
 * 可以对可能存在的属性进行预定义
 * 可以捕获引用了不存在的属性时的错误
 
+## 泛型 
+
+泛型的本质是为了参数化类型（在不创建新的类型的情况下，通过泛型指定的不同类型来控制形参具体限制的类型）。也就是说在泛型使用过程中，操作的数据类型被指定为一个参数，这种参数类型可以用在类、接口和方法中，分别被称为泛型类、泛型接口、泛型方法
+
+> 泛型在c++里又叫模板。
+
+为了考虑方法的重用性，要求方法不仅能够支持当前的数据类型，同时也能支持未来的数据类型
+```ts
+// T帮助我们捕获用户传入的类型,之后我们再次使用了 T当做返回值类型
+function identity<T>(arg: T): T {
+    return arg;
+}
+```
+
+泛型类和泛型方法的概念基本相同。
+
+泛型约束允许我们对传入的类型进行一些约束，比如要求传入的类型必须带上某个特定的属性或方法等
+```ts
+interface Lengthwise {
+    length: number;
+}
+function loggingIdentity<T extends Lengthwise>(arg: T): T {
+    console.log(arg.length);  // Now we know it has a .length property, so no more error
+    return arg;
+}
+```
 
 ## 为什么要选择TypeScript
 与JavaScript相比，TS具备下面的一些优势

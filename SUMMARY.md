@@ -3,10 +3,11 @@
 * [Introduction](README.md)
     
 ## 知识点
+* [README.md](./知识点/README.md) 
 * CSS
-  * [README.md](./知识点/CSS/README.md) 
   * [BFC.md](./知识点/CSS/BFC.md) 
   * [CSS3.md](./知识点/CSS/CSS3.md) 
+  * [分辨率.md](./知识点/CSS/分辨率.md) 
   * [包含块.md](./知识点/CSS/包含块.md) 
   * [基础知识.md](./知识点/CSS/基础知识.md) 
   * [硬件加速.md](./知识点/CSS/硬件加速.md) 
@@ -16,17 +17,19 @@
   * [SEO优化.md](./知识点/HTML/SEO优化.md) 
   * [Web Components.md](./知识点/HTML/Web Components.md) 
 * JavaScript
-  * [README.md](./知识点/JavaScript/README.md) 
   * [Canvas.md](./知识点/JavaScript/Canvas.md) 
   * [DOM和BOM.md](./知识点/JavaScript/DOM和BOM.md) 
   * [ECMAScript.md](./知识点/JavaScript/ECMAScript.md) 
+  * [EventLoop.md](./知识点/JavaScript/EventLoop.md) 
   * [NodeJS.md](./知识点/JavaScript/NodeJS.md) 
   * [TypeScript.md](./知识点/JavaScript/TypeScript.md) 
   * [Worker.md](./知识点/JavaScript/Worker.md) 
   * [函数式编程.md](./知识点/JavaScript/函数式编程.md) 
   * [原型.md](./知识点/JavaScript/原型.md) 
+  * [数据类型.md](./知识点/JavaScript/数据类型.md) 
   * [模块化.md](./知识点/JavaScript/模块化.md) 
   * [正则.md](./知识点/JavaScript/正则.md) 
+  * [运算符.md](./知识点/JavaScript/运算符.md) 
 * 业务相关
   * [Babel.md](./知识点/业务相关/Babel.md) 
   * [Chrome扩展程序.md](./知识点/业务相关/Chrome扩展程序.md) 
@@ -56,7 +59,6 @@
   * [基本算法.md](./知识点/数据结构和算法/基本算法.md) 
   * [栈.md](./知识点/数据结构和算法/栈.md) 
 * 网络
-  * [README.md](./知识点/网络/README.md) 
   * [HTTP.md](./知识点/网络/HTTP.md) 
   * [Nginx.md](./知识点/网络/Nginx.md) 
   * [RPC.md](./知识点/网络/RPC.md) 

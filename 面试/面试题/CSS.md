@@ -491,3 +491,18 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 <img class="image image-contain" src="https://picsum.photos/600/200" />
 <img class="image image-cover" src="https://picsum.photos/600/200" />
 ```
+
+> CSS实现半圆
+
+注意询问是哪个方向上的半圆，下面实现了一个上半圆
+
+```css
+.semi-circle {
+    width: 100px;
+    height: 50px;
+    background-color: #cb18f8;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    /* 左上、右上、右下、左下 */
+}
+```

@@ -1,8 +1,28 @@
 CSS3
 ===
-> css 动画和 js 动画有什么区别?
 
-### CSS3动画
+## 属性前缀
+
+> 浏览器前缀和无浏览器前缀的属性摆放的顺序？
+
+参考[ordering-css3-properties](https://css-tricks.com/ordering-css3-properties/)
+。
+
+应该是带前缀的属性在前面，无浏览器前缀的属性在后面。这是因为在对于带前缀的属性而言，每个浏览器实现的效果可能不一致，而对于不带前缀的样式而言，每个浏览器都遵循规范实现
+
+```css
+/* 对于border-radius带多个值而言，下面两种样式的展示效果是不一样的 */
+.box1 {
+    border-radius: 30px 10px; 
+    -webkit-border-radius: 30px 10px;
+}
+.box2 {
+    -webkit-border-radius: 30px 10px;
+    border-radius: 30px 10px;
+}
+```
+
+## CSS3动画
 
 ### 形变
 `transform`
@@ -45,6 +65,14 @@ transform:属性值（具体数值量）
 * animation-delay	规定在动画开始之前的延迟。
 * animation-iteration-count	规定动画应该播放的次数。
 * animation-direction	规定是否应该轮流反向播放动画。
+
+### css 动画和 js 动画有什么区别?
+
+* 代码复杂度方面，简单动画，css 代码实现会简单一些，js 复杂一些。复杂动画的话，css 代码就会变得冗长，js实现起来更优。
+* 动画运行时，对动画的控制程度上，js 比较灵活，能控制动画暂停，取消，终止等，css动画不能添加事件，只能设置固定节点进行什么样的过渡动画。
+* 兼容方面，css 有浏览器兼容问题，js 大多情况下是没有的。
+* 性能方面，css动画相对于优一些，css 动画通过GUI解析，js 动画需要经过j s 引擎代码解析，然后再进行 GUI 解析渲染。
+
 
 ## CSS中的事件属性
 **user-select**
@@ -89,6 +117,9 @@ a {
 .waterfall {
     column-width: 200px;
     column-gap: 5px
+}
+.waterfall_item {
+    break-inside: avoid;
 }
 ```
 

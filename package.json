@@ -7,7 +7,7 @@
     "setup": "ln ./scripts/prepare-commit-msg ./.git/hooks/ && gitbook install ./",
     "build": "node scripts/build.js",
     "deploy": "./scripts/deploy.sh",
-    "start": "npm run build && gitbook serve"
+    "start": "npm run build && gitbook serve -d"
   },
   "repository": {
     "type": "git",

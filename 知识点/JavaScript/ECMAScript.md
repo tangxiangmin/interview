@@ -226,14 +226,22 @@ let add = (a, b)=>{
 参考：[EventLoop](./EventLoop.md)
 
 ## ES6
+参考
+* [1.5万字概括ES6全部特性](https://juejin.im/post/5d9bf530518825427b27639d)
+
 ES6新增了一些常用的新特性
-* let、const代替var，使用块级作用域
-* 模板字符串，不需要手动去拼接字符串了
-* 箭头函数，简化代码，自动绑定外部函数this
-* 函数的默认参数，声明和展开剩余参数
+* 变量声明，let、const代替var，使用块级作用域
+* Symbol变量类型
 * 解构赋值
-* 对象字面量方法简写，动态属性名
-* class关键字，创建类的语法糖
+* String扩展，如模板字符串等方法
+* Number扩展，如将parseInt等方法放在了Math对象上
+* 对象扩展，如简洁表示法、属性名表达式、class实现类
+* 数组扩展，如扩展运算符、inclueds
+* 函数扩展，如默认参数、箭头函数、rest/spread参数
+* Set、Map、WeakSet、WeakMap
+* Proxy、Reflect
+* 模块规范，export/import
+* Promise、Generator
 
 ### 解构赋值
 * 数组：按顺序赋值
@@ -281,3 +289,9 @@ let p = new Proxy(target, handler);
 参考：
 * [JS错误处理 MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Control_flow_and_error_handling)
 * [js构建ui的统一异常处理方案](https://www.cnblogs.com/laden666666/p/5281993.html)
+
+## 模块
+
+> 问题：JavaScript有哪些模块规范？他们的区别是什么？模块的循环依赖机制是什么？
+
+参考：[JavaScript模块管理机制](https://www.shymean.com/article/JavaScript%E6%A8%A1%E5%9D%97%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6)

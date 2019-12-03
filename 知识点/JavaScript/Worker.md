@@ -46,5 +46,5 @@ self.close();
 * [Service Worker API](https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API)
 * [Service Worker：简介](https://developers.google.com/web/fundamentals/primers/service-workers/)
 
-可以用来作为web应用程序、浏览器和网络（如果可用）之间的代理服务，常见的如控制缓存等
+可以用来作为web应用程序、浏览器和网络（如果可用）之间的代理服务，常见的如控制缓存等，可以用来实现PWA
 

@@ -5,6 +5,9 @@
 
 > JavaScript基础知识一把梭：作用域、闭包、原型、this、eventLoop
 
+* 暂时性死区
+* try...catch的作用域
+
 > ES6/7/8新语法？
 
 > 常见DOM API

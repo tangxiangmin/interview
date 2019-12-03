@@ -61,10 +61,23 @@ JS里面的作用域是**词法作用域**，因此无论函数在哪里被调�
 ### 如何编写代码实现构造函数不用new关键字会报错
 使用`this instanceof XXX`判断
 ```js
+function XXX(username, score){
+  if(!(this instanceof Player)){
+    throw new Error('XXX must be called with new')
+  }
+
+  // ES2015 syntax
+  if(!new.target){
+    throw new Error('XXX must be called with new')
+  }
+}
+
+```
+Vue里面采用第一种实现
+```
 function Vue (options) {
   if (!(this instanceof Vue)) {
     warn('Vue is a constructor and should be called with the `new` keyword')
   }
 }
-
 ```

@@ -1,11 +1,12 @@
 
-redux
+redux源码分析
 ===
 
+## redux
 redux本身只提供了几个接口
 * `createStore`，接收`reducer`并创建一个store仓库
-* `dispatch`，提交`action`
-* `getState`，获取当前的`state`
+* `store.dispatch`，提交`action`
+* `store.getState`，获取当前的`state`
 
 ```js
 const [ADD, MINUS] = [1, 2];
@@ -47,8 +48,8 @@ minusBtn.onclick = function() {
 getState()->初始化视图->用户交互触发事件->dispatch提交action
 ->reducer根据action更新state->通知`subscribe`订阅者更新->getState获取最新的state
 ```
-## createStore
-大致就是一个发布订阅模型：在dispatch时执行注册的reducer函数，然后通过`subscribe`注册的回调函数
+### createStore
+大致就是一个发布订阅模型：在dispatch时执行注册的reducer函数，然后通知在`subscribe`注册的回调函数
 
 ```js
 // preloadedState 表示当前的state
@@ -184,7 +185,7 @@ export default function createStore(reducer, preloadedState, enhancer) {
 
 当需要处理的action过多时，reducer就会非常庞大，可以通过`combineReducers`将多个reducer合并成一个
 
-## combineReducers
+### combineReducers
 ```js
 export default function combineReducers(reducers) {
   const reducerKeys = Object.keys(reducers)
@@ -256,7 +257,7 @@ let reducer = Redux.combineReducers({
 });
 ```
 
-## bindActionCreators
+### bindActionCreators
 
 action是diaptch与reducer约定的一个参数对象，必须包含type属性，一种常见的开发方式是通过工厂函数返回特定`type`的action，这种函数被称为`ActionCreators`
 ```js
@@ -308,7 +309,7 @@ export default function bindActionCreators(actionCreators, dispatch) {
 }
 ```
 
-## applyMiddleware
+### applyMiddleware
 可以通过中间件来扩展redux，完成特性功能，下面是一个日志中间件的实现
 ```js
 function logger({ getState, dispatch }) {
@@ -465,4 +466,67 @@ const thunk = createThunkMiddleware();
 thunk.withExtraArgument = createThunkMiddleware; // 暴露createThunkMiddleware 方法，允许用户为每个actino传入额外参数
 ```
 
+## redux-saga
+[Redux-Saga](https://redux-saga-in-chinese.js.org/)使用了 ES6 的 Generator 功能，让redux中异步流程更易于读取，写入和测试
 
+基础使用
+```js
+import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+
+const Api = {
+    async fetchUser() {
+        return { name: 'xxx', age: 10 }
+    }
+}
+
+// worker Saga: will be fired on USER_FETCH_REQUESTED actions
+function* fetchUser(action) {
+    try {
+        const user = yield call(Api.fetchUser, action.payload.userId);
+        yield put({ type: "USER_FETCH_SUCCEEDED", user: user });
+    } catch (e) {
+        yield put({ type: "USER_FETCH_FAILED", message: e.message });
+    }
+}
+
+function* mySaga() {
+    // 允许每一个异步的dispatch访问，则使用takeEvery
+    // yield takeEvery("USER_FETCH_REQUESTED", fetchUser);
+    // 如果只希望最后一个请求成功发送，则使用takeLatest
+    yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
+}
+
+let reducre = function (state, action) {
+    switch (action.type) {
+        case 'USER_FETCH_SUCCEEDED':
+            return { user: action.user }
+    }
+    return { user: null }
+}
+
+const sagaMiddleware = createSagaMiddleware()
+
+let store = createStore(reducre, applyMiddleware(sagaMiddleware))
+store.subscribe(() => {
+    console.log('subscribe:', store.getState())
+})
+
+sagaMiddleware.run(mySaga)
+
+for (var i = 0; i < 4; ++i) {
+    getUserInfo() // 上面使用了takeLatest，只有最后一次请求会触发`USER_FETCH_SUCCEEDED`
+}
+
+function getUserInfo() {
+    store.dispatch({
+        type: 'USER_FETCH_REQUESTED',
+        payload: {
+            userId: 10
+        }
+    })
+}
+```
+
+// todo 源码分析

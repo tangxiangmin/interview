@@ -10,8 +10,8 @@
   * [分辨率.md](./知识点/CSS/分辨率.md) 
   * [包含块.md](./知识点/CSS/包含块.md) 
   * [基础知识.md](./知识点/CSS/基础知识.md) 
-  * [硬件加速.md](./知识点/CSS/硬件加速.md) 
   * [选择器.md](./知识点/CSS/选择器.md) 
+  * [重绘和回流.md](./知识点/CSS/重绘和回流.md) 
 * HTML
   * [HTML.md](./知识点/HTML/HTML.md) 
   * [SEO优化.md](./知识点/HTML/SEO优化.md) 
@@ -24,11 +24,12 @@
   * [NodeJS.md](./知识点/JavaScript/NodeJS.md) 
   * [TypeScript.md](./知识点/JavaScript/TypeScript.md) 
   * [Worker.md](./知识点/JavaScript/Worker.md) 
+  * [npm.md](./知识点/JavaScript/npm.md) 
   * [函数式编程.md](./知识点/JavaScript/函数式编程.md) 
   * [原型.md](./知识点/JavaScript/原型.md) 
   * [数据类型.md](./知识点/JavaScript/数据类型.md) 
-  * [模块化.md](./知识点/JavaScript/模块化.md) 
   * [正则.md](./知识点/JavaScript/正则.md) 
+  * [装饰器.md](./知识点/JavaScript/装饰器.md) 
   * [运算符.md](./知识点/JavaScript/运算符.md) 
 * 业务相关
   * [Babel.md](./知识点/业务相关/Babel.md) 
@@ -45,6 +46,8 @@
   * [调试.md](./知识点/业务相关/调试.md) 
 * 库与框架
   * [README.md](./知识点/库与框架/README.md) 
+  * [Dva源码分析.md](./知识点/库与框架/Dva源码分析.md) 
+  * [Immutable.md](./知识点/库与框架/Immutable.md) 
   * [React.md](./知识点/库与框架/React.md) 
   * [React源码分析.md](./知识点/库与框架/React源码分析.md) 
   * [Redux源码分析.md](./知识点/库与框架/Redux源码分析.md) 
@@ -52,6 +55,7 @@
   * [Vuex.md](./知识点/库与框架/Vuex.md) 
   * [axios源码分析.md](./知识点/库与框架/axios源码分析.md) 
   * [diff算法.md](./知识点/库与框架/diff算法.md) 
+  * [koa源码分析.md](./知识点/库与框架/koa源码分析.md) 
   * [单页面应用Router.md](./知识点/库与框架/单页面应用Router.md) 
 * 数据结构和算法
   * [动态规划.md](./知识点/数据结构和算法/动态规划.md) 
@@ -65,7 +69,6 @@
   * [前端网络请求.md](./知识点/网络/前端网络请求.md) 
   * [抓包.md](./知识点/网络/抓包.md) 
   * [计算机网络.md](./知识点/网络/计算机网络.md) 
-  * [跨域.md](./知识点/网络/跨域.md) 
 * 计算机基础
   * [计算机原理.md](./知识点/计算机基础/计算机原理.md) 
   * [设计模式.md](./知识点/计算机基础/设计模式.md) 
@@ -96,7 +99,7 @@
   * [代码实现.md](./面试/面试题/代码实现.md) 
   * [代码阅读.md](./面试/面试题/代码阅读.md) 
   * [其他问题.md](./面试/面试题/其他问题.md) 
-  * [常见BUG.md](./面试/面试题/常见BUG.md) 
+  * [兼容及BUG.md](./面试/面试题/兼容及BUG.md) 
   * [常见需求.md](./面试/面试题/常见需求.md) 
   * [技术原理.md](./面试/面试题/技术原理.md) 
   * [算法实现.md](./面试/面试题/算法实现.md) 

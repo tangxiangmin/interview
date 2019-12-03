@@ -1,12 +1,17 @@
 
-# 知识点清单
+
 整理一个合格前端需要了解的知识点。
 
-CSS
-===
+## CSS
 
-* 选择器种类及查找规则
-* 权重值计算
+* 选择器
+    * 种类
+    * 权重值计算
+    * 查找规则
+* 样式与计算规则
+    * 样式重置
+    * 样式继承
+    * 常见样式实现
 * 盒子模型
 * BFC
     * 浮动与清浮动
@@ -14,13 +19,9 @@ CSS
 * 包含块
     * 尺寸百分比
     * 定位
-* Flex
-* BEM
-* CSS Modules与CSS Scoped
-
-
-JavaScript
-===
+* Flex布局、栅格布局
+* SCSS/Less、PostCSS
+* BEM、CSS Modules与CSS Scoped
 
 ## JavaScript基础
 
@@ -88,15 +89,37 @@ JavaScript
     * VueRouter原理及使用
     * vuex设计理念，如何划分模块
     * Vue性能优化：`keep-alive`、`nextTick`、代码切割
+* Axios
+* Koa
 * 微信小程序
     * 基本使用
     * 跨端框架mpvue、taro原理
 
 ## NodeJS
 
+* NodeJS优缺点及应用场景
+* NodeJS的结构
+* 模块？加载机制、模块缓存、热更新、上下文、包管理
+* 核心内置库类？EventEmitter、Stream、fs文件系统、网络、child-process
+* 进程、子进程、集群、进程通信、守护进程
+* eventLoop？与浏览器的区别？
+* express、koa？中间件及原理？
+* MVC、RESTful接口设计、RPC
+* 编写原生C++模块
+
 ## TypeScript
 
+* 使用TS的优缺点
+* 类型定义文件`*.d.ts`的作用?
+* 如何理解接口、泛型？
+* 将TS集成到开发环境？在Vue、React等库中引入TS
+
 ## 函数式编程
+
+* 高阶函数
+* 纯函数
+* 组合
+* 柯里化
 
 ## 网络
 * 从地址栏输入URL到浏览器显示页面整个流程
@@ -138,25 +161,31 @@ JavaScript
     * 工作原理，核心库 `babel-core`
     * presets和plugins的选择
     * 编译配置，打包优化
-
 * 脚手架cli
     * vue-cli3
     * create-react-app、roadhog、umi
 
 ## 前端性能优化
-* 加载速度
+* 性能瓶颈与性能分析
     * 浏览器解析渲染文档流程，阻塞因素
+    * 数据量大小，长列表数据如何优化？
+* 提前请求资源
+    * DNS预解析
+    * preload、prefetch
+* 加载速度
+    * 静态资源多域名优化
     * 缓存？强缓存与协商缓存？缓存相关头部？如何配置？
-    * 资源合并、资源压缩、代码切割
-    * webp、雪碧图、字体图标、base64图片
-    * CDN原理？CNAME解析流程？
-    * 静态资源多域名优化原理
+    * 减少请求数量，
+        * 资源合并、资源压缩、代码切割
+        * webp、雪碧图、字体图标、base64图片
+    * 压缩文件体积，uglifyJS、gzip
+    * CDN原理，CNAME解析流程
 * 首屏效果
     * 预加载、懒加载、按需加载
     * ssr
     * 骨架屏
 * 代码优化
-    * 重绘和回流、选择器嵌套
-    * 长列表数据如何优化
+    * 重绘和回流
+    * 选择器嵌套
     * React组件性能优化
     * Vue组件性能优化

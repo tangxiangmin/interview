@@ -83,3 +83,11 @@ Babel
 ```
 
 如果不采用 presets 完全可以单独引用某个功能。如果同时设置了presets和plugins，那么plugins的先运行；每个preset和plugin都可以再配置自己的option
+
+### 执行顺序
+
+前面提到，可以同时使用多个 Plugin 和 Preset，此时，它们的执行顺序非常重要。
+
+* 先执行完所有 Plugin，再执行 Preset。
+* 多个 Plugin，按照声明顺序依次执行。
+* 多个 Preset，按照声明顺序逆序执行。

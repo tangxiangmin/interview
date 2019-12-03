@@ -124,6 +124,11 @@ http.createServer(function(req, res) {
 在`v11`以后的版本中，为了与浏览器的事件循环保持一致，调整为每完成一个宏任务之后，就调用`process._tickCallback()`清空微任务队列。
 
 
+## 编写原生C++模块
+
+参考：[写一个N-API没那么难](https://juejin.im/post/5de484bef265da05ef59feb5)
+
+
 ## Web开发
 > 什么是Restful API ? koa和express有什么区别？中间件的作用是什么，能大概实现一下吗？你用过哪些模板引擎，他们有什么优劣？
 
@@ -141,8 +146,6 @@ http.createServer(function(req, res) {
 其原理就是维护一个中间件队列，每个中间件接收下一个中间件`next`作为参数，并手动调用
 
 ### express
-// todo
-
 
 ### Koa
 * [Koa中间件的原理](https://www.shymean.com/article/koa%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%AF%BC%E8%87%B4%E6%8E%A5%E5%8F%A3404%E7%9A%84%E9%97%AE%E9%A2%98)
@@ -150,14 +153,3 @@ http.createServer(function(req, res) {
 ### 模板引擎
 参考
 * [实现一个简易的JS模板引擎](https://www.shymean.com/article/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84JS%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E)
-
-## 单页面应用SSR原理
-参考
-* [Vue SSR指南](https://ssr.vuejs.org/zh/#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E6%B8%B2%E6%9F%93-ssr-%EF%BC%9F)
-
-以[nuxt.js](https://zh.nuxtjs.org/)为例，客户端请求服务器，服务器根据请求地址获得匹配的组件，在调用匹配到的组件返回 Promise (官方是preFetch方法)来将需要的数据拿到。最后再通过
-
-<script>window.__initial_state=data</script>
-将其写入网页，最后将服务端渲染好的网页返回回去。
-
-接下来客户端会将vuex将写入的 initial_state 替换为当前的全局状态树，再用这个状态树去检查服务端渲染好的数据有没有问题。遇到没被服务端渲染的组件，再去发异步请求拿数据。

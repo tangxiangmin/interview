@@ -36,6 +36,7 @@ Vue中提供了大量的语法糖，
 * 事件修饰符
 * filters 过滤器
 * computed 计算属性
+* is的使用场景
 
 ## 组件
 
@@ -61,6 +62,8 @@ Vue中提供了大量的语法糖，
 * 在beforeDestory之前销毁事件订阅、定时器等，避免内存泄漏
 
 ## 开发环境
+
+
 ### vue-cli3
 
 ### Vue-loader
@@ -105,3 +108,39 @@ module.exports = {
 };
 
 ```
+
+
+## Vue3
+
+> 有了解过Vue3吗？
+
+参考：[Vue3 深度解析](https://juejin.im/post/5dd3d4dae51d453d493092da#heading-8)
+
+```html
+<div id="app">
+    <p>{{ state.text }}</p>
+    <button @click="clickBtn">click</button>
+</div>
+<script>
+  const { createApp, reactive, onMounted } = Vue
+  const App = {
+    setup() {
+      onMounted(() => {
+        console.log('onMounted: hello world!')
+      })
+      let state = reactive({ text: 'hello world!' })
+      return {
+        state,
+        clickBtn: () => {
+          state.text = 'hell world'
+        }
+      }
+    }
+  }
+  createApp().mount(App, '#app')
+</script>
+```
+
+主要的写法调整：从之前的Option API 更新为新的Composition API ，与React Hook类似，可以更方便地复用逻辑代码
+
+只是大概了解了一下一些新特性，具体细节还没有深入了解。

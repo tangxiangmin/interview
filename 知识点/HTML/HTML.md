@@ -26,7 +26,9 @@ DOCTYPE是document type的简写，它是一种标记语言的文档类型声明
 * 让人（写程序、读程序）更易读懂， 即使在没有样式CSS情况下也以一种文档格式显示，使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。
 * 让机器（浏览器、搜索引擎，盲人阅读器等）更易读懂，让页面的内容结构化，结构更清晰，爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO
 
-此外HTML 5 提供了一些新的语义化元素标签和属性，如`article`、`nav`、`header`等，参考：[Html5新标签解释及用法](http://www.daqianduan.com/2857.html)。
+此外HTML 5 提供了一些新的语义化元素标签和属性，如`article`、`nav`、`header`等，参考：
+* [Html5新标签解释及用法](http://www.daqianduan.com/2857.html)。
+* [大多数前端工程师了解但并不擅长的HTML语义化](https://juejin.im/post/5de090ae6fb9a0718d4cb039)
 
 
 

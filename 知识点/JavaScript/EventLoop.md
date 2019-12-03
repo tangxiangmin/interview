@@ -2,6 +2,13 @@ EventLoop
 ===
 
 之前整理了一部分：[理解EventLoop](https://www.shymean.com/article/%E7%90%86%E8%A7%A3EventLoop)
+## 为什么要区分宏任务微任务？
+
+从浏览器角度看，宏任务是一个个离散的，独立的工作单元。
+
+微任务是更小的任务，微任务更新应用程序的状态，但是必须在浏览器任务继续执行其他任务之前执行，浏览器任务包括重新渲染页面的UI，因此微任务需要尽可能快地、通过异步方式执行
+
+基于上述原因，将异步任务划分为了宏任务和微任务。
 
 ## Promise
 参考
@@ -104,4 +111,42 @@ function autoExecute(task) {
 }
 autoExecute(test) // 试着用这个自动执行器执行之前的异步任务
 
+```
+
+## async/await
+
+> 阅读过async/await代码通过webpack打包后的代码吗
+
+源代码
+```js
+async function test(){
+    let result = await 1;
+    console.log(result)
+}
+test()
+```
+webpack打包后的代码
+```js
+function test() {
+    var result;
+    return regeneratorRuntime.async(function test$(_context) {
+        while (1) {
+            switch (_context.prev = _context.next) {
+                case 0:
+                _context.next = 2;
+                return regeneratorRuntime.awrap(1);
+
+                case 2:
+                result = _context.sent;
+                console.log(result);
+
+                case 4:
+                case "end":
+                return _context.stop();
+            }
+        }
+    });
+}
+
+test();
 ```

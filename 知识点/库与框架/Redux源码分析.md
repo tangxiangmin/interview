@@ -419,7 +419,14 @@ export default function applyMiddleware(...middlewares) {
   }
 }
 ```
+集合中间件的格式，我们可以了解到
+
+* `chain`中保存的都是`next => action => {next(action)}`的方法
+* 通过`compose`返回了一个组合函数，将`store.dispatch`作为参数传递给组合函数，组合函数执行时会逆序调用chain中的方法，并将上一个方法的返回值作为作为下一个方法
+* 这里的上一个方法就是`action => {next(action)}`，跟原始的`store.dispatch`结构一致，因此组合函数最后的返回值可以理解为是经过组合函数包装后的`dispatch`
+
 所以根据源码，则中间件的执行顺序应该是
+
 ```
 正常同步调用next，在dispatch前执行next前面的代码部分，在dispatch后执行next后面的部分
 mid1 before next -> mid2 before next -> mid3 before next-> dispatch -> mid3 after next -> mid2 after next -> mid1 after next

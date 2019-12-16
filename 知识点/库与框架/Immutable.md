@@ -2,7 +2,10 @@
 
 参考
 * [immutable-js 项目源码](https://github.com/immutable-js/immutable-js)
+
 * [immer-tutorial](https://github.com/ronffy/immer-tutorial)
+
+* [在react/redux中使用Immutable](https://www.cnblogs.com/greatluoluo/p/8469224.html)
 
 
 ## 为什么使用Immutable
@@ -22,4 +25,6 @@ React.js 是一个 UI = f(states) 的框架，为了解决更新的问题， Rea
 * 拥抱函数式编程
 
 ### 缺点
-* 容易与原生对象混
+* 容易与原生对象混用
+* 对已有代码侵入性较强，迁移成本较高
+* 开发效率和应用项目之前需要平衡

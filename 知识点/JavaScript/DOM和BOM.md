@@ -1,5 +1,4 @@
-DOM
-===
+
 
 * DOM操作、节点常用属性
 * 事件的执行阶段，事件委托
@@ -83,7 +82,6 @@ previousSibling
 nextElementSibling
 previousSibling
 ```
-
 ### 操作CSS样式
 查询元素的style属性返回的是一个叫做`CSSStyleDeclaration`对象而不是简单的字符串，该对象包含了元素的样式
 需要注意的是：通过这种方式只能获得元素的行内样式
@@ -105,7 +103,6 @@ function getStyle(obj, attr) {
 test.className = "text-green";
 ```
 HTML5为元素节点提供了一个classList的属性，该属性是一个只读的类数组对象（无法被覆盖），包含了该元素节点的单独类名，并提供了相关的接口用于操作，`add`、`remove`、`toggle`和`contains`
-
 ### 构造元素节点
 我们可以直接向文档中添加标记，让浏览器重新解析文档并生成节点。可以使用的是`document.write()`方法和`node.innerHTML`属性。
 
@@ -144,7 +141,6 @@ function insertAfter(parent, sibling, node){
 }
 ```
 HTML5引进了一个十分强大的插入节点的API，叫做`innerAdjacentHTML`，用于插入文档节点，这里是[文档传送门](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/insertAdjacentHTML)
-
 ### 删除和替换子节点
 ```js
 // 移除子节点
@@ -154,9 +150,37 @@ parentUl.removeChild(siblingLi)
 ```
 此外还可以通过`innerHTML`进行覆盖，移除相关的节点。
 
+
+### 获取DOM尺寸的各种API
+
+- window.innerWidth, window.innerHeight 获取浏览器整体窗口的宽高
+- client系列
+  - **clientTop:** 获取元素border-top的宽度
+  - **clientLeft:**获取元素border-left的宽度
+  - **clientWidth:** 获取元素的宽度，不包含**border**
+  - **clientHeight:**获取元素的高度，不包含**border**
+  - **getBoundingClientRect**， 获取与元素尺寸信息有关的对象
+    - top bottom: 获取元素上下边(不考虑margin)到浏览器窗口上边的距离数值
+    - left right: 获取元素左右边(不考虑margin)到浏览器窗口左边的距离数值
+    - width height: 元素的宽度和高度(包含border)
+    - x y : 或元素左顶点到窗口左边和上边的距离(不考虑margin) **这个属性兼容性不好，不用**
+- offset系列
+  - **offsetParent:**获取元素的最近position不是static的祖先元素
+  - **offsetLeft:** 获取元素（包含border）相对于最近position不是static的祖先元素的左边距离（不包含border，包含padding）
+  - **offsetTop:** 获取元素（包含border）相对于最近position不是static的祖先元素的上边距离（不包含border，包含padding）
+  - **offsetWidth:** 获取元素的宽度，包含border
+  - **offsetHeight:** 获取元素的高度，包含border
+- scroll系列
+  - **scrollLeft:** 获取左侧卷入不可见区域的宽度
+  - **scrollTop:** 获取上侧卷入不可见的区域
+  - **scrollWidth:** 获取的宽度为（内容实际宽度包括卷入的区域+padding部分）与（元素宽度+padding部分）
+  - **scrollHeight:** 获取的宽度为（内容实际高度包括卷入的区域+padding部分）与（元素高度+padding部分）
+  - **window.scrollBy(x,y):** 窗口相对滚动函数
+  - **window.scrollTo(x,y):** 窗口绝对滚动函数
+
+
 ## 事件
 参考：[DOM编程之事件（二）](http://www.shymean.com/article/DOM%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BA%8B%E4%BB%B6%EF%BC%88%E4%BA%8C%EF%BC%89)
-
 
 ### 事件委托
 事件冒泡模型在为大量单独元素上注册处理程序提供了解决方案（在其公有祖先元素上注册事件,即**事件委托**）。
@@ -169,10 +193,15 @@ parentUl.removeChild(siblingLi)
 * 某些操作会同时出发多个事件，如点击事件执行顺序:touchstart -> touchend -> click
 * 事件执行顺序先捕获后冒泡。`addEventListener`第三个参数设置为ture时是在捕获阶段执行，而默认是false在冒泡阶段执行。
 
-## 网络请求
-[传送门]('../网络/前端网络请求.md')，需要掌握AJAX和fetch的使用，需要了解跨域的
+### 事件节流去抖
 
-## requestAnimationFrame
+参考：[Throttle && Debonce]([https://github.com/tangxiangmin/JSMagic/tree/master/Throttle%20%26%20Debounce](https://github.com/tangxiangmin/JSMagic/tree/master/Throttle %26 Debounce))
+
+
+
+## JS动画
+
+### requestAnimationFrame
 参考：
 * [MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame)
 
@@ -182,8 +211,14 @@ window.requestAnimationFrame(callback);
 * 在大多数浏览器里，当运行在后台标签页或者隐藏的`iframe` 里时，requestAnimationFrame() 会暂停调用以提升性能和电池寿命。
 * callback会被传入一个参数，DOMHighResTimeStamp，指示当前被 requestAnimationFrame() 排序的回调函数被触发的时间。即使每个回调函数的工作量的计算都花了时间，单个帧中的多个回调也都将被传入相同的时间戳
 
-BOM
-===
+### JS动画性能优化
+JS实现动画性能优化，参考[流畅JS动画的7个性能优化建议](https://www.jianshu.com/p/fc0b79018a84)
+* 避免针对复杂css属性执行动画，提升web动画性能简单而有效的方式是改变那些只触发复合操作的css属性，如使用`transform`代替`left`等属性
+* 使用`requestAnimationFrame`代替`setTimeout/setInterval`，避免动画丢帧
+* 如果fps是60，则每一帧只有16.67毫秒，避免执行复杂的计算，可以适当做缓存处理，增加动画的流畅性
+* 某些DOM属性如`offsetTop`等会导致浏览器的重绘，可以使用变量将其缓存起来
+
+## BOM
 
 BOM（浏览器对象模型）是浏览器本身的一些信息的设置和获取，一般常用的是
 * navigator，用于获取浏览器特征，比如判断平台等
@@ -215,7 +250,3 @@ HTML5新增了sessionStorage和localStorage用于本地存储，专门为了浏�
     * 作用域不同，sessionStorage不能在浏览器的不同标签页中共享，即使是同一个页面（刷新页面可以继续存在）；
     * localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的
 
-
-## history API
-
-前端单页应用路由基础

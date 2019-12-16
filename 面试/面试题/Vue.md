@@ -70,7 +70,7 @@ Object.defineProperty 的优势如下:
 
 Vue是通过`Object.defineProperty`劫持数据的访问描述符来实现的
 
-AngularJS是在恰当的时机从$rootScope开始遍历所有$scope，检查它们上面的属性值是否有变化，如果有变化，就用一个变量dirty记录为true，再次进行遍历，如此往复，直到某一个遍历完成时，这些$scope的属性值都没有变化时，结束遍历。由于使用了一个dirty变量作为记录，因此被称为脏检查机制
+AngularJS是在恰当的时机从 `$rootScope` 开始遍历所有`$scope`，检查它们上面的属性值是否有变化，如果有变化，就用一个变量dirty记录为true，再次进行遍历，如此往复，直到某一个遍历完成时，这些$scope的属性值都没有变化时，结束遍历。由于使用了一个dirty变量作为记录，因此被称为脏检查机制
 
 
 ### Vue 组件 data 为什么必须是函数

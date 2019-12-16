@@ -56,10 +56,21 @@ Vue中提供了大量的语法糖，
 参考
 * [最全的 Vue 性能优化指南，值得收藏](https://mp.weixin.qq.com/s/MRrUDEfNcWA340u1Ovhh0A)
 
+代码层面的优化
+
 * `v-if`和`v-show`
 * computed 和 watch，计算属性 `computed` 的值有缓存，`watch`每当监听的数据变化时都会执行回调 
 * 使用`Object.freeze`对不需要响应式的数据避免劫持。
 * 在beforeDestory之前销毁事件订阅、定时器等，避免内存泄漏
+* 长列表通过窗口化复用DOM节点
+* SSR渲染SEO优化
+
+打包层面的优化
+
+* 路由懒加载
+* 库文件按需加载
+
+网络层面的优化
 
 ## 开发环境
 
@@ -141,6 +152,10 @@ module.exports = {
 </script>
 ```
 
-主要的写法调整：从之前的Option API 更新为新的Composition API ，与React Hook类似，可以更方便地复用逻辑代码
+主要改动
+
+* API写法调整，从之前的Option API 更新为新的Composition API ，与React Hook类似，可以更方便地复用逻辑代码
+* 使用`Proxy`代替`Object.defineProperty`
+* 源码从flow迁移到TypeScript
 
 只是大概了解了一下一些新特性，具体细节还没有深入了解。

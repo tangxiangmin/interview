@@ -42,6 +42,14 @@ GET和POST的区别，就日常使用经验来看
 
 [HTTP常见状态码](https://www.cnblogs.com/starof/p/5035119.html)
 
+### keep-alive
+
+在早期，当一个http请求响应完毕后，就会断开本次tcp连接。如果http请求比较频繁，这种为单个请求建立tcp连接的方式就比较浪费。
+
+可以通过配置`Connection：keep-alive`和`Keep-Alive:timeout=x,max=xx`的响应头来改善这种状态。
+
+可以理解为HTTP的 `keep-alive`是为了让tcp活得更久一点：当一个http相应完毕后，理应立即关闭本次链接，服务端此时会等待`timeout`秒，然后才关闭这个链接。
+
 ## HTTP缓存
 
 缓存的好处:

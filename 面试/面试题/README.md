@@ -1,5 +1,7 @@
 本文将整理我自己考察自己的一些面试题，用来考察自己的学习程度，因此不会附带答案。
 
+[假如我是前端面试官]([https://www.shymean.com/article/%E5%81%87%E5%A6%82%E6%88%91%E6%98%AF%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%AE%98](https://www.shymean.com/article/假如我是前端面试官))
+
 
 ## 前端基础
 

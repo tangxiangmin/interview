@@ -186,6 +186,8 @@ plugins: [
 
 ## 性能优化
 
+[webpack折腾记（四）：性能优化](https://www.shymean.com/article/webpack%E6%8A%98%E8%85%BE%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96)
+
 ### 处理不经常更新的库文件
 
 * CommonsChunkPlugin，实际上每次打包时还需要去处理这些第三方库，打包完成后，能把第三方库和自己的业务代码分开
@@ -197,7 +199,6 @@ plugins: [
 参考：[使用webpack4提升180%编译速度](http://louiszhai.github.io/2019/01/04/webpack4/)
 
 使用`webpack-bundle-analyzer `
-
 
 为何升级webpack4后编译速度会增加的很明显？
 

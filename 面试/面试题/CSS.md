@@ -32,13 +32,7 @@ inline-block 元素特点：
 
 ### 物理像素和逻辑像素有什么区别？
 
-参考：[CSS像素、物理像素、逻辑像素、设备像素比、PPI、Viewpor](https://github.com/jawil/blog/issues/21)
-
-PX(CSS pixels)实际是pixel（像素）的缩写，它是图像显示的基本单元，既不是一个确定的物理量，也不是一个点或者小方块，而是一个抽象概念。所以在谈论像素时一定要清楚它的上下文
-
-设备像素(device pixels)，也称物理像素，顾名思义，显示屏是由一个个物理像素点组成的，通过控制每个像素点的颜色，使屏幕显示出不同的图像，屏幕从工厂出来那天起，它上面的物理像素点就固定不变了，单位pt。
-
-设备独立像素(Device independent Pixel)，也称为逻辑像素，简称dip。我们可以简单理解为`CSS像素 =设备独立像素 = 逻辑像素`。window对象有一个devicePixelRatio属性，它的官方的定义为：设备物理像素和设备独立像素的比例，也就是 devicePixelRatio = 物理像素 / 独立像素
+参考:[分辨率](../知识点/CSS/分辨率.md)
 
 ### 制作动画，频率多少合适
 
@@ -350,8 +344,6 @@ vertical-align实现
 
 还有比如line-height等hack方法就不提了
 
-
-
 > CSS实现单行、多行文本溢出
 
 ```scss
@@ -521,7 +513,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
         background-color: red;
         margin-bottom: 5px;
         /*避免子组件出现跨列*/
-        break-inside: avoid;
+        column-break-inside: avoid;
     }
 </style>
 <div class="waterfall">
@@ -531,4 +523,96 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     <div style="height: 80px;">D</div>
     <div style="height: 140px;">E</div>
 </div>
+```
+
+> 只用一个div实现八卦图
+
+参考：[只用一个div实现八卦图](https://blog.csdn.net/AI_U20/article/details/84339102)
+
+大致思路为
+* 实现一个圆形div，一半白色一半黑色（白色通过背景实现，黑色通过border实现）
+* 然后通过after伪类实现白点，其背景色被白色，边框为黑色，整体为圆形
+* before同理，其背景色为黑色，边框为白色，整体为圆形
+
+利用边框
+```css
+ div{
+    width: 100px;
+    height: 200px;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    margin: auto;
+    border-style: solid;
+    border-color: #000;
+    border-width: 1px 100px 1px 1px;
+    border-radius: 50%;
+}
+div:before {
+    content: '';
+    background: #000;
+    width: 20px;
+    height: 20px;
+    border: 40px solid #fff;
+    border-radius: 100%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+}
+div:after {
+    content: '';
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    border: 40px solid #000;
+    border-radius: 100%;
+    position: absolute;
+    right: -50%;
+    bottom: 0;
+}
+```
+
+通过`linear-gradient`实现
+```css
+div {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(to right,#000 50%,#fff 50%);   //控制方向及位置，设置50%消除融合部分
+    border: 1px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    margin: auto;
+}
+div:before {
+    content: '';
+    background: #000;
+    width: 20px;
+    height: 20px;
+    border: 40px solid #fff;
+    border-radius: 100%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-left: -50px;
+}
+div:after {
+    content: '';
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    border: 40px solid #000;
+    border-radius: 100%;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin-left: -50px;
+}
+
 ```

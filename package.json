@@ -1,13 +1,12 @@
 {
   "name": "interview",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "日常收集的前端知识点与前端面试题",
   "main": "index.js",
   "scripts": {
-    "setup": "ln ./scripts/prepare-commit-msg ./.git/hooks/ && gitbook install ./",
+    "setup": "ln ./scripts/prepare-commit-msg ./.git/hooks/",
     "catalogue:build": "node scripts/build.js",
     "deploy": "./scripts/deploy.sh",
-    "start": "npm run catalogue:build && gitbook serve -d",
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:serve": "vitepress serve"

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo "====start build===="
+npm run build
+git add SUMMARY.md
+# 自动部署
+# echo "====start deploy===="
+# npm run deploy
+echo "====end task===="

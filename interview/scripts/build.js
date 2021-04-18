@@ -86,7 +86,7 @@ function writeSummary(floders) {
 
 // ===start build=== //
 function build(){
-    let floders = ["源码分析", "知识点", "面试"];
+    let floders = ["知识点", "面试"];
     writeSummary(floders)
 }
 

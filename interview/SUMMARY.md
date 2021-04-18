@@ -2,9 +2,6 @@
 # Summary
 * [Introduction](README.md)
     
-## 源码分析
-* [snabbdom虚拟DOM diff算法.md](./源码分析/snabbdom虚拟DOM diff算法.md) 
-
 ## 知识点
 * [README.md](./知识点/README.md) 
 * CSS
@@ -80,25 +77,19 @@
 
 ## 面试
 * 面试记录
-  * [2017_DaE.md](./面试/面试记录/2017_DaE.md) 
-  * [2017_TE.md](./面试/面试记录/2017_TE.md) 
-  * [2018_AYLDM.md](./面试/面试记录/2018_AYLDM.md) 
-  * [2018_HDJR.md](./面试/面试记录/2018_HDJR.md) 
-  * [2018_MD.md](./面试/面试记录/2018_MD.md) 
-  * [2018_PAKJ.md](./面试/面试记录/2018_PAKJ.md) 
-  * [2018_QKCJ.md](./面试/面试记录/2018_QKCJ.md) 
-  * [2018_SFWY.md](./面试/面试记录/2018_SFWY.md) 
-  * [2018_TW.md](./面试/面试记录/2018_TW.md) 
-  * [2018_YHKJ.md](./面试/面试记录/2018_YHKJ.md) 
-  * [2018_YSKJ.md](./面试/面试记录/2018_YSKJ.md) 
-  * [2018_Z8.md](./面试/面试记录/2018_Z8.md) 
-  * [2019_BCZ.md](./面试/面试记录/2019_BCZ.md) 
-  * [2019_HKJT.md](./面试/面试记录/2019_HKJT.md) 
-  * [2019_JRTT.md](./面试/面试记录/2019_JRTT.md) 
-  * [2019_LDS.md](./面试/面试记录/2019_LDS.md) 
-  * [2019_QEXR.md](./面试/面试记录/2019_QEXR.md) 
-  * [2019_WBLZ.md](./面试/面试记录/2019_WBLZ.md) 
-  * [2019_XFLX.md](./面试/面试记录/2019_XFLX.md) 
+  * [AYLDM.md](./面试/面试记录/AYLDM.md) 
+  * [DaE.md](./面试/面试记录/DaE.md) 
+  * [HDJR.md](./面试/面试记录/HDJR.md) 
+  * [JRTT.md](./面试/面试记录/JRTT.md) 
+  * [MD.md](./面试/面试记录/MD.md) 
+  * [PAKJ（外包岗）.md](./面试/面试记录/PAKJ（外包岗）.md) 
+  * [QKCJ.md](./面试/面试记录/QKCJ.md) 
+  * [SFWY.md](./面试/面试记录/SFWY.md) 
+  * [TE（外包岗）.md](./面试/面试记录/TE（外包岗）.md) 
+  * [TW.md](./面试/面试记录/TW.md) 
+  * [YHKJ.md](./面试/面试记录/YHKJ.md) 
+  * [YSKJ.md](./面试/面试记录/YSKJ.md) 
+  * [Z8.md](./面试/面试记录/Z8.md) 
 * 面试题
   * [README.md](./面试/面试题/README.md) 
   * [CSS.md](./面试/面试题/CSS.md) 

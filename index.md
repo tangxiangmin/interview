@@ -5,7 +5,7 @@
 
 面试的信心来自于自身扎实的基础，切勿急功近利，好逸恶劳~自勉之。
 
-## gitbook
+## vitepress
 
 新版本使用`vitepres`构建，提供[预览模式](https://tangxiangmin.github.io/interview/index.html)
 

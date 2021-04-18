@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "setup": "ln ./scripts/prepare-commit-msg ./.git/hooks/ && gitbook install ./",
-    "build": "node scripts/build.js",
+    "catalogue:build": "node scripts/build.js",
     "deploy": "./scripts/deploy.sh",
-    "start": "npm run build && gitbook serve -d"
+    "start": "npm run catalogue:build && gitbook serve -d",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:serve": "vitepress serve"
   },
   "repository": {
     "type": "git",
@@ -22,5 +25,8 @@
   "homepage": "https://github.com/tangxiangmin/interview#readme",
   "dependencies": {
     "fs-extra": "^7.0.1"
+  },
+  "devDependencies": {
+    "vitepress": "^0.13.0"
   }
 }

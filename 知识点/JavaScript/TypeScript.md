@@ -14,14 +14,16 @@ TypeScript
 ```
 variableName: variableType
 ```
+
 ### 基础类型
+
 * boolean
 * number
 * string
 * 数组：
-    * 基础类型+[]，例如number[]
-    * 数组泛型，例如Array<number>
-* 元组,[string, number]，需要保证对应位置的元素类型保持一致
+    * `基础类型+[]`，例如`number[]`
+    * 数组泛型，例如`Array<number>`
+* 元组,`[string, number]`，需要保证对应位置的元素类型保持一致
 * enum
 * any
 * void，表示没有任何类型，通常声明函数没有任何返回值
@@ -30,7 +32,7 @@ variableName: variableType
 * never
 
 类型断言，可以理解为强制类型转换
-```
+```ts
 let someValue: any = "this is a string";
 let strLength: number = (<string>someValue).length;
 
@@ -43,7 +45,7 @@ let strLength2: number = (someValue as string).length;
 传入的对象参数实际上会包含很多属性，但是编译器只会检查那些必需的属性是否存在，并且其类型是否匹配
 
 
-```
+```ts
 // 接口
 interface LabelledValue {
   label: string;

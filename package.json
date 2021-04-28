@@ -7,6 +7,7 @@
     "setup": "ln ./scripts/prepare-commit-msg ./.git/hooks/",
     "catalogue:build": "node scripts/build.js",
     "deploy": "./scripts/deploy.sh",
+    "dev": "yarn catalogue:build && vitepress dev",
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:serve": "vitepress serve"

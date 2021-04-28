@@ -3,7 +3,7 @@ let path = require("path");
 
 const ROOT_PATH = path.resolve(__dirname, "../"); // 项目根目录
 
-module.exports = {
+const config = {
     title: "前端知识汇总",
     description: "fe",
     themeConfig: {
@@ -11,6 +11,9 @@ module.exports = {
             {text: "目录", link: "/SUMMARY", activeMatch: '^/$'},
             {text: "知识点", link: "/知识点/README", activeMatch: "^/知识点/"},
             {text: "源码分析", link: "/源码分析/README", activeMatch: "^/源码分析/"},
+            {text: "数据结构和算法", link: "/数据结构和算法/README", activeMatch: "^/数据结构和算法/"},
+            {text: "计算机基础", link: "/计算机基础/README", activeMatch: "^/计算机基础/"},
+            {text: "网络", link: "/网络/README", activeMatch: "^/网络/"},
             {text: "面试", link: "/面试/README", activeMatch: "^/面试/"},
             {
                 text: "github",
@@ -26,9 +29,13 @@ module.exports = {
             "/知识点/": getFolderChild('知识点'),
             "/面试/": getFolderChild('面试'),
             "/源码分析/": getFolderChild('源码分析'),
+            "/数据结构和算法/": getFolderChild('数据结构和算法'),
+            "/计算机基础/": getFolderChild('计算机基础'),
+            "/网络/": getFolderChild('网络'),
         },
     },
 };
+module.exports = config
 
 // 比较粗糙的检测方式，判断是否是文件夹
 function isFolder(url) {

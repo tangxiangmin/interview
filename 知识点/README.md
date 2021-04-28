@@ -4,6 +4,8 @@
 
 ## CSS
 
+![](http://img.shymean.com/oPic/1619618094727_781.png)
+
 * 选择器
     * 种类
     * 权重值计算
@@ -45,8 +47,9 @@
     * 异常处理
 
 ## BOM与DOM编程
-* DOM节点，增删查改API，jQuery，JS实现动画
-* 事件
+* DOM节点，增删查改API，jQuery
+* DOM动画
+* 事件流
     * 冒泡与事件委托
     * 事件捕获
 * History API
@@ -60,12 +63,11 @@
     * 动画和游戏
 * 跨标签页通信
 * Web Worker、PostMessage等
-
-## 浏览器
-* 浏览器加载页面？DNS、HTTP、W3C标准HTML文件
-* 浏览器解析页面？标签阻塞、CSSOM、DOM tree
-* 浏览器渲染页面？renderTree
-* 整个过程中的性能优化
+* 浏览器
+    * 浏览器加载页面？DNS、HTTP、W3C标准HTML文件
+    * 浏览器解析页面？标签阻塞、CSSOM、DOM tree
+    * 浏览器渲染页面？renderTree
+    * 整个过程中的性能优化
 
 ## 库与框架
 * React

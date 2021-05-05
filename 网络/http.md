@@ -63,6 +63,38 @@ GET和POST的区别，就日常使用经验来看
 * `If-Range`设置客户端ETag，如果和服务端接受请求生成的ETage相同，返回缺失的实体部分；否则返回整个新的实体
 * `If-Unmodified-Since` 设置更新时间，只有从更新时间到服务端接受请求这段时间内实体没有改变，服务端才会发送响应
 
+下面是强缓存和协商缓存的相关流程
+```
+@startuml  cache
+start
+:请求资源;
+if(浏览器私有缓存) then (Y)
+    if(新鲜度检测) then(Y)
+        :200(from cache);
+        stop
+    else (N)
+        if(服务器再验证) then(Y)
+            :HTTP 304;
+            :浏览器更新新鲜度;
+            :304(not modified);
+            stop
+        endif
+    endif
+else (N)
+    :未命中缓存，直接请求资源;
+endif
+
+if(资源存在) then(Y)
+    :新内存存入缓存;
+    :HTTP 200;
+    stop
+else 
+    :HTTP 404;
+    stop
+@enduml
+```
+![](http://img.shymean.com/oPic/1620227891123_947.png)
+
 ## 身份识别 
 
 ### Cookie

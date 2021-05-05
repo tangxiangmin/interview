@@ -11,6 +11,7 @@ webpack是一个打包模块化javascript的工具，在webpack里一切文件�
 * http://imweb.io/topic/59324940b9b65af940bf58ae
 * [深入浅出webpack-电子书](http://webpack.wuhaolin.cn/)
 * [细说 webpack 之流程篇](http://taobaofed.org/blog/2016/09/09/webpack-flow/)
+* [[万字总结] 一文吃透 Webpack 核心原理](https://mp.weixin.qq.com/s/Jw_-cZepryo9nbnk1mwjjw)
 
 ## webpack基本使用
 

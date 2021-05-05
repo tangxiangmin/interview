@@ -195,9 +195,7 @@ parentUl.removeChild(siblingLi)
 
 ### 事件节流去抖
 
-参考：[Throttle && Debonce]([https://github.com/tangxiangmin/JSMagic/tree/master/Throttle%20%26%20Debounce](https://github.com/tangxiangmin/JSMagic/tree/master/Throttle %26 Debounce))
-
-
+参考：[Throttle && Debonce](https://github.com/tangxiangmin/JSMagic/tree/master/Throttle%20%26%20Debounce)
 
 ## JS动画
 

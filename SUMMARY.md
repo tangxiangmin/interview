@@ -8,11 +8,11 @@
 * [Redux源码分析.md](./源码分析/Redux源码分析.md) 
 * [axios源码分析.md](./源码分析/axios源码分析.md) 
 * [koa源码分析.md](./源码分析/koa源码分析.md) 
-* [snabbdom虚拟DOMdiff算法.md](./源码分析/snabbdom虚拟DOMdiff算法.md) 
 
 ## 知识点
 * [README.md](./知识点/README.md) 
 * CSS
+  * [README.md](./知识点/CSS/README.md) 
   * [CSS3.md](./知识点/CSS/CSS3.md) 
   * [分辨率.md](./知识点/CSS/分辨率.md) 
   * [基础知识.md](./知识点/CSS/基础知识.md) 
@@ -25,6 +25,7 @@
   * [SEO优化.md](./知识点/HTML/SEO优化.md) 
   * [Web Components.md](./知识点/HTML/Web Components.md) 
 * JavaScript
+  * [README.md](./知识点/JavaScript/README.md) 
   * [Canvas.md](./知识点/JavaScript/Canvas.md) 
   * [DOM和BOM.md](./知识点/JavaScript/DOM和BOM.md) 
   * [ECMAScript.md](./知识点/JavaScript/ECMAScript.md) 
@@ -41,19 +42,24 @@
 * 业务相关
   * [Babel.md](./知识点/业务相关/Babel.md) 
   * [CI.md](./知识点/业务相关/CI.md) 
-  * [Chrome扩展程序.md](./知识点/业务相关/Chrome扩展程序.md) 
   * [Docker.md](./知识点/业务相关/Docker.md) 
-  * [Electron.md](./知识点/业务相关/Electron.md) 
+  * [git.md](./知识点/业务相关/git.md) 
+  * [mock.md](./知识点/业务相关/mock.md) 
   * [npm.md](./知识点/业务相关/npm.md) 
   * [webpack.md](./知识点/业务相关/webpack.md) 
   * [web安全.md](./知识点/业务相关/web安全.md) 
   * [前端工程化.md](./知识点/业务相关/前端工程化.md) 
+  * [单元测试.md](./知识点/业务相关/单元测试.md) 
   * [性能优化.md](./知识点/业务相关/性能优化.md) 
+  * [数据埋点.md](./知识点/业务相关/数据埋点.md) 
   * [模块化.md](./知识点/业务相关/模块化.md) 
   * [类前端业务.md](./知识点/业务相关/类前端业务.md) 
   * [调试.md](./知识点/业务相关/调试.md) 
+  * [错误上报.md](./知识点/业务相关/错误上报.md) 
 * 库与框架
   * [README.md](./知识点/库与框架/README.md) 
+  * [Chrome扩展程序.md](./知识点/库与框架/Chrome扩展程序.md) 
+  * [Electron.md](./知识点/库与框架/Electron.md) 
   * [Immutable.md](./知识点/库与框架/Immutable.md) 
   * [React.md](./知识点/库与框架/React.md) 
   * [Vue.md](./知识点/库与框架/Vue.md) 
@@ -62,10 +68,6 @@
   * [单页面应用Router.md](./知识点/库与框架/单页面应用Router.md) 
   * [微信小程序.md](./知识点/库与框架/微信小程序.md) 
   * [技术选型.md](./知识点/库与框架/技术选型.md) 
-* 移动客户端
-  * [Android.md](./知识点/移动客户端/Android.md) 
-  * [iOS.md](./知识点/移动客户端/iOS.md) 
-  * [webview.md](./知识点/移动客户端/webview.md) 
 
 ## 面试
 * [README.md](./面试/README.md) 

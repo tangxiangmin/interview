@@ -177,17 +177,76 @@ npm publish --access=public
 
 ## 搭建本地npm服务器
 
-参考
-* [基于sinopia快速搭建本地npm服务器](https://www.jianshu.com/p/a67ee875962c)
-* [github项目](https://github.com/rlidwka/sinopia)
+在某些时候不方便将模块发布到公共的npm仓库，因此就有了搭建本地npm服务器的需求
 
-管理私有包依赖比较麻烦，因此就有了搭建本地npm服务器的需求
+在之前可以使用[sinopia](https://github.com/rlidwka/sinopia)来搭建npm私有仓库，但sinopia已经年久失修了，目前一般使用[verdaccio](https://github.com/verdaccio/verdaccio)
 
 ```
-npm install -g sinopia
-sinopia
+# 全局安装
+npm i verdaccio -g 
 
-npm set registry http://localhost:4873/
-npm adduser --registry http://localhost:4873/
-npm publish
+# 启动服务
+verdaccio
+
+# 如果希望开启守护经常，可以使用pm2 
+pm2 start verdaccio
+
+http://localhost:4873
 ```
+
+可以修改`vs ~/.config/verdaccio/config.yaml`的相关配置，比如当找不到包时如果希望去其他镜像查找，则修改`uplinks`参数
+
+```
+uplinks:
+  npmjs:
+    url: https://registry.npmjs.org/
+    # 可以修改为淘宝镜像 url: https://registry.npm.taobao.org/ 
+```
+
+如果是公司级别的npm私库，可以考虑使用Docker安装verdaccio镜像，或者购买云服务厂商的私有包托管仓库。
+
+## 修改npm镜像
+
+如果是临时修改镜像源，可以通过`npm config`修改
+```
+npm config set registry https://registry.npm.taobao.org/
+```
+
+如果需要经常在多个镜像之间来回切换，可以使用nrm
+
+```
+npm install -g nrm
+
+# 查看镜像
+nrm ls
+
+# 使用某个镜像
+nrm use taobao
+
+# 添加镜像
+nrm add local http://localhost:4873/
+```
+
+## 其他包管理工具
+
+### yarn
+
+Yarn是由Facebook、Google、Exponent 和 Tilde 联合推出了一个新的 JS 包管理工具，主要目的是弥补npm的一些设计缺陷。
+
+在当时还是npm4.x的时代背景下，npm存在的一些缺陷
+* npm install的时候非常慢，要安装的依赖太多了，并且是按照队列顺序安装每个依赖
+* 同一个项目，安装的时候无法保持一致性，没错，当时还没有package-lock.json
+
+yarn具备的优点
+* 安装速度快，主要靠：并行下载、缓存离线安装
+* yarn.lock记录每个被安装的依赖的版本
+
+npm5.x之后做出了一些改动
+* 增加了package-lock.json
+* 文件依赖优化，通过symlinks依赖本地模块（之前是拷贝文件到node_modules）    
+
+yarn切换镜像的话，可以使用[yrm](https://www.npmjs.com/package/yrm)，跟上面的nrm基本一致。
+
+### cnpm
+
+不要用，不如使用npm改个taobao镜像。

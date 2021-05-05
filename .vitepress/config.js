@@ -9,6 +9,7 @@ const config = {
     themeConfig: {
         nav: [
             {text: "目录", link: "/SUMMARY", activeMatch: '^/$'},
+            {text: "导读", link: "/导读", activeMatch: '^/导读$'},
             {text: "知识点", link: "/知识点/README", activeMatch: "^/知识点/"},
             {text: "源码分析", link: "/源码分析/README", activeMatch: "^/源码分析/"},
             {text: "数据结构和算法", link: "/数据结构和算法/README", activeMatch: "^/数据结构和算法/"},
@@ -76,6 +77,7 @@ function getFolderChild(folder) {
     // return []
 }
 
+// todo 需要解决默认文章排序问题
 function generateChildrenRoutes(config, folder) {
     const {name, files, hasReadme} = config
 

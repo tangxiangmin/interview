@@ -19,9 +19,9 @@
 * (a)一个包含了程序和描述该程序的 package.json 文件 的 文件夹
 * (b)一个包含了 (a) 的 gzip 压缩文件
 * (c)一个可以下载得到 (b) 资源的 url (通常是 http(s) url)
-* (d)一个格式为 <name>@<version> 的字符串，可指向 npm 源(通常是官方源 npmjs.org)上已发布的可访问 url，且该 url 满足条件 (c)
-* (e)一个格式为 <name>@<tag> 的字符串，在 npm 源上该<tag>指向某 <version> 得到 <name>@<version>，后者满足条件 (d)
-* (f)一个格式为 <name> 的字符串，默认添加 latest 标签所得到的 <name>@latest 满足条件 (e)
+* (d)一个格式为 `<name>@<version>` 的字符串，可指向 npm 源(通常是官方源 npmjs.org)上已发布的可访问 url，且该 url 满足条件 (c)
+* (e)一个格式为 `<name>@<tag>` 的字符串，在 npm 源上该`<tag>`指向某 `<version>` 得到 `<name>@<version>`，后者满足条件 (d)
+* (f)一个格式为 `<name>` 的字符串，默认添加 latest 标签所得到的 `<name>@latest` 满足条件 (e)
 * (g)一个 git url, 该 url 所指向的代码库满足条件 (a)
 
 [npm](https://www.npmjs.cn/)全称为`Node Package Manager`，是一个基于Node.js的**包**管理器，npm 存在的目的是避免 JS 开发者重复造轮子，让大家的劳动成果可以共享。

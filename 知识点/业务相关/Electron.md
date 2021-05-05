@@ -7,6 +7,7 @@ Electron
 * [官网](https://electronjs.org)
 * [electron-api-demos](https://github.com/electron/electron-api-demos)，一个展示相关API的应用项目
 * [PicGo](https://github.com/Molunerfinn/PicGo)，使用Vue和Electron开发的一个类似iPic的上传图片到图床的工具
+* 之前的整理：[使用Electron实现一个iPic](https://www.shymean.com/article/%E4%BD%BF%E7%94%A8Electron%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAiPic)
 
 进程和线程的区别：每个进程都有自己独立的一块内存空间，一个进程可以有多个线程；线程是 进程中的一个执行任务（控制单元），负责当前进程中程序的执行。一个进程至少有一个线程，一个进程可以运行多个线程，多个线程可共享数据
 

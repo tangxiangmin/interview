@@ -16,7 +16,11 @@ React.js 是一个 UI = f(states) 的框架，为了解决更新的问题， Rea
 
 可以使用PureComponent来避免不必要的更新，但其只是浅比较，无法判断组件的修改？自己去做复杂比较的话，性能又会非常差
 
+在react中为了保证纯函数和state的变化，需要写大量的{...state}之类的代码，可以使用Immutable 来处理。
+
 方案就是使用 immutable.js 可以解决这个问题。因为每一次 state 更新只要有数据改变，那么 PureRenderMixin 可以立刻判断出数据改变，可以大大提升性能
+
+Immutable.js 需要使用其内置的api来操作数据，比较繁琐，且需要区分是 Immutable 对象还是原生对象，容易混淆操作。对现有代码的迁移成本也很高，可以使用immer.js
 
 ### 优点
 * 降低 Mutable 数据变化带来的复杂度

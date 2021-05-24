@@ -7,7 +7,9 @@ web安全
 
 攻击者通过某种手段修改 JavaScript 对象的原型（prototype），然后影响浏览器或NodeJS环境下的代码
 
-参考 [最新：Lodash 严重安全漏洞背后你不得不知道的 JavaScript 知识](https://juejin.im/post/5d271332f265da1b934e2d48)
+参考
+* [最新：Lodash 严重安全漏洞背后你不得不知道的 JavaScript 知识](https://juejin.im/post/5d271332f265da1b934e2d48)
+* [前端原型链污染漏洞竟可以拿下服务器shell？](https://juejin.cn/post/6963950629240733727)
 
 在使用`merge`、`extend`等方法时，如果被恶意参数修改了JavaScript内置原型对象的方法`如Object.prototype.toString`之类的，就可能产生攻击。
 

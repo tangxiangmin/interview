@@ -32,7 +32,7 @@ const config = {
             },
             {
                 text: "后台",
-                link: "/后台/PHP",
+                link: "/后台/README",
             },
 
             {
@@ -55,7 +55,13 @@ const config = {
                 ],
             },
             { text: "面试", link: "/面试/README", activeMatch: "^/面试/" },
-            { text: "读书笔记", link: "/读书笔记/README", activeMatch: "^/读书笔记/" },
+            { text: "游戏开发", link: "/游戏开发/README", activeMatch: "^/游戏开发/" },
+
+            {
+                text: "读书笔记",
+                link: "/读书笔记/README",
+                activeMatch: "^/读书笔记/",
+            },
             {
                 text: "github",
                 link: "https://github.com/tangxiangmin/interview",
@@ -72,7 +78,7 @@ const config = {
             "/前端/JavaScript/": getFolderChild("前端/JavaScript"),
             "/前端/库与框架/": getFolderChild("前端/库与框架"),
             "/前端/业务相关/": getFolderChild("前端/业务相关"),
-            
+
             "/App/": getFolderChild("App"),
             "/后台/": getFolderChild("后台"),
 
@@ -82,6 +88,13 @@ const config = {
             "/数据结构和算法/": getFolderChild("数据结构和算法"),
             "/计算机基础/": getFolderChild("计算机基础"),
             "/网络/": getFolderChild("网络"),
+            "/游戏开发/": getFolderChild("游戏开发"),
+        },
+    },
+    markdown: {
+        config: (md) => {
+            // 支持复选框
+            md.use(require("markdown-it-task-lists"));
         },
     },
 };

@@ -24,7 +24,8 @@
   },
   "homepage": "https://github.com/tangxiangmin/interview#readme",
   "dependencies": {
-    "fs-extra": "^7.0.1"
+    "fs-extra": "^7.0.1",
+    "markdown-it-task-lists": "^2.1.1"
   },
   "devDependencies": {
     "vitepress": "^0.13.0"

@@ -207,7 +207,13 @@ uplinks:
 
 ## 修改npm镜像
 
-如果是临时修改镜像源，可以通过`npm config`修改
+如果是临时修改镜像源，可以通过`--registry`参数
+
+```
+npm --registry https://registry.npm.taobao.org install
+```
+
+永久修改registry，则可以通过`npm config`
 ```
 npm config set registry https://registry.npm.taobao.org/
 ```
@@ -249,4 +255,4 @@ yarn切换镜像的话，可以使用[yrm](https://www.npmjs.com/package/yrm)，
 
 ### cnpm
 
-不要用，不如使用npm改个taobao镜像。
+不要用，不如使用npm然后改个taobao镜像。

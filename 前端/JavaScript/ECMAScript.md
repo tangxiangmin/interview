@@ -296,3 +296,32 @@ let p = new Proxy(target, handler);
 > 问题：JavaScript有哪些模块规范？他们的区别是什么？模块的循环依赖机制是什么？
 
 参考：[JavaScript模块管理机制](https://www.shymean.com/article/JavaScript%E6%A8%A1%E5%9D%97%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6)
+
+## 装饰器
+
+参考
+* [decorator](http://es6.ruanyifeng.com/#docs/decorator)
+* [TypeScript装饰器（decorators）](https://www.cnblogs.com/winfred/p/8216650.html)
+
+
+装饰器本质就是编译时执行的函数，用于装饰类和类的方法，注意不能装饰函数（如果一定要装饰函数，可以采用高阶函数的形式直接执行。）
+
+```js
+@decorator
+class A {}
+
+// 等同于
+
+class A {}
+A = decorator(A) || A; // 如果在装饰器函数内返回新对象，则A会被替换掉
+```
+
+在TypeScript中装饰器可以修饰四种语句：类，属性，访问器，方法以及方法参数。
+
+装饰器本身其实就是一个函数，理论上忽略参数的话，任何函数都可以当做装饰器使用。
+
+类型包括
+* 类装饰器，应用于类构造函数，其参数是类的构造函数。
+* 方法装饰器，它会被应用到方法的 属性描述符上，可以用来监视，修改或者替换方法定义。
+* 方法参数装饰器，参数装饰器表达式会在运行时当作函数被调用
+* 属性装饰器，属性装饰器表达式会在运行时当作函数被调用

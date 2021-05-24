@@ -4,6 +4,7 @@
 下面列举了一些已收录到个人博客的源码分析
 * [Preact源码分析](https://www.shymean.com/article/Preact%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90)
 * [snabbdom源码解析：利用分治思想理解diff算法](https://www.shymean.com/article/snabbdom%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90)
+* [infernoJS源码分析：diff算法的优化](https://www.shymean.com/article/infernoJS%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90)
 * [dva源码分析](https://www.shymean.com/article/dva%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90)
 * Vue
     * [Vue3源码分析——数据侦测](https://www.shymean.com/article/Vue3%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E4%BE%A6%E6%B5%8B)

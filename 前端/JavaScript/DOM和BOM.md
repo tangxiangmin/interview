@@ -180,22 +180,7 @@ parentUl.removeChild(siblingLi)
 
 
 ## 事件
-参考：[DOM编程之事件（二）](http://www.shymean.com/article/DOM%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BA%8B%E4%BB%B6%EF%BC%88%E4%BA%8C%EF%BC%89)
-
-### 事件委托
-事件冒泡模型在为大量单独元素上注册处理程序提供了解决方案（在其公有祖先元素上注册事件,即**事件委托**）。
-
-事件委托就是事件目标不直接处理事件，而是委托其父元素或者祖先元素甚至根元素（document）的事件处理函数进行处理。可以通过事件对象的target属性获得真正触发事件的引用。
-
-事件委托是建立在冒泡模型之上的。
-
-### 多个事件执行顺序
-* 某些操作会同时出发多个事件，如点击事件执行顺序:touchstart -> touchend -> click
-* 事件执行顺序先捕获后冒泡。`addEventListener`第三个参数设置为ture时是在捕获阶段执行，而默认是false在冒泡阶段执行。
-
-### 事件节流去抖
-
-参考：[Throttle && Debonce](https://github.com/tangxiangmin/JSMagic/tree/master/Throttle%20%26%20Debounce)
+参考：[浏览器事件](./事件机制.md)
 
 ## JS动画
 
@@ -247,4 +232,56 @@ HTML5新增了sessionStorage和localStorage用于本地存储，专门为了浏�
     * sessionStorage存的数据在每次关闭浏览器后被删除，localStorage不会。
     * 作用域不同，sessionStorage不能在浏览器的不同标签页中共享，即使是同一个页面（刷新页面可以继续存在）；
     * localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的
+
+
+
+
+## Web Worder
+参考
+* [Web Worker MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API)
+* [Web Worker 使用教程](http://www.ruanyifeng.com/blog/2018/07/web-worker.html)
+
+JavaScript 语言采用的是单线程模型。Web Worker 的作用，就是为 JavaScript 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给后者运行，这样做的好处是可以在独立线程中执行费时的处理任务，从而允许主线程（通常是UI线程）不会因此被阻塞/放慢。
+
+在主线程中
+```js
+// 创建worker
+var worker = new Worker('work.js');
+// 向worker发送消息
+worker.postMessage('Hello World');
+// 注意传输的数据是值的拷贝，worker无法修改主线程中的变量
+worker.postMessage({method: 'echo', args: ['Work']});
+
+// 主线程通过事件，接收子线程发回来的消息
+worker.onmessage = function (event) {
+  console.log('Received message ' + event.data);
+  doSomething();
+}
+// 监听worker的错误
+worker.onerror(function (event) {});
+
+
+// 主线程关闭worker
+worker.terminate();
+```
+
+在worker中，通过`self`代表子线程自身，即子线程的全局对象
+```js
+// 监听message事件，接收主线程发送的消息
+self.addEventListener('message', function (e) {
+  // 通过postMessage向主线程发送消息
+  self.postMessage('You said: ' + e.data);
+}, false);
+
+// 主动关闭
+self.close();
+```
+
+## Service Worker
+
+参考：
+* [Service Worker API](https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API)
+* [Service Worker：简介](https://developers.google.com/web/fundamentals/primers/service-workers/)
+
+可以用来作为web应用程序、浏览器和网络（如果可用）之间的代理服务，常见的如控制缓存等，可以用来实现PWA
 

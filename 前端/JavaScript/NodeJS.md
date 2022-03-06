@@ -116,7 +116,7 @@ http.createServer(function(req, res) {
 ## NodeJS事件循环机制
 参考：
 * [event-loop-timers-and-nexttick](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
-* [eventloop](./eventLoop.md)
+<!-- * [eventloop](./eventLoop.md) -->
 
 
 在NodeJS中，事件循环可以分为几个阶段`timer`、`pending callbacks`、`poll`等阶段，在每个阶段完成之后，才会清空微任务队列，然后执行下一个阶段的任务。

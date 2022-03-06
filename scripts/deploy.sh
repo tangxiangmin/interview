@@ -4,14 +4,15 @@
 dir=../tangxiangmin.github.io
 now=`date +%Y%m%d%H%M%S`
 # 编译
-gitbook build
+npm run docs:build
 if [ $? -eq 0 ]; then
-    cp -r -f ./_book $dir
+    cp -r -f ./.vitepress/dist $dir
     # 自动推送
     cd $dir
     rm -rf interview
-    mv _book interview
-    
+    mv dist interview
+
+     
     git add .
     git commit -m "update /interview at: $now"
     git pull origin master

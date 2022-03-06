@@ -5,11 +5,9 @@ tags:
 
 * [官方文档](https://doc.mapeditor.org/en/stable/manual/introduction/)
 * https://www.cnblogs.com/zilongshanren/archive/2011/04/11/2012852.html
-
-http://www.iigrowing.cn/?p=7868
-
-
-https://blog.csdn.net/potato47/article/details/51366481
+* https://www.bilibili.com/video/av94433721?zw
+* http://www.iigrowing.cn/?p=7868
+* https://blog.csdn.net/potato47/article/details/51366481
 
 基本概念
 
@@ -26,3 +24,10 @@ https://blog.csdn.net/potato47/article/details/51366481
 * 复制
 
 在游戏引擎中使用TiledMap
+
+tiled动画编辑
+
+应该是flag动画编辑之后，需要ctrl + s保存一下，然后一起放到creator的source目录下才行，不然在tiledmap中预览动画，但在creator中是静止的。
+
+如果不能确定flag.tsx是否保存，可以使用vscode 之类的编辑器查看一下里面的xml，如果没有animation 标签，就说明没有保存或者动画没有编辑成功
+

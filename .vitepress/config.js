@@ -6,6 +6,7 @@ const ROOT_PATH = path.resolve(__dirname, "../"); // 项目根目录
 const config = {
     title: "Shymean",
     description: "fe",
+    base: "/interview/", // 部署的网站子目录
     themeConfig: {
         nav: [
             { text: "导读", link: "/导读", activeMatch: "^/导读$" },

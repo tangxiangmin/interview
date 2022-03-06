@@ -76,7 +76,7 @@ React.forwardRef // 将prop接收到的ref传递给子组件，可以用于在�
 按照约定一段jsx代码需要通过单节点包裹起来，我们往往会通过一个真实的标签如`div`等来包裹，`Fragment`提供了一个使返回子元素列表而不需要新增一个真实DOM节点的方法。
 
 ### React中插入html字符串?
-使用保留prop字段`dangerouslySetInnerHTML`，格式为`dangerouslySetInnerHTML={{__html:'html字符串'}}`
+使用保留prop字段`dangerouslySetInnerHTML`
 
 ### Hooks的优势和劣势有哪些？
 

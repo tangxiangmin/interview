@@ -28,7 +28,6 @@ inline-block 元素特点：
 
 ### BFC是啥
 
-<!-- 参考[BFC](../知识点/CSS/BFC.md) -->
 
 ### 物理像素和逻辑像素有什么区别？
 
@@ -186,7 +185,7 @@ CSS Scoped作用域是`Vue-loader`中的一个概念，当 `<style>` 标签有 s
 CSS Module是通过构建工具（webpack or Browserify）来使所有的class达到scope的一个功能，且实现是在编译的时候替换对应的类名为一个唯一的值
 
 ```js
-import type from "./type.css";
+import type from "/type.css";
 
 `<h1 class="${type.display}">This is a heading</h1>`;
 // 输入如下结果
@@ -411,7 +410,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     <div class="s6">1</div> <!--32px 64px-->
 </div>
 ```
-<!-- 知识点[传送门](../../知识点/CSS/基础知识.md#行高) -->
+
 * 如果使用 em,ex 和百分数指定行高，都是相对于元素的 font-size 进行计算
 * 如果使用百分数来设置行高，浏览器会首先计算其父元素的字体大小与对应百分数的乘积，得到对应的结果再传递给对应元素
 * 如果使用乘积因子来指定行高，浏览器会计算该元素的字体大小，然后乘以对应的乘积因子，并将结果应用在行高之上

@@ -66,6 +66,7 @@
 * [这儿有20道大厂面试题等你查收](https://juejin.im/post/5d124a12f265da1b9163a28d)
 * https://mp.weixin.qq.com/s/J9uQmFLOGE6A4JpgDSXdJg
 * [前面面试100问解答](https://github.com/Advanced-Frontend/Daily-Interview-Question)项目的所有问题。[问题汇总](https://mp.weixin.qq.com/s/J9uQmFLOGE6A4JpgDSXdJg)
+* [2022 做了一份前端面试复习计划，保熟～](https://juejin.cn/post/7061588533214969892)
 
 一些汇总整理
 * https://juejin.im/post/5dd1d90d6fb9a01ff4495ce0

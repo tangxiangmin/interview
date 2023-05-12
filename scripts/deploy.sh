@@ -4,7 +4,7 @@
 dir=../tangxiangmin.github.io
 now=`date +%Y%m%d%H%M%S`
 # 编译
-npm run docs:build
+npm run build
 if [ $? -eq 0 ]; then
     cp -r -f ./.vitepress/dist $dir
     # 自动推送

@@ -2,10 +2,8 @@ JavaScript
 ===
 
 ## 数据类型
-<!-- 参考：[数据类型](./数据类型.md) -->
 
 ## 运算符
-<!-- 参考：[运算符](./运算符.md) -->
 
 ## 作用域和闭包
 参考：[JavaScript中的变量作用域](https://www.shymean.com/article/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F)
@@ -221,10 +219,8 @@ let add = (a, b)=>{
 
 
 ## 原型与原型链
-<!-- 参考：[原型继承](./原型.md) -->
 
 ## EventLoop
-<!-- 参考：[EventLoop](./EventLoop.md) -->
 
 ## ES6
 参考
@@ -262,7 +258,6 @@ ES6新增了一些常用的新特性
 * [装饰器](http://es6.ruanyifeng.com/#docs/decorator)
 
 ## 异步编程
-<!-- * [Event loop]('./EventLoop.md') -->
 * [理解Generator函数与async函数](https://www.shymean.com/article/%E7%90%86%E8%A7%A3Generator%E5%87%BD%E6%95%B0%E4%B8%8Easync%E5%87%BD%E6%95%B0)
 * co库的基本使用
 

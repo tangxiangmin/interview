@@ -14,13 +14,10 @@
 git clone git@github.com:tangxiangmin/interview.git
 cd interview
 
-yarn
-
-# 生成summary.md目录，使用之前旧版本的gitbook格式
-yarn catalogue:build  
+npm i 
 
 # vitepress开发和打包
-yarn docs:dev
-yarn docs:build
-yarn docs:serve
+npm run dev
+npm run build
+npm run serve
 ```

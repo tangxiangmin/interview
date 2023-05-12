@@ -180,7 +180,6 @@ parentUl.removeChild(siblingLi)
 
 
 ## 事件
-<!-- 参考：[浏览器事件](./事件机制.md) -->
 
 ## JS动画
 

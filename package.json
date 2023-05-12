@@ -5,12 +5,10 @@
   "main": "index.js",
   "scripts": {
     "setup": "ln ./scripts/prepare-commit-msg ./.git/hooks/",
-    "catalogue:build": "node scripts/build.js",
     "deploy": "./scripts/deploy.sh",
     "dev": "vitepress dev",
-    "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
-    "docs:serve": "vitepress serve"
+    "build": "vitepress build",
+    "serve": "vitepress serve"
   },
   "repository": {
     "type": "git",

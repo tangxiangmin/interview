@@ -5,6 +5,11 @@
 * [2018 年了，你还是只会 npm install 吗](https://juejin.im/post/5ab3f77df265da2392364341)，这篇文章讲的很全，不妨移步阅读
 
 ## 相关概念
+
+CommonJS、AMD、CMD、UMD、ES6各种规范
+
+已整理至博客[JavaScript模块管理机制](https://www.shymean.com/article/JavaScript%E6%A8%A1%E5%9D%97%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6)
+
 ### 模块与包
 参考：[About packages and modules](https://docs.npmjs.com/about-packages-and-modules)
 
@@ -179,6 +184,7 @@ npm publish --access=public
 
 在某些时候不方便将模块发布到公共的npm仓库，因此就有了搭建本地npm服务器的需求
 
+
 在之前可以使用[sinopia](https://github.com/rlidwka/sinopia)来搭建npm私有仓库，但sinopia已经年久失修了，目前一般使用[verdaccio](https://github.com/verdaccio/verdaccio)
 
 ```
@@ -203,7 +209,7 @@ uplinks:
     # 可以修改为淘宝镜像 url: https://registry.npm.taobao.org/ 
 ```
 
-如果是公司级别的npm私库，可以考虑使用Docker安装verdaccio镜像，或者购买云服务厂商的私有包托管仓库。
+如果是公司级别的npm私库，可以考虑使用Docker安装verdaccio镜像，此外各大云服务提供商业提供了企业级别的私有包托管仓库，直接购买购买云服务应该也可以
 
 ## 修改npm镜像
 
@@ -256,3 +262,11 @@ yarn切换镜像的话，可以使用[yrm](https://www.npmjs.com/package/yrm)，
 ### cnpm
 
 不要用，不如使用npm然后改个taobao镜像。
+
+### pnpm
+
+NPM与Yarn都是将项目依赖的包安装到项目目录node_modules下，PNPM采用了一种不同的方法，它在您的计算机上创建一个单一的虚拟存储库，并使用硬链接将其链接到各个项目目录，而不是将文件复制到每个项目目录中。这样可以实现多个项目共享相同的包版本而无需重复复制。PNPM还支持多个注册表、私有包和基于锁定文件的确定性构建。
+
+这样就可以通过在项目之间使用共享存储来减少磁盘空间占用和加快安装速度
+
+目前使用PNPM可以在Monorepo中更高效地管理依赖关系。PNPM的特点之一是使用虚拟存储库和硬链接来共享依赖项，从而减少磁盘空间占用和安装时间。这对于Monorepo来说非常有用，因为不同项目可以共享相同的依赖项，而不必在每个项目中都复制一份。这样可以减少冗余，并提供更快的安装和构建速度。
